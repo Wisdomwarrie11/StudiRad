@@ -1,0 +1,10 @@
+/* src/Home.css */
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Optionally, set a fallback font in case Montserrat doesn't load */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
