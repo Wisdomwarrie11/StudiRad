@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './Courses.css'; // Custom styles for the component
+import './Course.css'; // Custom styles for the component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import FAQs from './FAQ';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Tooltip, OverlayTrigger } from 'react-bootstrap'; // Tooltip component from Bootstrap
@@ -12,21 +13,21 @@ const packages = [
   {
     name: 'Diamond Package',
     details: 'Access to all courses, one-on-one mentoring, and exclusive materials.',
-    price: '$19.99',
+    price: '$199.99',
     rating: 5, // Rating field
     subscriptionLink: '/diamond', // Unique payment plan URL
   },
   {
     name: 'Gold Package',
     details: 'Access to all courses and group mentoring sessions.',
-    price: '$12.99',
+    price: '$129.99',
     rating: 4, // Rating field
     subscriptionLink: '/gold', // Unique payment plan URL
   },
   {
     name: 'Silver Package',
     details: 'Access to selected courses and community support.',
-    price: '$7.99',
+    price: '$79.99',
     rating: 3, // Rating field
     subscriptionLink: '/silver', // Unique payment plan URL
   },
@@ -96,12 +97,30 @@ const CourseOutline = () => {
                     <FontAwesomeIcon icon={faBookOpen} /> {pkg.name}
                   </h5>
                   <p>{pkg.details}</p>
+                  <Button variant="success" onClick={() => handleSubscribe(pkg)}>
+                    {loading ? <FaSpinner className="fa-spin" /> : 'Subscribe'}
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Chat Support Button */}
+      <div className="text-center mt-5">
+        <a
+          href="https://tawk.to/chat/YOUR_CHAT_ID/default"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-info"
+        >
+          Chat with Us
+        </a>
+      </div>
+
+      <hr style={{ backgroundColor: 'black', height: '50px' }} />
+      <FAQs />
     </div>
   );
 };

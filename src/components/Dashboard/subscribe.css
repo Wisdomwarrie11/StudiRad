@@ -1,0 +1,88 @@
+/* SubscriptionPage.css */
+.subscription-page {
+    background-color: #f4f7fa; /* Light gray background */
+    padding: 50px 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .package-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .package-card h3 {
+    font-size: 2rem;
+    color: #007bff;
+  }
+  
+  .package-card .lead {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .package-card .font-weight-bold {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .package-card .price {
+    font-size: 1.8rem;
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .package-card .payment-details h5 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .package-card .payment-details ul {
+    text-align: left;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .package-card .btn {
+    font-size: 1.25rem;
+    padding: 12px 40px;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .package-card .btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .package-icon h1 {
+    font-size: 4rem;
+    color: #007bff;
+  }
+  
+  @media (max-width: 767px) {
+    .subscription-page {
+      padding: 30px 0;
+    }
+  
+    .package-card {
+      padding: 20px;
+    }
+  }
+  

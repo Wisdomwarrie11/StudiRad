@@ -1,0 +1,53 @@
+.dashboard-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .sidebar a{
+    text-decoration: none;
+    color: white;
+  }
+  .sidebar-title {
+    font-size: 1.5rem;
+  }
+  
+  .sidebar-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-list li {
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+  }
+  
+  .header img {
+    object-fit: cover;
+  }
+  
+  .han{
+    color: blanchedalmond;
+  }
+  .dashboard-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .sidebar h2 {
+    color: #cbdcf4;
+  }
+  
+  .sidebar-list :hover{
+    color:rgb(247, 237, 50) 
+  }
+  

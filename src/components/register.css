@@ -1,0 +1,30 @@
+.register {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .register h3 {
+    font-size: 2rem;
+    color: #4CAF50;
+  }
+  
+  .register button {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+  }
+  
+  .register button:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+  }
+  
+  .register form {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .register .alert {
+    margin-bottom: 20px;
+  }
+  
