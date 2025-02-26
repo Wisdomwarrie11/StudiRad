@@ -1,0 +1,30 @@
+.error-message h1 {
+    font-size: 80px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.error-message p {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.error-graphic {
+    margin-top: 40px;
+}
+
+.error-image {
+    width: 250px;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    border-color: #007BFF;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}

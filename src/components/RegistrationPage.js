@@ -89,13 +89,13 @@ const RegistrationPage = () => {
                 value={formData.firstName}
                 onChange={handleChange}
                 className="form-control"
-                placeholder="Enter your first name"
+                placeholder="Enter your first and last name"
                 required
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="lastName" className="form-label">Last Name</label>
+              <label htmlFor="lastName" className="form-label">Username</label>
               <input
                 type="text"
                 id="lastName"
@@ -103,7 +103,7 @@ const RegistrationPage = () => {
                 value={formData.lastName}
                 onChange={handleChange}
                 className="form-control"
-                placeholder="Enter your last name"
+                placeholder="Enter your Username"
                 required
               />
             </div>

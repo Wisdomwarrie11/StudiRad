@@ -3,10 +3,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // For navigation links
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
+import LoginPage from 'components/Login';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
         <Link className="navbar-brand" to="/">StudiRad</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +16,10 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-              <Link className="nav-link" to="/studentdashboard">Profile</Link>
+              <Link className="nav-link" to="/">Home</Link>
+            </li>
+          <li className="nav-item">
+              <Link className="nav-link" to="/studentdashboard">My dashboard</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/login">Login</Link>

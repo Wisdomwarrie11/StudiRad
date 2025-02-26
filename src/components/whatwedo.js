@@ -1,54 +1,38 @@
-import React from "react";
+import { Book, UserCheck, Monitor } from "lucide-react";
 
-const WhatWeDo = () => {
+const activities = [
+  {
+    icon: <Book size={100} className="text-primary bg-light p-2 rounded" />, 
+    title: "Expert-Led Courses",
+    description: "Structured courses designed by experienced radiographers to ensure comprehensive learning.",
+  },
+  {
+    icon: <UserCheck size={100} className="text-primary bg-light p-2 rounded" />, 
+    title: "Personalized Mentorship",
+    description: "Students get one-on-one guidance from industry professionals to navigate their learning journey.",
+  },
+  {
+    icon: <Monitor size={100} className="text-primary bg-light p-2 rounded" />, 
+    title: "Interactive Learning Tools",
+    description: "Our platform offers quizzes, case studies, and real-time assessments to enhance knowledge retention.",
+  },
+];
+
+export default function WhatWeDo() {
   return (
-    <section className="py-5 bg-white">
-      <div className="container">
-        <h2 className="text-center fw-bold mb-4">What We Do</h2>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="card shadow-sm">
-              <img
-                src="tutorials.jpg"
-                alt="Live Tutorials"
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h5 className="card-title fw-bold">Live Tutorials</h5>
-                <p className="card-text">Interactive online sessions with experts in real-time.</p>
-              </div>
+    <section className="container my-5 py-5">
+      <h2 className="text-center mb-4 fw-bold">What We Do</h2>
+      <div className="row g-4">
+        {activities.map((activity, index) => (
+          <div key={index} className="col-md-4">
+            <div className="card border-0 shadow-sm p-4 text-center bg-light">
+              <div className="mb-3">{activity.icon}</div>
+              <h5 className="fw-bold">{activity.title}</h5>
+              <p className="text-muted">{activity.description}</p>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card shadow-sm">
-              <img
-                src="recorded.jpg"
-                alt="Recorded Sessions"
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h5 className="card-title fw-bold">Recorded Sessions</h5>
-                <p className="card-text">Access past tutorials anytime for flexible learning.</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card shadow-sm">
-              <img
-                src="tutor.jpg"
-                alt="Expert Guidance"
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h5 className="card-title fw-bold">Expert Guidance</h5>
-                <p className="card-text">Learn directly from seasoned professionals in the field.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default WhatWeDo;
+}

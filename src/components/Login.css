@@ -1,0 +1,60 @@
+body {
+    background-color: #f4f7fa;
+  }
+  
+  .login-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .password-input-wrapper {
+    position: relative;
+  }
+  
+  .password-input-wrapper i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .password-input-wrapper .visible {
+    color: #007bff;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+  .text-center a {
+    color: #007bff;
+  }
+  
+  .text-center a:hover {
+    text-decoration: underline;
+  }
+  
+  .mt-3 {
+    margin-top: 15px;
+  }
+  
+  .google-login-btn {
+    width: 100%;
+    padding: 10px;
+  }
+  

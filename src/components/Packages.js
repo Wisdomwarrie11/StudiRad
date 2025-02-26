@@ -84,7 +84,7 @@ const CourseOutline = () => {
                     placement="top"
                     overlay={<Tooltip id={`tooltip-${index}`}>Click to see more details</Tooltip>}
                   >
-                    <button className="btn btn-primary" onClick={() => handleFlip(index)}>
+                    <button style={{backgroundColor:' rgb(6, 4, 44)'}} className="btn btn-primary" onClick={() => handleFlip(index)}>
                       See More
                     </button>
                   </OverlayTrigger>

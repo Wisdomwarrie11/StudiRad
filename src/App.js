@@ -17,26 +17,33 @@ import Bronze from "components/Dashboard/Bronze";
 import Gold from "components/Dashboard/gold";
 import Diamond from "components/Dashboard/Diamond";
 import RegistrationPage from "components/RegistrationPage";
-
+import LoginPage from "components/Login";
+import ContactPage from "components/contact";
+import { GoogleOAuthProvider } from '@react-oauth/google'; 
+import CourseList from "./components/CourseList";
+import TutorDashboard from "components/TutorDashboard";
+import CourseDetails from "components/CourseDetails";
 
 
 function App() {
   return (
-    
+    <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID"> 
     <Router>
        <Navbar />
       <Routes>     
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<RegistrationPage/>} />
-
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/contact" element={<ContactPage/>} />
         <Route path="/profile" element={<ProfileSegment />} />
         <Route path="/studentdashboard" element={<StudentDashboard />} />
         <Route path="/recordings" element={<SavedRecordings />} />
         <Route path="/packages" element={<YourPackages />} />
-
         <Route path="/livetutorials" element={<LiveTutorials />} />
-        <Route path="/courses" element={<CourseOutline />} />
+        <Route path="/courses" element={<CourseList />} />
         <Route path="/subscribe" element={<SubscriptionPage />} />
+        <Route path="/tutordashboard" element={<TutorDashboard />} />
+        <Route path="/tutors/:tutorId/courses/:courseId" element={<CourseDetails />} />
         <Route path="/gold" element={<Gold/>} />
 
 <Route path="/bronze" element={<Bronze />} />
@@ -46,6 +53,7 @@ function App() {
         {/* Add other routes here */}
       </Routes>
     </Router>
+    </GoogleOAuthProvider>
   );
 }
 

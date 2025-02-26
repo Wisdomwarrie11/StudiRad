@@ -1,65 +1,47 @@
-import React from "react";
+import { BookOpen, Brain, Users, ShieldCheck } from "lucide-react";
 
-const Benefits = () => {
+const benefits = [
+  {
+    icon: <BookOpen size={100} className="text-primary p-2 rounded" />, 
+    title: "Comprehensive Learning Resources",
+    description: "Access a wide range of expertly curated materials tailored to radiography students, covering fundamental to advanced topics.",
+    align: "left",
+  },
+  {
+    icon: <Brain size={100} className="text-primary p-2 rounded" />,
+    title: "Interactive and Engaging Lessons",
+    description: "Experience a dynamic learning environment with quizzes, case studies, and real-world scenarios to enhance understanding.",
+    align: "right",
+  },
+  {
+    icon: <Users size={100} className="text-primary p-2 rounded" />,
+    title: "Community and Mentorship",
+    description: "Join a network of radiography students and professionals for discussions, guidance, and mentorship opportunities.",
+    align: "left",
+  },
+  {
+    icon: <ShieldCheck size={100} className="text-primary p-2 rounded" />,
+    title: "Certified and Trusted Content",
+    description: "Our courses and materials are reviewed by industry experts to ensure accuracy and reliability for your studies.",
+    align: "right",
+  },
+];
+
+export default function Benefits() {
   return (
-    <section className="py-5 bg-light">
-      <div className="container">
-        <h2 className="text-center fw-bold mb-4">Benefits for Students and Tutors</h2>
-        <div className="row">
-          {/* Benefits for Students */}
-          <div className="col-md-6">
-            <div className="card shadow-sm mb-4">
-              <img
-              style={{height: '300px'}}
-                src="student.jpeg"
-                alt="Students Benefit"
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h3 className="card-title fw-bold text-black">For Students</h3>
-                <ul className="list-unstyled mt-3">
-                  <li className="mb-2">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i> Access live and recorded tutorials anytime.
-                  </li>
-                  <li className="mb-2">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i> Learn from industry professionals.
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill text-success me-2"></i> Improve understanding of anatomy and radiographic modalities.
-                  </li>
-                </ul>
-              </div>
-            </div>
+    <section className="container my-5 py-5 bg-info-light">
+      <h2 className="text-center mb-4 fw-bold">Why Choose Our Platform?</h2>
+      {benefits.map((benefit, index) => (
+        <div key={index} className={`row align-items-center my-4 ${benefit.align === "right" ? "flex-row-reverse" : ""}`}>
+          <div className="col-md-6 text-center">
+            {benefit.icon}
           </div>
-          {/* Benefits for Tutors */}
           <div className="col-md-6">
-            <div className="card shadow-sm">
-              <img
-              style={{height: '300px'}}
-                src="tutorman.jpeg"
-                alt="Tutors Benefit"
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h3 className="card-title fw-bold text-black">For Tutors</h3>
-                <ul className="list-unstyled mt-3">
-                  <li className="mb-2">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i> Share expertise with a wider audience.
-                  </li>
-                  <li className="mb-2">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i> Earn income by hosting tutorials.
-                  </li>
-                  <li>
-                    <i className="bi bi-check-circle-fill text-success me-2"></i> Showcase teaching skills and gain recognition.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <h4 className="fw-bold">{benefit.title}</h4>
+            <p className="text-muted">{benefit.description}</p>
           </div>
         </div>
-      </div>
+      ))}
     </section>
   );
-};
-
-export default Benefits;
+}
