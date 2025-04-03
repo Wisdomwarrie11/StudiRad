@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Carousel, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -7,25 +7,20 @@ const courses = [
     id: 2,
     title: "Introduction Skull X-ray",
     image: "skull.jpg",
-    description: "Learn the basic techniques in skull x-rays.",
   },
   {
     id: 1,
-    title: "Basic Principles of Radiographic Anatomy",
-    image: "spine.jpg",
-    description: "Understand the fundamental concepts behind Radiographic Anatomy of the spine.",
-  },
+    title: "Principles of Rad Anatomy",
+    image: "spine.jpg",  },
   {
     id: 3,
     title: "Introduction to Chest X-ray",
     image: "chest.jpg",
-    description: "Explore basic X-ray positioning and techniques used in chest examination.",
   },
   {
     id: 4,
     title: "Basic Protocol in Brain CT",
     image: "Ctbrain.jpg",
-    description: "Understand Basic principles in Brain CT.",
   },
 ];
 
@@ -53,11 +48,10 @@ const Classes = () => {
                         src={course.image}
                         alt={course.title}
                         className="card-img-top"
-                        style={{ maxHeight: "250px", objectFit: "cover" }}
+                        style={{ maxHeight: "200px", objectFit: "cover" }}
                       />
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
-                        <p className="text-muted">{course.description}</p>
                       </div>
                     </div>
                   </Col>
@@ -83,7 +77,7 @@ const Classes = () => {
                   src={course.image}
                   alt={course.title}
                   className="card-img-top"
-                  style={{ height: "200px" }}
+                  style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body">
                   <h5 className="card-title fw-bold">{course.title}</h5>
