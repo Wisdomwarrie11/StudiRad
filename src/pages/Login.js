@@ -46,7 +46,7 @@ const Login = () => {
       <div className="login-card">
         <h2>Welcome Back</h2>
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleLogin}>
+        <form style={{color: 'white'}} onSubmit={handleLogin}>
           <div className="input-group">
             <input
               type="text"
@@ -82,7 +82,7 @@ const Login = () => {
                 </button>
               </div>
           </div>
-          <button className="success" type="submit">Login</button>
+          <button style={{width: '100px'}} className="success" type="submit">Login</button>
         </form>
         {error && (
           <p>

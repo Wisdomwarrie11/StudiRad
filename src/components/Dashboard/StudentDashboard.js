@@ -29,7 +29,7 @@ function StudentDashboard() {
     <div className="dashboard-container d-flex">
       {/* Sidebar */}
       <nav className={`sidebar bg-dark text-white p-3 ${sidebarCollapsed ? 'collapsed' : ''}`}>
-        <h2 style={{ marginTop: '50px' }} className="text-center">Menu</h2>
+        <h2 style={{ marginTop: '100px' }} className="text-center">Menu</h2>
         <ul className="nav flex-column">
           <li className="nav-item">
             <Link className="nav-link text-white" to="/notifications">Notifications</Link>
@@ -50,14 +50,14 @@ function StudentDashboard() {
       </nav>
 
       {/* Toggler button for medium and smaller screens */}
-      <button style={{marginTop: '55px', marginRight: '40px', width: '50px'}}
+      <button style={{marginTop: '100px', marginRight: '40px', width: '50px'}}
         className="sidebar-toggler btn btn-light d-md-none" 
         onClick={() => setSidebarCollapsed(!sidebarCollapsed)}>
         {sidebarCollapsed ? <FaBars /> : <FaTimes />} {/* Show icons depending on the state */}
       </button>
 
       {/* Main Content */}
-      <div style={{marginTop: '30px', marginLeft: '40px'}}  className="main-content flex-grow-1 p-4">
+      <div style={{marginTop: '70px', marginLeft: '40px'}}  className="main-content flex-grow-1 p-4">
         <header className="d-flex align-items-center p-3 bg-light shadow-sm rounded">
           <img
             src={studentData.profilePicture || 'https://via.placeholder.com/50'}

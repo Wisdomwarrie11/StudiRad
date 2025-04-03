@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav style={{marginBottom: '500px'}} className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
-        <Link className="navbar-brand" to="/">StudiRad</Link>
+        <Link className="navbar-brand" to="/"><img style={{height: '80px', width: '80px'}} src="Studirad.png" alt="" /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

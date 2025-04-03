@@ -77,10 +77,10 @@ const RegistrationPage = () => {
   return (
     <div className="container mt-5 registration">
       <div  className="row justify-content-center">
-        <div style={{marginTop: '50px'}} className="col-md-6 forms">
+        <div style={{marginTop: '100px'}} className="col-md-6 forms">
           <h3 className="text-center mb-4">Register for Live Lectures</h3>
 
-          <form onSubmit={handleSubmit} className="shadow p-4 rounded form">
+          <form style={{color: 'white'}} onSubmit={handleSubmit} className="shadow p-4 rounded form">
             <div className="mb-3">
               <label htmlFor="firstName" className="form-label">First Name</label>
               <input
