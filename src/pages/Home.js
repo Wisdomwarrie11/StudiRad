@@ -10,9 +10,11 @@ import Testimonials from "../components/Testimonials";
 import Packages from "../components/Packages";
 import Courses from '../components/Courses'
 import Topcourses from "components/topcourses";
+import Classes from '../components/Classes'
 
 
 const Home = () => {
+
   return (
     <div>
       {/* Navbar (already in App.js) */}
@@ -25,9 +27,9 @@ const Home = () => {
             <img src="Frame.png" alt="Hero" className="img-fluid hero-image" />
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
-            <h1 className="hero-title display-4 fw-bold">Welcome to StudiRad</h1>
-            <p style={{backgroundColor: 'black', color: 'white', paddingLeft: '10px'}} className="hero-subtitle">We make your medical Journey worthwhile</p>
-            <button style={{backgroundColor: 'rgb(246, 187, 97)'}} className="btn mt-3">Get Started</button>
+            <h1 className="hero-title display-4 fw-bold">Welcome to Stud<span style={{color: 'rgb(227, 137, 2)'}}>i</span>Rad</h1>
+            <p style={{backgroundColor: 'black', color: 'white', paddingLeft: '10px'}} className="hero-subtitle"><strong>We make your medical Journey worthwhile...</strong></p>
+            <a style={{color: 'black'}} href="/registration"><button style={{backgroundColor: 'rgb(246, 187, 97)'}} className="btn mt-3"><strong>Get Started</strong></button></a>
           </div>
           
         </div>
@@ -55,6 +57,10 @@ const Home = () => {
       {/* What We Do Section */}
       <section className=" bg-light text-center">
         <WhatWeDo/>
+      </section>
+
+      <section>
+      <Classes/>
       </section>
 
       <section>

@@ -39,7 +39,7 @@ const Topcourses = () => {
   return (
     <section className="py-5 bg-white">
       <div className="container">
-        <h2 className="text-center fw-bold mb-4">Our Top Courses</h2>
+        <h2 className="text-center fw-bold mb-4">Our top courses you can choose from</h2>
         <Carousel indicators={false} interval={3000} className="d-md-none">
           {Array.from({ length: Math.ceil(courses.length / 2) }).map((_, index) => (
             <Carousel.Item key={index}>

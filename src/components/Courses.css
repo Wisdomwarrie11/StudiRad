@@ -1,4 +1,4 @@
-/* src/components/CourseOutline.css */
+
 
 .flip-card {
     position: relative;
@@ -53,3 +53,43 @@
   .test{
     color: rgb(6, 4, 44);
   }
+
+  /* CardRow.css */
+
+/* Default styling for cards */
+.card {
+  min-height: 350px; /* Default height */
+  transition: all 0.3s ease-in-out;
+}
+
+.card-img-top {
+  height: 200px; 
+  object-fit: cover;
+}
+
+/* Keep 4 cards per row */
+.col-3 {
+  flex: 1 1 25%;
+  max-width: 25%;
+}
+
+/* Adjust card and image height for medium screens */
+@media (max-width: 768px) {
+  .card {
+    min-height: 280px; /* Reduce card height */
+  }
+  .card-img-top {
+    height: 150px; /* Reduce image height */
+  }
+}
+
+/* Further reduce for small screens */
+@media (max-width: 576px) {
+  .card {
+    min-height: 200px; /* Shorter card */
+  }
+  .card-img-top {
+    height: 130px; /* Smaller image */
+  }
+}
+

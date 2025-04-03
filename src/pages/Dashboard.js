@@ -16,7 +16,7 @@ const StudentDashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div  className="dashboard-container">
       <Sidebar />
       <div className="dashboard-main">
         {/* Profile Section */}

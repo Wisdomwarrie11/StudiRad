@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Import SweetAlert2
+import './register.css'
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -74,12 +75,12 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
+    <div className="container mt-5 registration">
+      <div  className="row justify-content-center">
+        <div style={{marginTop: '50px'}} className="col-md-6 forms">
           <h3 className="text-center mb-4">Register for Live Lectures</h3>
 
-          <form onSubmit={handleSubmit} className="shadow p-4 rounded">
+          <form onSubmit={handleSubmit} className="shadow p-4 rounded form">
             <div className="mb-3">
               <label htmlFor="firstName" className="form-label">First Name</label>
               <input
@@ -178,7 +179,8 @@ const RegistrationPage = () => {
               </select>
             </div>
 
-            <button type="submit" className="btn btn-primary w-100" disabled={isLoading}>
+            <button style={{backgroundColor: '#048851'}} 
+            type="submit" className="btn w-100" disabled={isLoading}>
               {isLoading ? 'Registering...' : 'Register'}
             </button>
           </form>
