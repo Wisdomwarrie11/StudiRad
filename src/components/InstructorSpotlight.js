@@ -5,19 +5,19 @@ import React from "react";
 const instructors = [
   {
     name: "Rad Wisdom Warrie",
-    title: "Senior Radiologist",
+    title: "Chief Radiographer",
     image: "warrie.jpg",
     bio: "Expert in MRI and CT Scanning with 8+ years of teaching.",
   },
   {
     name: "Rad Gloria Ekeata",
-    title: "Diagnostic Imaging Specialist",
+    title: "Senior Sonographer",
     image: "Gloria.jpg",
     bio: "Specializes in ultrasound and X-ray. Loves simplifying complex topics.",
   },
   {
     name: "Rad Effiom Ayi",
-    title: "Interventional Radiologist",
+    title: "Interventional Radiographer",
     image: "Ayi.jpg",
     bio: "Blends practice and teaching with passion for learner success.",
   },
