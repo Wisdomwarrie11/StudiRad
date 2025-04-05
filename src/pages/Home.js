@@ -11,6 +11,10 @@ import Packages from "../components/Packages";
 import Courses from '../components/Courses'
 import Topcourses from "components/topcourses";
 import Classes from '../components/Classes'
+import HowItWorks from "../components/HowItWorks";
+import InstructorSpotlight from "../components/InstructorSpotlight";
+import NewsletterSignup from "../components/NewsletterSignup";
+import FloatingCTA from "../components/FloatingCTA";
 
 
 const Home = () => {
@@ -68,12 +72,16 @@ const Home = () => {
       </section>
 
        {/* Our Packages Section */}
-       <section className="py-5">
+       {/* <section className="py-5">
      <Packages/>
-      </section>
+      </section> */}
 
       <section>
         <Benefits/>
+      </section>
+
+      <section>
+        <HowItWorks/>
       </section>
 
      
@@ -82,6 +90,17 @@ const Home = () => {
       <section className="py-5 bg-light">
        <Testimonials/>
       </section>
+
+      <section>
+  <InstructorSpotlight />
+</section>
+
+<section>
+  <NewsletterSignup />
+</section>
+
+<FloatingCTA />
+
 
       {/* Footer */}
       <Footer />
