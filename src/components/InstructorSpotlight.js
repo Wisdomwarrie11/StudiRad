@@ -10,9 +10,9 @@ const instructors = [
     bio: "Expert in MRI and CT Scanning with 8+ years of teaching.",
   },
   {
-    name: "Rad Gloria Ekaetta",
+    name: "Rad Gloria Ekeata",
     title: "Diagnostic Imaging Specialist",
-    image: "/instructors/michael.jpg",
+    image: "Gloria.jpg",
     bio: "Specializes in ultrasound and X-ray. Loves simplifying complex topics.",
   },
   {
