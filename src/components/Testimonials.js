@@ -41,7 +41,7 @@ const Testimonials = () => {
           <div className="col-md-4">
             <div className="card shadow-sm text-center">
               <img
-                src="student.jpeg"
+                src="etima.jpg"
                 alt="User"
                 className="rounded-circle mx-auto mt-3"
                 style={{ width: "100px", height: "100px" }}
@@ -50,7 +50,7 @@ const Testimonials = () => {
                 <p className="card-text">
                   "The flexibility and quality of tutorials are unmatched."
                 </p>
-                <h5 className="card-title fw-bold">- Chioma Obinna</h5>
+                <h5 className="card-title fw-bold">- Etima Sunday</h5>
               </div>
             </div>
           </div>
