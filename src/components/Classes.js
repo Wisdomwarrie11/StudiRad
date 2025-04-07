@@ -45,18 +45,15 @@ const Classes = () => {
                     className="card shadow-sm cursor-pointer course-card"
                     onClick={() => navigate(`/course/${course.id}`)}
                     data-aos="zoom-in"
-                    data-aos-delay={index * 100} 
->
+                    data-aos-delay={index * 100} >
                     <img
                       src={course.image}
                       alt={course.title}
                       className="card-img-top"
-                      style={{ width: "100%", height: "200px", objectFit: "cover" }}
-/>
-
+                      style={{ width: "100%", height: "200px", objectFit: "cover" }}/>
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
-                        <button>
+                        <button style={{ width: "100%", backgroundColor:'rgb(24, 59, 78)' }}>
                           Join 
                         </button>
                       </div>
@@ -88,6 +85,9 @@ const Classes = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title fw-bold">{course.title}</h5>
+                  <button style={{ width: "100%", backgroundColor:'rgb(24, 59, 78)'}}>
+                          Join 
+                        </button>
                 </div>
               </div>
             </div>

@@ -121,17 +121,18 @@ const ClassDetails = () => {
                 <li key={index}>{topic}</li>
               ))}
             </ul>
-            <Button variant="info" className="mt-3" href={course.outlinePdf} download>
+            <Button style={{ width: "100%", backgroundColor:'rgb(24, 59, 78)', color: "white",}} variant="info" className="mt-3" href={course.outlinePdf} download>
               Download Outline (PDF)
             </Button>
             <h4 className="mt-4">Subscription Fee: <span className="text-success">{course.fee}</span></h4>
             <Button 
-  variant="success" 
-  className="mt-3" 
-  onClick={() => navigate(`/subscribe/${course.id}`)}
->
-  Subscribe Now
-</Button>
+            variant="success" 
+            className="mt-3" 
+            style={{ width: "100%"}}
+            onClick={() => navigate(`/subscribe/${course.id}`)}
+          >
+            Subscribe Now
+            </Button>
 
           </Card>
         </Col>
