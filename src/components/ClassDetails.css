@@ -12,10 +12,7 @@ h2, h4 {
     padding: 2rem;
   }
   
-  button {
-    border-radius: 5px;
-    width: 50px;
-  }
+ 
   
   button:hover {
     transform: scale(1.05);
