@@ -51,12 +51,16 @@ const Classes = () => {
                       src={course.image}
                       alt={course.title}
                       className="card-img-top"
-                      style={{ width: "100%", height: "100px", objectFit: "cover" }}
+                      style={{ width: "100%", height: "200px", objectFit: "cover" }}
 />
 
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
+                        <button>
+                          Join 
+                        </button>
                       </div>
+                      
                     </div>
                   </Col>
                 ))}

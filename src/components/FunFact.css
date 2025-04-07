@@ -1,4 +1,4 @@
-/* src/components/FunFact.css */
+
 
 /* Section Styling */
 .fun-fact-section {
@@ -40,8 +40,6 @@
 
 /* Fun Fact Images Styling */
 img {
-  max-width: 80%;
-  border-radius: 8px;
   transition: transform 0.3s ease;
 }
 
