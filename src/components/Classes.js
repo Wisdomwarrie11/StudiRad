@@ -6,7 +6,7 @@ import './Classes.css'; // Add this line
 const courses = [
   {
     id: 2,
-    title: "Introduction Skull X-ray",
+    title: "Introduction to Skull X-ray",
     image: "skull.jpg",
   },
   {
