@@ -47,12 +47,13 @@ const Classes = () => {
                     data-aos="zoom-in"
                     data-aos-delay={index * 100} 
 >
-                      <img
-                        src={course.image}
-                        alt={course.title}
-                        className="card-img-top"
-                        style={{ maxHeight: "200px", objectFit: "cover" }}
-                      />
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="card-img-top"
+                      style={{ width: "100%", height: "100px", objectFit: "cover" }}
+/>
+
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
                       </div>

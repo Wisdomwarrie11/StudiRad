@@ -10,7 +10,7 @@ const Testimonials = () => {
             <div className="card shadow-sm text-center">
               <div className="card-body">
                 <p className="card-text">
-                  "This platform helped me bridge the gap between anatomy and radiographic techniques."
+                  "StudiRad helped me bridge the gap between anatomy and radiographic techniques."
                 </p>
                 <h5 className="card-title fw-bold">-Victoria Adamu</h5>
               </div>

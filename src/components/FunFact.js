@@ -10,9 +10,9 @@ const FunFact = () => {
     // Fetch the fun fact from the local file
     const fetchFact = async () => {
       try {
-        const response = await fetch('/data/funFacts.json'); // Path to your local JSON file
+        const response = await fetch('/data/funFacts.json'); 
         const data = await response.json();
-        const currentFact = data.weeklyFact; // Assuming you store the current week's fact here
+        const currentFact = data.weeklyFact; 
         setFact(currentFact);
       } catch (error) {
         console.error('Error fetching the fun fact:', error);

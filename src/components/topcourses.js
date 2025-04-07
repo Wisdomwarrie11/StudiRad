@@ -76,7 +76,7 @@ const Topcourses = () => {
               onMouseLeave={() => setHoveredCourse(null)}
               onClick={() => navigate(`/course/${course.id}`)}
               data-aos="fade-up"
-              data-aos-delay={index * 150}
+              data-aos-delay={index * 50}
             >
               <div className="class-card card shadow-sm">
                 <img
@@ -100,7 +100,7 @@ const Topcourses = () => {
 
         <div className="text-center mt-4">
           <Button
-            style={{ backgroundColor: "rgb(24, 59, 78)" }}
+            style={{ backgroundColor: "rgb(24, 59, 78)", width: '200px' }}
             variant="secondary"
             onClick={() => navigate("/courses")}
           >

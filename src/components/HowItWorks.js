@@ -1,8 +1,7 @@
-// src/components/HowItWorks.js
-
 import React from "react";
 import { User, BookOpen, PlayCircle, Award } from "lucide-react"; // Import desired icons from lucide-react
 import './HowItWorks.css'; // optional for custom styles
+
 
 const steps = [
   {
@@ -32,7 +31,7 @@ const HowItWorks = () => {
   return (
     <section  className="py-5 text-center">
       <div className="container">
-        <h2 className="mb-4">How StudiRad Works</h2>
+        <strong><h2 className="mb-4 fw-bold ">How StudiRad Works</h2></strong>
         <div className="row">
           {steps.map((step, index) => (
             <div key={index} className="col-md-3 mb-4">
