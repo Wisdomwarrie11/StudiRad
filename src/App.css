@@ -9,4 +9,8 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+body h2{
+  color: rgb(148, 148, 23);
+}
+
 /* src/App.css */

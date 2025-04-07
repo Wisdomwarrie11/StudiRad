@@ -5,7 +5,7 @@ import './Footer.css'; // Custom footer styling if needed
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white text-center py-3">
+    <footer style={{backgroundColor: 'rgb(24, 59, 78)'}} className=" text-white text-center py-3">
       <p style={{color: 'white'}}>&copy; 2025 Firstplace Connect. All Rights Reserved.</p>
       <div>
         <a href="#privacy-policy" className="text-white">Privacy Policy</a> | 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Carousel, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import './topcourses.css';
 
 const courses = [
   {
@@ -33,17 +34,19 @@ const Topcourses = () => {
     <section className="py-5 bg-white">
       <div className="container">
         <h2 className="text-center fw-bold mb-4">Our top courses you can choose from</h2>
-        
+
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
           {Array.from({ length: Math.ceil(courses.length / 2) }).map((_, index) => (
             <Carousel.Item key={index}>
               <Row className="justify-content-center">
-                {courses.slice(index * 2, index * 2 + 2).map((course) => (
+                {courses.slice(index * 2, index * 2 + 2).map((course, idx) => (
                   <Col key={course.id} xs={6} className="text-center">
                     <div
-                      className="card shadow-sm cursor-pointer"
+                      className="class-card card shadow-sm cursor-pointer"
                       onClick={() => navigate(`/course/${course.id}`)}
+                      data-aos="zoom-in"
+                      data-aos-delay={idx * 100}
                       style={{ cursor: "pointer" }}
                     >
                       <img
@@ -54,7 +57,6 @@ const Topcourses = () => {
                       />
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
-                        <p className="text-muted">{course.description}</p>
                       </div>
                     </div>
                   </Col>
@@ -66,14 +68,17 @@ const Topcourses = () => {
 
         {/* Desktop View - Grid */}
         <div className="row d-none d-md-flex">
-          {courses.map((course) => (
+          {courses.map((course, index) => (
             <div
               key={course.id}
               className="col-md-3 position-relative"
               onMouseEnter={() => setHoveredCourse(course.id)}
               onMouseLeave={() => setHoveredCourse(null)}
+              onClick={() => navigate(`/course/${course.id}`)}
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
             >
-              <div className="card shadow-sm">
+              <div className="class-card card shadow-sm">
                 <img
                   src={course.image}
                   alt={course.title}
@@ -95,7 +100,7 @@ const Topcourses = () => {
 
         <div className="text-center mt-4">
           <Button
-            style={{ backgroundColor: "rgb(6, 4, 44)" }}
+            style={{ backgroundColor: "rgb(24, 59, 78)" }}
             variant="secondary"
             onClick={() => navigate("/courses")}
           >
@@ -106,6 +111,5 @@ const Topcourses = () => {
     </section>
   );
 };
-
 
 export default Topcourses;

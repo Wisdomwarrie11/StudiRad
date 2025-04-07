@@ -1,0 +1,10 @@
+.navbar1 .nav-link{
+    color: rgb(24, 59, 78);
+}
+
+.navbar1 .nav-link:hover{
+    color: rgb(221, 168, 83)
+}
+.ndk{
+    color: rgb(234, 240, 243);
+}

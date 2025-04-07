@@ -8,12 +8,6 @@ const Testimonials = () => {
         <div className="row">
           <div className="col-md-4">
             <div className="card shadow-sm text-center">
-              <img
-                src="student.jpeg"
-                alt="Student"
-                className="rounded-circle mx-auto mt-3"
-                style={{ width: "100px", height: "100px" }}
-              />
               <div className="card-body">
                 <p className="card-text">
                   "This platform helped me bridge the gap between anatomy and radiographic techniques."
@@ -24,12 +18,6 @@ const Testimonials = () => {
           </div>
           <div className="col-md-4">
             <div className="card shadow-sm text-center">
-              <img
-                src="wisdom.png"
-                alt="Tutor"
-                className="rounded-circle mx-auto mt-3"
-                style={{ width: "100px", height: "100px" }}
-              />
               <div className="card-body">
                 <p className="card-text">
                   "Teaching on this platform has been incredibly rewarding and easy."
@@ -39,13 +27,7 @@ const Testimonials = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <div className="card shadow-sm text-center">
-              <img
-                src="etima.jpg"
-                alt="User"
-                className="rounded-circle mx-auto mt-3"
-                style={{ width: "100px", height: "100px" }}
-              />
+            <div className="card shadow-sm text-center">             
               <div className="card-body">
                 <p className="card-text">
                   "The flexibility and quality of tutorials are unmatched."

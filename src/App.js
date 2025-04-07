@@ -1,6 +1,6 @@
 // src/App.js
 
-import React from "react";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./Navbar";
@@ -13,10 +13,19 @@ import LoginPage from "pages/Login";
 import CourseDetails from "components/classDetails";
 import Subscribe from "components/subscription";
 import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "components/paymentpage";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect } from 'react';
 
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false, // Set to false so animations trigger every scroll
+    });
+  }, []);
   return (
     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID"> 
     <Router>

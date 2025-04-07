@@ -1,0 +1,40 @@
+
+.testimonial-card {
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(34, 127, 176, 0.1);
+    height: 100px; 
+  }
+  
+  .testimonial-card .card-body {
+    padding: 10px;
+  }
+  
+  .testimonial-card .card-text {
+    font-size: 0.85rem; 
+    margin-bottom: 15px;
+  }
+  
+  .testimonial-card .card-title {
+    font-size: 0.9rem;  
+    margin-top: 5px;
+  }
+  
+  .card-body {
+    padding: 12px;
+  }
+  
+  
+  @media (max-width: 767px) {
+    .testimonial-card {
+      height: auto; 
+    }
+    .testimonial-card .card-text {
+      font-size: 0.8rem;
+    }
+    .testimonial-card .card-title {
+      font-size: 0.85rem;
+    }
+  }
+  

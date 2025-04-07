@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import './Classes.css'; // Add this line
 
 const courses = [
   {
@@ -11,7 +12,8 @@ const courses = [
   {
     id: 1,
     title: "Principles of Rad Anatomy",
-    image: "spine.jpg",  },
+    image: "spine.jpg",
+  },
   {
     id: 3,
     title: "Introduction to Chest X-ray",
@@ -28,10 +30,10 @@ const Classes = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-5 bg-white">
+    <section style={{ backgroundColor: 'rgb(234, 240, 243)' }} className="py-5">
       <div className="container">
-        <h2 className="text-center fw-bold mb-4">Available classes you can join</h2>
-        
+        <h2 className="text-center fw-bold mb-4 fade-in-title">Available classes you can join</h2>
+
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
           {Array.from({ length: Math.ceil(courses.length / 2) }).map((_, index) => (
@@ -39,11 +41,12 @@ const Classes = () => {
               <Row className="justify-content-center">
                 {courses.slice(index * 2, index * 2 + 2).map((course) => (
                   <Col key={course.id} xs={6} className="text-center">
-                    <div 
-                      className="card shadow-sm cursor-pointer"
-                      onClick={() => navigate(`/course/${course.id}`)}
-                      style={{ cursor: "pointer" }}
-                    >
+                    <div
+                    className="card shadow-sm cursor-pointer course-card"
+                    onClick={() => navigate(`/course/${course.id}`)}
+                    data-aos="zoom-in"
+                    data-aos-delay={index * 100} 
+>
                       <img
                         src={course.image}
                         alt={course.title}
@@ -63,15 +66,14 @@ const Classes = () => {
 
         {/* Desktop View - Grid */}
         <div className="row d-none d-md-flex">
-          {courses.map((course) => (
-            <div 
-              key={course.id} 
-              className="col-md-3"
-            >
-              <div 
-                className="card shadow-sm cursor-pointer"
+          {courses.map((course, index) => (
+            <div key={course.id} className="col-md-3">
+              <div
+                className="card shadow-sm cursor-pointer course-card"
                 onClick={() => navigate(`/course/${course.id}`)}
-                style={{ cursor: "pointer" }}
+                data-aos="zoom-in"
+                data-aos-delay={index * 100} // delay each card for staggered animation
+      
               >
                 <img
                   src={course.image}

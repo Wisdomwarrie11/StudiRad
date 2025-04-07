@@ -30,7 +30,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-5 bg-light text-center">
+    <section  className="py-5 text-center">
       <div className="container">
         <h2 className="mb-4">How StudiRad Works</h2>
         <div className="row">
