@@ -41,7 +41,7 @@ const Subscribe = () => {
             </Form.Select>
           </Form.Group>
           <div className="text-center mt-3">
-            <Button variant="success" onClick={handleSubscribe}>Proceed to Payment</Button>
+            <Button style={{width: '100px'}} variant="success" onClick={handleSubscribe}>Proceed to Payment</Button>
           </div>
         </Form>
       </Card>

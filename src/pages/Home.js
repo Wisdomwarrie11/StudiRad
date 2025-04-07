@@ -23,7 +23,7 @@ const Home = () => {
       {/* Navbar (already in App.js) */}
       {/* Hero Section */}
 
-      <section style={{backgroundColor: 'white', marginTop: '25px'}} className="hero d-flex align-items-center">
+      <section style={{backgroundColor: 'white', marginTop: '70px'}} className="hero d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
         <div className="col-lg-6 text-center mt-4 mt-lg-0">
