@@ -30,7 +30,7 @@ const Home = () => {
             <img src="smiling.jpeg" alt="Hero" className="img-fluid hero-image" />
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
-            <h2 style={{color: 'rgb(24, 59, 78)'}} className="hero-title display-4 fw-bold">Transform Your <span style={{color: 'rgb(221, 168, 83)'}}>Radiography</span> Journey.</h2>
+            <h3 style={{color: 'rgb(24, 59, 78)'}} className="hero-title fw-bold">Transform Your <span style={{color: 'rgb(221, 168, 83)'}}>Radiography</span> Journey.</h3>
             <p  style={{backgroundColor: 'rgb(24, 59, 78)', color: 'white', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><strong>We make your medical Journey worthwhile...</strong></p>
             <a style={{color: 'black'}} href="/registration"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Join a class</strong></button></a>
           </div>
