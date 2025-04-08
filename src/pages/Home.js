@@ -27,7 +27,7 @@ const Home = () => {
       <div className="container">
         <div className="row align-items-center">
         <div className="col-lg-6 text-center mt-4 mt-lg-0">
-            <img src="smiling.jpeg" alt="Hero" className="img-fluid hero-image" />
+            <img  src="smiling.jpeg" alt="Hero" className="img-fluid hero-image" />
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
             <h3 style={{color: 'rgb(24, 59, 78)'}} className="hero-title fw-bold">Welcome to Stud<span style={{color: 'rgb(221, 168, 83)'}}>i</span>Rad</h3>

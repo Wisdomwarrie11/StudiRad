@@ -13,7 +13,7 @@ const PaymentPage = ({ method }) => {
 
   const handleConfirm = () => {
     alert("Payment processing...");
-    navigate("/confirmation"); // Redirect after payment confirmation
+    navigate("/confirmation"); 
   };
 
   return (

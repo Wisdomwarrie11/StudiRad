@@ -16,6 +16,9 @@ import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "component
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
+import PaymentFailure from "components/PaymentFailure";
+import PaymentSuccess from "components/PaymentSucess";
+import ConfirmationPage from "components/ConfirmationPage";
 
 
 function App() {
@@ -23,7 +26,7 @@ function App() {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: false, // Set to false so animations trigger every scroll
+      once: false, 
     });
   }, []);
   return (
@@ -42,8 +45,14 @@ function App() {
         <Route path="/payment/credit-card/:id" element={<CreditCardPayment />} />
         <Route path="/payment/paypal/:id" element={<PayPalPayment />} />
         <Route path="/payment/bank-transfer/:id" element={<BankTransferPayment />} />
-
-
+        <Route path="/subscribe/:id" element={<Subscribe />} />
+        <Route path="/subscribe/:id" element={<Subscribe />} />
+        <Route path="/payment/bank-transfer/:id" element={<BankTransferPayment />} />
+        <Route path="/payment/credit-card/:id" element={<CreditCardPayment />} />
+        <Route path="/payment/paypal/:id" element={<PayPalPayment />} />
+        <Route path="/payment-success/:id" element={<PaymentSuccess />} />
+        <Route path="/payment-failure/:id" element={<PaymentFailure />} />
+        <Route path="/confirmation/:paymentMethod/:id" element={<ConfirmationPage />} />
       </Routes>
     </Router>
     </GoogleOAuthProvider>
