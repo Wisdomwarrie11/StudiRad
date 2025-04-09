@@ -30,15 +30,14 @@ const Home = () => {
       <section style={{marginTop: '5px'}} className="hero d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
-        <div className="col-lg-6 text-center mt-4 mt-lg-0">
+        <div className="col-lg-6 text-center mt-lg-0">
             <img  src="smiling.jpeg" alt="Hero" className="img-fluid hero-image" />
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
-            <h1 style={{color: 'rgb(24, 59, 78)'}} className="hero-title fw-bold">Welcome to Stud<span style={{color: 'rgb(221, 168, 83)'}}>i</span>Rad</h1>
+            <h1 style={{color: 'rgb(24, 59, 78)'}} className="display-4 hero-title fw-bold">Welcome to Stud<span style={{color: 'rgb(221, 168, 83)'}}>i</span>Rad</h1>
             <p  style={{backgroundColor: 'rgb(24, 59, 78)', color: 'white', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><strong>Transfrom Your Radiography Journey...</strong></p>
-            <a style={{color: 'black'}} href="/registration"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Join a class</strong></button></a>
+            <a style={{color: 'black'}} href="#classes"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Join a class</strong></button></a>
           </div>
-          
         </div>
       </div>
     </section>
@@ -46,11 +45,13 @@ const Home = () => {
     <section>
     <DiscountTimer/>
     </section>
+
+  
+
+
+ 
       
 
-      <section style={{backgroundColor: 'rgb(245, 238, 220)' }}>
-      <CourseSearch/>
-    </section>
 
    
       {/* <div
@@ -76,9 +77,12 @@ const Home = () => {
         <WhatWeDo/>
       </section>
 
-      <section>
+      <section id="classes">
       <Classes/>
+       
       </section>
+
+
 
       <section >
         <HowItWorks/>
@@ -86,6 +90,8 @@ const Home = () => {
 
       <section>
       <Topcourses/>
+      <CourseSearch/>
+  
       </section>
 
        {/* Our Packages Section */}
@@ -104,7 +110,7 @@ const Home = () => {
        <Testimonials/>
       </section>
 
-      <section style={{backgroundColor: 'rgb(24, 59, 78)'}} className="container ">
+      <section style={{ }} className="container ">
       
   <AnimatedStats/>
 </section>

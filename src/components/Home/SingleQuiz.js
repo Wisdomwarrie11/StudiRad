@@ -72,7 +72,7 @@ const SingleQuestionQuiz = ({ question, onNext, onBack }) => {
         <div style={{
           marginTop: "1rem",
           padding: "1rem",
-          backgroundColor: "#fff3cd",
+          backgroundColor: "",
           borderRadius: "8px",
           fontWeight: "600"
         }}>

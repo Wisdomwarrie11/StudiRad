@@ -75,7 +75,10 @@ const Login = () => {
                   onClick={togglePasswordVisibility}
                   style={{
                     width: '40px',
+                    marginTop: '9px',
+                    marginBottom: '9px',
                     padding: '0',
+                    backgroundColor : 'white'
                   }}
                 >
                   {passwordVisible ? <FaEyeSlash /> : <FaEye />}

@@ -33,7 +33,13 @@ const AnimatedStats = () => {
   }, []);
 
   return (
-    <section style={{ padding: "4rem 1rem", backgroundColor: 'rgb(24, 59, 78)'}}>
+    <section style={{ padding: "4rem 1rem", 
+    backgroundColor: 'rgb(24, 59, 78)', 
+    borderRadius: '50px',
+    border: "2px solid #eee",
+
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+  }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
         <h2 style={{ fontWeight: "bold", color: "white" }}>🌟 Our Impact</h2>
         <p style={{ color: "white" }}>Check out how we're making a difference</p>

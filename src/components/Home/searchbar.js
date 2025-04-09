@@ -9,7 +9,7 @@ const CourseSearch = () => {
   };
 
   return (
-    <section style={{ padding: "50px 0" }}>
+    <section style={{ paddingTop: "10px", marginBottom: "0px", height: '50%'}}>
       <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
         <h2 style={{ marginBottom: "20px", fontWeight: "bold" }}>Find a Course</h2>
         <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>

@@ -41,8 +41,7 @@ const RegistrationPage = () => {
         confirmButtonText: 'Okay'
       });
 
-      window.location.href = '/login'; // Redirect to login page after success
-
+      window.location.href = '/login'; 
     } catch (error) {
       setIsLoading(false);
 
@@ -156,7 +155,10 @@ const RegistrationPage = () => {
                   onClick={togglePasswordVisibility}
                   style={{
                     width: '40px',
+                    marginTop: '9px',
+                    marginBottom: '9px',
                     padding: '0',
+                    backgroundColor : 'white'
                   }}
                 >
                   {passwordVisible ? <FaEyeSlash /> : <FaEye />}
