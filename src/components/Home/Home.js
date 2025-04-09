@@ -16,14 +16,15 @@ import FloatingCTA from "./FloatingCTA";
 import FunFact from "components/Home/FunFact";
 import CourseSearch from "./searchbar";
 import WeeklyQuiz from "./WeeklyQuiz";
-import AnimatedStats from "components/Stats";
+import AnimatedStats from "components/Home/Stats";
+import DiscountTimer from "DiscountTimer";
 
 
 const Home = () => {
 
   return (
     <div>
-      {/* Navbar (already in App.js) */}
+      
       {/* Hero Section */}
 
       <section style={{marginTop: '5px'}} className="hero d-flex align-items-center">
@@ -43,9 +44,15 @@ const Home = () => {
     </section>
 
     <section>
-      <CourseSearch/>
+    <DiscountTimer/>
     </section>
       
+
+      <section style={{backgroundColor: 'rgb(245, 238, 220)' }}>
+      <CourseSearch/>
+    </section>
+
+   
       {/* <div
         className="d-flex align-items-center justify-content-center text-center"
         style={{
@@ -97,7 +104,8 @@ const Home = () => {
        <Testimonials/>
       </section>
 
-      <section>
+      <section style={{backgroundColor: 'rgb(24, 59, 78)'}} className="container ">
+      
   <AnimatedStats/>
 </section>
 
@@ -106,14 +114,16 @@ const Home = () => {
       </section>
 
       <section>
+        <FunFact/>
+      </section>
+
+      <section>
   <InstructorSpotlight />
 </section>
 
 
 
-<section>
-        <FunFact/>
-      </section>
+
 
 <section>
   <NewsletterSignup />

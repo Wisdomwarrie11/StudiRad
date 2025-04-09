@@ -1,60 +1,32 @@
 
-
-/* Section Styling */
 .fun-fact-section {
-  background-color: #f8f9fa;
-  padding: 50px 0;
-  position: relative;
+  padding: 2rem 0;
 }
 
-/* Fun Fact Text Styling */
 .fun-fact-text {
   font-size: 1.25rem;
-  font-weight: 500;
   color: #333;
-  line-height: 1.6;
 }
 
-.fun-fact-text p {
-  max-width: 600px;
-  margin: 0 auto;
+/* Responsive styling for small screens */
+@media (max-width: 768px) {
+  .fun-fact-text p {
+    font-size: 1rem; /* Adjust text size for mobile */
+  }
+
+  .zoom-in-slide {
+    animation: zoomIn 1s ease-in-out;
+  }
 }
 
-/* Zoom-In and Slide-In Animations */
-.zoom-in-slide {
-  opacity: 0;
-  transform: translateX(-50px); /* Start from left */
-  animation: zoomInSlide 1.5s forwards ease-out;
-}
 
-@keyframes zoomInSlide {
+@keyframes zoomIn {
   0% {
+    transform: scale(0.8);
     opacity: 0;
-    transform: translateX(-50px) scale(0.9); /* Slightly smaller */
   }
   100% {
+    transform: scale(1);
     opacity: 1;
-    transform: translateX(0) scale(1); /* Normal size */
-  }
-}
-
-/* Fun Fact Images Styling */
-img {
-  transition: transform 0.3s ease;
-}
-
-/* Hover Effect */
-img:hover {
-  transform: scale(1.05);
-}
-
-/* Media Queries for smaller screens */
-@media (max-width: 767px) {
-  .fun-fact-text {
-    font-size: 1rem;
-  }
-
-  img {
-    max-width: 100%;
   }
 }

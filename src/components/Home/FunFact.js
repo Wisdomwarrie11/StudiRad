@@ -1,5 +1,3 @@
-// src/components/FunFact.js
-
 import React, { useEffect, useState } from 'react';
 import './FunFact.css';
 
@@ -23,16 +21,16 @@ const FunFact = () => {
   }, []);
 
   return (
-    <section style={{backgroundColor: 'rgb(234, 240, 243)'}} className="fun-fact-section ">
+    <section style={{backgroundColor: 'rgb(234, 240, 243)'}} className="fun-fact-section">
       <div className="container">
         <h2 className="text-center fw-bold mb-4 zoom-in-slide">Fun Fact of the Week!</h2>
         <div className="row align-items-center">
-          <div className="col-md-6 text-center zoom-in-slide">
+          <div className="col-12 col-md-6 text-center zoom-in-slide">
             <div className="fun-fact-text">
               <p>{fact}</p>
             </div>
           </div>
-          <div className="col-md-6 text-center zoom-in-slide">
+          <div className="col-12 col-md-6 text-center zoom-in-slide">
             <img src="scientist.jpg" alt="Radiography and DNA" className="img-fluid" />
           </div>
         </div>

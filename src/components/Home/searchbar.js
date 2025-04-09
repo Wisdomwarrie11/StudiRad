@@ -9,7 +9,7 @@ const CourseSearch = () => {
   };
 
   return (
-    <section style={{ backgroundColor: "#f2f6f8", padding: "50px 0" }}>
+    <section style={{ padding: "50px 0" }}>
       <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
         <h2 style={{ marginBottom: "20px", fontWeight: "bold" }}>Find a Course</h2>
         <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
@@ -20,11 +20,13 @@ const CourseSearch = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               flex: 1,
-              padding: "10px 15px",
+              padding: "10px 15px 10px 15px",
               fontSize: "16px",
               borderRadius: "5px",
               border: "1px solid #ccc",
-              width: "70%",
+              width: "50px%",
+              marginLeft: '10px',
+              marginRight: '10px'
             }}
           />
           <button
@@ -32,14 +34,18 @@ const CourseSearch = () => {
             style={{
               backgroundColor: "#153e52",
               color: "white",
-              padding: "10px 20px",
               border: "none",
               borderRadius: "5px",
               cursor: "pointer",
               fontWeight: "bold",
+              marginRight: '30px',
+              width: '100px',
+              height: '50px',
+              marginTop: '7px'
+
             }}
           >
-            Search
+            Find
           </button>
         </div>
       </div>
