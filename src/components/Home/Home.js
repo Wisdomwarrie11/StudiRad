@@ -14,6 +14,9 @@ import InstructorSpotlight from "./InstructorSpotlight";
 import NewsletterSignup from "./NewsletterSignup";
 import FloatingCTA from "./FloatingCTA";
 import FunFact from "components/Home/FunFact";
+import CourseSearch from "./searchbar";
+import WeeklyQuiz from "./WeeklyQuiz";
+import AnimatedStats from "components/Stats";
 
 
 const Home = () => {
@@ -37,6 +40,10 @@ const Home = () => {
           
         </div>
       </div>
+    </section>
+
+    <section>
+      <CourseSearch/>
     </section>
       
       {/* <div
@@ -91,8 +98,18 @@ const Home = () => {
       </section>
 
       <section>
+  <AnimatedStats/>
+</section>
+
+      <section>
+        <WeeklyQuiz/>
+      </section>
+
+      <section>
   <InstructorSpotlight />
 </section>
+
+
 
 <section>
         <FunFact/>

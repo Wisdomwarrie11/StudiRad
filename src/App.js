@@ -33,7 +33,7 @@ function App() {
     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID"> 
     <Router>
        <Navbar />
-      <Routes>     
+      <Routes>  
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<RegistrationPage/>} />
         <Route path="/contact" element={<ContactPage/>} />

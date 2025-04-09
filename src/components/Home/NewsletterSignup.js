@@ -15,7 +15,7 @@ const NewsletterSignup = () => {
             className="form-control w-50 mb-2 mb-sm-0 me-sm-2"
             style={{ maxWidth: "400px" }}
           />
-          <button style={{width: '100px'}} className="btn btn-warning fw-bold">Subscribe</button>
+          <button style={{width: '150px', height: '50', backgroundColor: 'rgb(221, 168, 83)'}} className="btn  fw-bold">Subscribe</button>
         </form>
       </div>
     </section>
