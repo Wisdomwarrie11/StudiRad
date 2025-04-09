@@ -2,23 +2,23 @@
 
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./components/Home/Home";
 import Navbar from "./Navbar";
 import StudentDashboard from "./components/Dashboard/StudentDashboard";
-import ContactPage from "components/contact";
+import ContactPage from "components/Home/contact";
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
 import TutorDashboard from "components/Dashboard/TutorDashboard";
-import RegistrationPage from "components/RegistrationPage";
+import RegistrationPage from "pages/RegistrationPage";
 import LoginPage from "pages/Login";
-import CourseDetails from "components/classDetails";
-import Subscribe from "components/subscription";
-import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "components/paymentpage";
+import CourseDetails from "components/classes/classDetails";
+import Subscribe from "components/Subscriptions/subscription";
+import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "components/Subscriptions/paymentpage";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
-import PaymentFailure from "components/PaymentFailure";
-import PaymentSuccess from "components/PaymentSucess";
-import ConfirmationPage from "components/ConfirmationPage";
+import PaymentFailure from "components/Subscriptions/PaymentFailure";
+import PaymentSuccess from "components/Subscriptions/PaymentSucess";
+import ConfirmationPage from "components/Subscriptions/ConfirmationPage";
 
 
 function App() {
