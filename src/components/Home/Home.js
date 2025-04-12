@@ -35,7 +35,7 @@ const Home = () => {
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
             <h1 style={{color: 'white'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
-            <p  style={{backgroundColor: 'white', color: 'rgb(24, 59, 78)', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Making your medical journey worthwhile...</strong></em></p>
+            <p  style={{backgroundColor: 'white', color: 'rgb(24, 59, 78)', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Simplifying every step of the way...</strong></em></p>
             <a style={{color: 'black'}} href="#classes"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Join a class</strong></button></a>
           </div>
         </div>
