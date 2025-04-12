@@ -20,6 +20,7 @@ import AnimatedStats from "components/Home/Stats";
 import DiscountTimer from "DiscountTimer";
 
 
+
 const Home = () => {
 
   return (
