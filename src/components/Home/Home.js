@@ -18,6 +18,9 @@ import CourseSearch from "./searchbar";
 import WeeklyQuiz from "./WeeklyQuiz";
 import AnimatedStats from "components/Home/Stats";
 import DiscountTimer from "DiscountTimer";
+import HubSection from "./Hub";
+import WellnessSection from "./Wellness";
+import OneOnOneSection from "./onetutorials";
 
 
 
@@ -78,6 +81,10 @@ const Home = () => {
         <WhatWeDo/>
       </section>
 
+      <section >
+        <HowItWorks/>
+      </section>
+
       <section id="classes">
       <Classes/>
        
@@ -85,26 +92,25 @@ const Home = () => {
 
 
 
-      <section >
-        <HowItWorks/>
-      </section>
+      
 
+      <section >
+        <OneOnOneSection/>
+      </section>
       <section>
       <Topcourses/>
       <CourseSearch/>
   
       </section>
 
-       {/* Our Packages Section */}
-       {/* <section className="py-5">
-     <Packages/>
-      </section> */}
 
       <section style={{backgroundColor: 'rgb(245, 238, 220)' }}>
         <Benefits/>
       </section>
 
-     
+      <section>
+        <HubSection/>
+      </section>
 
       {/* Testimonials Section */}
       <section className="py-5 bg-light">
@@ -116,8 +122,15 @@ const Home = () => {
   <AnimatedStats/>
 </section>
 
+
+
       <section>
         <WeeklyQuiz/>
+      </section>
+
+      
+      <section>
+        <WellnessSection/>
       </section>
 
       <section>

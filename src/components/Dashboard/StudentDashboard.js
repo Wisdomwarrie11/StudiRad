@@ -76,7 +76,7 @@ function StudentDashboard() {
             <p><strong>University:</strong> {studentData.university || 'Your University'}</p>
             <p><strong>Country:</strong> {studentData.country || 'Your Country'}</p>
             <p><strong>Level:</strong> {studentData.level || 'Your Level'}</p>
-            <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+            <button style={{ width: "200px", backgroundColor: 'rgb(24, 59, 78)' }} className="btn btn-primary" onClick={() => setShowModal(true)}>
               Edit Profile
             </button>
           </div>

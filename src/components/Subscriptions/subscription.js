@@ -107,7 +107,7 @@ const Subscribe = () => {
 
           {/* Submit Button */}
           <div className="text-center mt-3">
-            <Button style={{ width: "100px" }} variant="success" type="submit">
+            <Button style={{ width: "200px" }} variant="success" type="submit">
               Proceed to Confirmation
             </Button>
           </div>

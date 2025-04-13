@@ -19,6 +19,9 @@ import React, { useEffect } from 'react';
 import PaymentFailure from "components/Subscriptions/PaymentFailure";
 import PaymentSuccess from "components/Subscriptions/PaymentSucess";
 import ConfirmationPage from "components/Subscriptions/ConfirmationPage";
+import MindfulMomentPage from "components/Home/Mindful";
+import MusicTherapyPage from "components/Home/Music";
+import GratitudeNotesPage from "components/Home/gratitude";
 
 
 function App() {
@@ -55,6 +58,9 @@ function App() {
         <Route path="/payment-success/:id" element={<PaymentSuccess />} />
         <Route path="/payment-failure/:id" element={<PaymentFailure />} />
         <Route path="/confirmation/:paymentMethod/:id" element={<ConfirmationPage />} />
+        <Route path="/Mindful" element={<MindfulMomentPage />} />
+      <Route path="/Music" element={<MusicTherapyPage />} /> 
+      <Route path="/gratitude" element={<GratitudeNotesPage />} /> 
       </Routes>
     </Router>
     </GoogleOAuthProvider>

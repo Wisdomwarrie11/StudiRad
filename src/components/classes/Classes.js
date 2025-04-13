@@ -30,7 +30,7 @@ const Classes = () => {
   const navigate = useNavigate();
 
   return (
-    <section style={{ backgroundColor: 'rgb(234, 240, 243)' }} className="py-5">
+    <section style={{ backgroundColor: 'white' }} className="py-5">
       <div className="container">
         <h2 className="text-center fw-bold mb-4 fade-in-title">Available classes you can join</h2>
 

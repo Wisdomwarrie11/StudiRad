@@ -15,6 +15,6 @@
   }
   
   .instructor-visible {
-    animation: slideFadeIn 10s ease-out forwards;
+    animation: slideFadeIn 0.8s ease-out forwards;
   }
   
