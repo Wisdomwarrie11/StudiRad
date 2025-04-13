@@ -22,7 +22,7 @@ const OneOnOneSection = () => {
   return (
     <section id="one-on-one-section" className="py-5 bg-light" style={{ backgroundColor: '#f9f9f9', animation: 'slideFadeIn 0.8s ease-out forwards;'}}>
       <div className="container">
-        <h1 className="text-center mb-5 fw-bold">📚 you can get yourself a private tutor</h1>
+        <h1 className="text-center mb-5 fw-bold">📚 You Can Have Your Own Tutor</h1>
 
         {/* First part: Text on the left, Image on the right */}
         <div className={`row align-items-center mb-5 fade-in ${visible ? "visible" : ""}`}>
