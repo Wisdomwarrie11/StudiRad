@@ -24,6 +24,7 @@ import OneOnOneSection from "./onetutorials";
 
 
 
+
 const Home = () => {
 
   return (
@@ -31,33 +32,21 @@ const Home = () => {
       
       {/* Hero Section */}
 
-      <section style={{marginTop: '5px', backgroundColor: 'rgb(24, 59, 78)'}} className="hero d-flex align-items-center">
+      <section style={{marginTop: '5px', backgroundColor: ''}} className="hero d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
         <div className="col-lg-6 text-center mt-lg-0">
             <img  src="studentgirl.png" alt="Hero" className="img-fluid hero-image" />
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
-            <h1 style={{color: 'white'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
+            <h1 style={{color: 'rgb(24, 59, 78)'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
             <p  style={{backgroundColor: 'white', color: 'rgb(24, 59, 78)', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Simplifying every step of the way...</strong></em></p>
-            <a style={{color: 'black'}} href="#classes"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Join a class</strong></button></a>
+            <a style={{color: 'black'}} href="#classes"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Start your Journey</strong></button></a>
           </div>
         </div>
       </div>
     </section>
-
-    <section>
-    <DiscountTimer/>
-    </section>
-
-  
-
-
- 
-      
-
-
-   
+     
       {/* <div
         className="d-flex align-items-center justify-content-center text-center"
         style={{
@@ -140,7 +129,6 @@ const Home = () => {
       <section>
   <InstructorSpotlight />
 </section>
-
 
 
 

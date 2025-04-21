@@ -1,5 +1,5 @@
 .navbar1 .nav-link{
-    color: rgb(24, 59, 78);
+    color: white;
 }
 
 .navbar1 .nav-link:hover{
@@ -8,3 +8,9 @@
 .ndk{
     color: rgb(234, 240, 243);
 }
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+  }
+  

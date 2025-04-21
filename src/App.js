@@ -22,7 +22,7 @@ import ConfirmationPage from "components/Subscriptions/ConfirmationPage";
 import MindfulMomentPage from "components/Home/Mindful";
 import MusicTherapyPage from "components/Home/Music";
 import GratitudeNotesPage from "components/Home/gratitude";
-
+import VerificationPage from "pages/VerificationPage";
 
 function App() {
 
@@ -39,6 +39,7 @@ function App() {
        <Navbar />
        
       <Routes>  
+      <Route path="/verify/:token" element={<VerificationPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<RegistrationPage/>} />
         <Route path="/contact" element={<ContactPage/>} />

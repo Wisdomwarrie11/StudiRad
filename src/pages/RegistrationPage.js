@@ -177,7 +177,6 @@ const RegistrationPage = () => {
                 required
               >
                 <option value="student">Student</option>
-                <option value="tutor">Tutor</option>
               </select>
             </div>
 
