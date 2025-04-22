@@ -43,28 +43,14 @@ const OneOnOneSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <img
-              style={{width: '500px', height: '300px'}}
-                src="onlinetutorials.jpg"  // Add a relevant image here
-                alt="Radiography tutor"
-                className="img-fluid rounded shadow"
-              />
             </motion.div>
           </div>
-        </div>
-        <div className={`row align-items-center mb-5 fade-in ${visible ? "visible" : ""}`}>
           <div className="col-md-6">
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <img
-                src="lecturer.jpg"  
-                alt="Radiography tutor"
-                style={{width: '500px', height: '300px'}}
-                className="img-fluid rounded shadow"
-              />
             </motion.div>
           </div>
           <div className="col-md-6">
@@ -73,10 +59,10 @@ const OneOnOneSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="fw-bold">Connect Instantly with Our Qualified Tutors on studiRad</h3>
+              <h3 className="fw-bold">Connect Instantly with Our Qualified Tutors on StudiRad</h3>
               <p className="text-secondary ">
                 Our tutors are experts in radiography, ready to offer tailored guidance for any topic. Whether it's theory or practical
-                questions, you'll have a qualified professional helping you step-by-step.
+                questions, you'll have a qualified professional helping you step-by-step. You can <a style={{textDecoration: 'none'}} href="/tutorhome">Apply as a Tutor</a>
               </p>
             </motion.div>
           </div>
@@ -84,7 +70,7 @@ const OneOnOneSection = () => {
       </div>
       <Container className="">
             <Row>
-              <Button className="fw-bold" style={{marginLeft: '120px', width: '300px', padding: '10px', color: 'black', backgroundColor: 'rgb(221, 168, 83)', borderColor: 'rgb(221, 168, 83)'}}
+              <Button className="fw-bold" style={{marginLeft: '80px', width: '300px', padding: '10px', color: 'black', backgroundColor: 'rgb(221, 168, 83)', borderColor: 'rgb(221, 168, 83)'}}
                variant="primary" 
                >
              Schedule an instant class

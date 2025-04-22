@@ -36,37 +36,19 @@ const Home = () => {
       <div className="container">
         <div className="row align-items-center">
         <div className="col-lg-6 text-center mt-lg-0">
-            <img  src="studentgirl.png" alt="Hero" className="img-fluid hero-image" />
+            <img  src="studentgirl.png" alt="Hero" className="img-fluid hero-image" /><hr style={{width: '1000%', height: '5px', backgroundColor: 'rgb(24, 59, 78)'}}/>
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
             <h1 style={{color: 'rgb(24, 59, 78)'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
-            <p  style={{backgroundColor: 'white', color: 'rgb(24, 59, 78)', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Simplifying every step of the way...</strong></em></p>
-            <a style={{color: 'black'}} href="#classes"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px'}} className="btn mt-3"><strong>Start your Journey</strong></button></a>
+            <p  style={{backgroundColor: 'rgb(24, 59, 78)', color: 'white', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Simplifying every step of the way...</strong></em></p>
+            <a style={{color: 'black'}} href="#classes"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px', height: '50px'}} className="btn mt-3"><strong>Start your Journey</strong></button></a>
           </div>
         </div>
       </div>
     </section>
-     
-      {/* <div
-        className="d-flex align-items-center justify-content-center text-center"
-        style={{
-          height: "100vh",
-          backgroundImage: 'url("/path-to-your-image.jpg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-        }}
-      >
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "url(rad.jpeg)" }} />
-        <div className="text-white" style={{ position: "relative", zIndex: 2 }}>
-          <h1 className="display-4 fw-bold">Welcome to StudiRad </h1>
-          <p className="lead">Where Studying Radiography is fun!</p>
-          <button style={{backgroundColor: 'rgb(219, 179, 33)'}} className="btn btn-lg mt-3">Get Started</button>
-        </div>
-      </div> */}
 
       {/* What We Do Section */}
-      <section style={{backgroundColor: 'rgb(24, 59, 78)'}} className=" text-center">
+      <section style={{backgroundColor: ''}} className=" text-center">
         <WhatWeDo/>
       </section>
 
@@ -80,12 +62,14 @@ const Home = () => {
       </section>
 
 
-
+      <section style={{backgroundColor: '#edf6f9' }}>
+        <Benefits/>
+      </section>
       
 
-      <section >
+      {/* <section >
         <OneOnOneSection/>
-      </section>
+      </section> */}
       <section>
       <Topcourses/>
       <CourseSearch/>
@@ -93,9 +77,7 @@ const Home = () => {
       </section>
 
 
-      <section style={{backgroundColor: 'rgb(245, 238, 220)' }}>
-        <Benefits/>
-      </section>
+    
 
       <section>
         <HubSection/>

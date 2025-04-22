@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav style={{ backgroundColor: 'rgb(24, 59, 78)' }} className="navbar navbar-expand-lg fixed-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <img style={{ height: '60px', width: '60px' }} src="Studiradlogo.png" alt="Studirad Logo" />
+          <img style={{ height: '60px', width: '60px' }} src="logostudirad.png" alt="Studirad Logo" />
         </Link>
         <button
           className="navbar-toggler"
@@ -58,7 +58,7 @@ const Navbar = () => {
                     <Link className="dropdown-item fw-bold" to="/registration">Register as Student</Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item fw-bold" to="/tutorregistration">Register as Tutor</Link>
+                    <Link className="dropdown-item fw-bold" to="/tutorhome">Register as Tutor</Link>
                   </li>
                 </ul>
               </li>

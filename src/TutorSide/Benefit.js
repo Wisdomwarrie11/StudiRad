@@ -1,39 +1,39 @@
 import { useEffect, useRef } from "react";
 import { BookOpen, Brain, Users, ShieldCheck } from "lucide-react";
-import "./Benefits.css";
+import "../components/Home/Benefits.css";
 
 const benefits = [
   {
     icon: <BookOpen size={100} className="p-2 rounded" />,
-    title: "Comprehensive Learning Resources",
+    title: "Curriculum Support & Resources",
     description:
-      "Access a wide range of expertly curated materials tailored to radiography students, covering fundamental to advanced topics.",
+      "Access structured course materials and curated content to help you deliver impactful lessons efficiently.",
     align: "left",
   },
   {
     icon: <Brain size={100} className="p-2 rounded" />,
-    title: "Interactive and Engaging Lessons",
+    title: "Innovative Teaching Tools",
     description:
-      "Experience a dynamic learning environment with quizzes, case studies, and real-world scenarios to enhance understanding.",
+      "Engage students through interactive quizzes, real-world case studies, and dynamic class activities.",
     align: "right",
   },
   {
     icon: <Users size={100} className="p-2 rounded" />,
-    title: "Community and Mentorship",
+    title: "Collaborative Tutor Community",
     description:
-      "Join a network of radiography students and professionals for discussions, guidance, and mentorship opportunities.",
+      "Connect with fellow radiography tutors, share best practices, and grow professionally within a vibrant network.",
     align: "left",
   },
   {
     icon: <ShieldCheck size={100} className="p-2 rounded" />,
-    title: "Certified and Trusted Content",
+    title: "Recognized and Trusted Platform",
     description:
-      "Our courses and materials are reviewed by industry experts to ensure accuracy and reliability for your studies.",
+      "Join a platform that values your expertise, certifies your contribution, and supports your teaching journey.",
     align: "right",
   },
 ];
 
-export default function Benefits() {
+export default function BenefitsTutor() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Benefits() {
           const el = entry.target;
           if (entry.isIntersecting) {
             el.classList.add("fade-in-visible");
-            el.classList.remove("fade-in-section"); // Remove initial hidden state
+            el.classList.remove("fade-in-section");
           }
         });
       },
@@ -61,10 +61,10 @@ export default function Benefits() {
   return (
     <section
       ref={sectionRef}
-      style={{ backgroundColor: "#edf6f9" }}
+      style={{ backgroundColor: "" }}
       className="container my-5 py-5"
     >
-      <h2 className="text-center mb-4 fw-bold">Why Choose Our Platform?</h2>
+      <h2 className="text-center mb-4 fw-bold">Why Teach on StudiRad?</h2>
       {benefits.map((benefit, index) => (
         <div
           key={index}
@@ -72,7 +72,7 @@ export default function Benefits() {
             benefit.align === "right" ? "flex-row-reverse" : ""
           }`}
           data-aos="zoom-in"
-          data-aos-delay={index * 100} // This will now properly use the index
+          data-aos-delay={index * 100}
         >
           <div className="col-md-6 text-center">{benefit.icon}</div>
           <div className="col-md-6">
