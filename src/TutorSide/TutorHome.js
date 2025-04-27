@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/Home/Home.css'; 
 import Benefits from "./Benefit";
 import WhatWeDo from "./whatwedo";
-import Testimonials from "../components/Home/Testimonials";
+import Testimonials from "./TutorTestimony";
 import HowItWorksTuTor from "./Howitworks";
 import FloatingCTA from "../components/Home/FloatingCTA";
 
@@ -38,7 +38,7 @@ const Home = () => {
         >
           <em><strong>Inspire, Educate, and Lead the next generation...</strong></em>
         </p>
-        <a style={{ color: 'black' }} href="#tutor-apply">
+        <a style={{ color: 'black' }} href="/tutorregistration">
           <button style={{ backgroundColor: 'rgb(221, 168, 83)', width: '220px', height: '50px'}} className="btn mt-3">
             <strong>Become a Tutor</strong>
           </button>

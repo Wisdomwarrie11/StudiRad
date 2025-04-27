@@ -11,17 +11,26 @@ const Navbar = () => {
           <img style={{ height: '60px', width: '60px' }} src="logostudirad.png" alt="Studirad Logo" />
         </Link>
         <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          style={{backgroundColor: 'white'}}
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+  className="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarNav"
+  aria-controls="navbarNav"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+  style={{
+    backgroundColor: 'white',
+    width: '40px',
+    height: '40px',
+    padding: '5px',
+    border: 'none',
+    color: 'white',
+    
+  }}
+>
+  <span className="navbar-toggler-icon"></span>
+</button>
+
         <div className="navbar1 collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <strong>
@@ -35,8 +44,25 @@ const Navbar = () => {
               </li>
             </strong>
             <strong>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to="#"
+                  id="navbarRegisterDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Login
+                </Link>
+                <ul className="dropdown-menu" aria-labelledby="navbarRegisterDropdown">
+                  <li>
+                    <Link className="dropdown-item fw-bold" to="/studentlogin">Login as a Student</Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item fw-bold" to="/tutorlogin">Login as a Tutor</Link>
+                  </li>
+                </ul>
               </li>
             </strong>
 
@@ -55,7 +81,7 @@ const Navbar = () => {
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarRegisterDropdown">
                   <li>
-                    <Link className="dropdown-item fw-bold" to="/registration">Register as Student</Link>
+                    <Link className="dropdown-item fw-bold" to="/studentregistration">Register as Student</Link>
                   </li>
                   <li>
                     <Link className="dropdown-item fw-bold" to="/tutorhome">Register as Tutor</Link>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css"; // Importing CSS for styling
+import "./Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -44,7 +44,8 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2>Welcome Back</h2>
+        <h2 style={{color: 'white'}}>Welcome Back to StudiRad</h2>
+        <p style={{color: 'white'}}>Your Learning continues...</p>
         {error && <p className="error-message">{error}</p>}
         <form style={{color: 'white'}} onSubmit={handleLogin}>
           <div className="input-group">

@@ -1,6 +1,7 @@
 import React from "react";
 import { User, BookOpen, PlayCircle, Award } from "lucide-react"; // Icons
 import '../components/Home/HowItWorks.css'; // Optional styles
+import { useNavigate } from "react-router-dom";
 
 const steps = [
   {
@@ -25,7 +26,11 @@ const steps = [
   },
 ];
 
+
 const HowItWorksTutor = () => {
+
+  const navigate = useNavigate();
+
   return (
     <section className="py-5 text-center">
       <div className="container">
@@ -40,6 +45,9 @@ const HowItWorksTutor = () => {
           ))}
         </div>
       </div>
+      <button className="fw-bold" style={{width: '200px', backgroundColor: 'rgb(221, 168, 83)', color: 'black'}} onClick= {() => navigate('/tutorregistration')}>
+        Join Us as a Tutor
+      </button>
     </section>
   );
 };

@@ -7,7 +7,6 @@ import Navbar from "./Navbar";
 import StudentDashboard from "./components/Dashboard/StudentDashboard";
 import ContactPage from "components/Home/contact";
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
-import TutorDashboard from "components/Dashboard/TutorDashboard";
 import RegistrationPage from "pages/RegistrationPage";
 import LoginPage from "pages/Login";
 import CourseDetails from "components/classes/classDetails";
@@ -24,6 +23,10 @@ import MusicTherapyPage from "components/Home/Music";
 import GratitudeNotesPage from "components/Home/gratitude";
 import VerificationPage from "pages/VerificationPage";
 import TutorHero from "TutorSide/TutorHome";
+import TutorRegistrationPage from "TutorSide/TutorRegistration";
+import TutorLogin from "TutorSide/TutorLogin";
+import TutorDashboard from "TutorSide/TutorDashboard";
+import AddCourse from "components/classes/AddCourse";
 
 
 function App() {
@@ -43,11 +46,11 @@ function App() {
       <Routes>  
       <Route path="/verify/:token" element={<VerificationPage />} />
         <Route path="/" element={<Home />} />
-        <Route path="/registration" element={<RegistrationPage/>} />
+        <Route path="/studentregistration" element={<RegistrationPage/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/studentdashboard" element={<StudentDashboard />} />
         <Route path="/tutordashboard" element={<TutorDashboard />} />  
-        <Route path="/login" element={<LoginPage />} />  
+        <Route path="/studentlogin" element={<LoginPage />} />  
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/subscribe/:id" element={<Subscribe />} />
         <Route path="/payment/credit-card/:id" element={<CreditCardPayment />} />
@@ -65,6 +68,11 @@ function App() {
       <Route path="/Music" element={<MusicTherapyPage />} /> 
       <Route path="/gratitude" element={<GratitudeNotesPage />} /> 
       <Route path="/tutorhome" element={<TutorHero />} /> 
+      <Route path="/tutorregistration" element={<TutorRegistrationPage />} /> 
+      <Route path="/tutorlogin" element={<TutorLogin />} /> 
+      <Route path="/tutordashboard" element={<TutorDashboard />} /> 
+      <Route path="/addcourse" element={<AddCourse/>} /> 
+
 
       </Routes>
     </Router>

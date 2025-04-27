@@ -1,0 +1,16 @@
+.registration-page{
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: 'rgb(24, 59, 78)'
+}
+
+.form{
+  background: rgb(24, 59, 78);
+
+}
+
+.forms h3 form-label{
+color: #f0eed9;
+}

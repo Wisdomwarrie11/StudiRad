@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { BookOpen, Brain, Users, ShieldCheck } from "lucide-react";
 import "../components/Home/Benefits.css";
+import { useNavigate } from "react-router-dom";
 
 const benefits = [
   {
@@ -35,7 +36,6 @@ const benefits = [
 
 export default function BenefitsTutor() {
   const sectionRef = useRef(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -57,6 +57,9 @@ export default function BenefitsTutor() {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
+
+  const navigate = useNavigate();
+
 
   return (
     <section
@@ -81,6 +84,9 @@ export default function BenefitsTutor() {
           </div>
         </div>
       ))}
+        <button className="fw-bold" style={{width: '300px', backgroundColor: 'rgb(24, 59, 78)'}} onClick= {() => navigate('/tutorregistration')}>
+        Click here to Become a Tutor
+      </button>
     </section>
   );
 }
