@@ -36,7 +36,7 @@ const Home = () => {
       <div className="container">
         <div className="row align-items-center">
         <div className="col-lg-6 text-center mt-lg-0">
-            <img  src="studentgirl.png" alt="Hero" className="img-fluid hero-image" /><hr style={{width: '1000%', height: '5px', backgroundColor: 'rgb(24, 59, 78)'}}/>
+            <img  src="studentgirl.png" alt="Hero" className="img-fluid hero-image" /><hr style={{width: '100%', height: '5px', backgroundColor: 'rgb(24, 59, 78)'}}/>
           </div>
           <div className="col-lg-6 text-left text-center text-lg-start">
             <h1 style={{color: 'rgb(24, 59, 78)'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
