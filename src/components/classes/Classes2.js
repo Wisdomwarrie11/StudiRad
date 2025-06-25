@@ -6,23 +6,23 @@ import './Classes.css';
 const courses = [
   {
     id: 2,
-    title: "Basic principle of X-ray Production",
-    image: "x-ray.jpeg",
-  },
-  {
-    id: 1,
-    title: "Radiographic Anatomy - skull",
+    title: "Introduction to Skull X-ray",
     image: "skull.jpg",
   },
   {
+    id: 1,
+    title: "Principles of Rad Anatomy",
+    image: "spine.jpg",
+  },
+  {
     id: 3,
-    title: "Radiographic Anatomy - Chest",
-    image: "chestana.jpeg",
+    title: "Introduction to Chest X-ray",
+    image: "chest.jpg",
   },
   {
     id: 4,
-    title: "Basics of chest X-ray pathologies",
-    image: "chest.jpg",
+    title: "Basic Protocol in Brain CT",
+    image: "Ctbrain.jpg",
   },
 ];
 
@@ -32,7 +32,7 @@ const Classes = () => {
   return (
     <section style={{ backgroundColor: 'white' }} className="py-5">
       <div className="container">
-        <h2 className="text-center fw-bold mb-4 fade-in-title">General radiography classes you can join</h2>
+        <h2 className="text-center fw-bold mb-4 fade-in-title">Available classes you can join</h2>
 
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
@@ -40,10 +40,10 @@ const Classes = () => {
             <Carousel.Item key={index}>
               <Row className="justify-content-center">
                 {courses.slice(index * 2, index * 2 + 2).map((course) => (
-                  <Col xs={6} className="text-center">
+                  <Col key={course.id} xs={6} className="text-center">
                     <div
                     className="card shadow-sm cursor-pointer course-card"
-                    onClick={() => navigate(`https://forms.gle/K91GfwZXnR7EH5h69`)}
+                    onClick={() => navigate(`/course/${course.id}`)}
                     data-aos="zoom-in"
                     data-aos-delay={index * 100} >
                     <img
@@ -72,7 +72,7 @@ const Classes = () => {
             <div key={course.id} className="col-md-3">
               <div
                 className="card shadow-sm cursor-pointer course-card"
-                onClick={() => navigate(`https://forms.gle/K91GfwZXnR7EH5h69`)}
+                onClick={() => navigate(`/course/${course.id}`)}
                 data-aos="zoom-in"
                 data-aos-delay={index * 100} // delay each card for staggered animation
       

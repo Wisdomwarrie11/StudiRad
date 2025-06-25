@@ -47,7 +47,7 @@ const Testimonials = () => {
                 <p className="card-text">
                   "Teaching on this platform has been incredibly rewarding and easy."
                 </p>
-                <h5 className="card-title fw-bold">- Warrie, Wisdom</h5>
+                <h5 className="card-title fw-bold">- Samuel, James</h5>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const Testimonials = () => {
                 <p className="card-text">
                   "The flexibility and quality of tutorials are unmatched."
                 </p>
-                <h5 className="card-title fw-bold">- Etima Sunday</h5>
+                <h5 className="card-title fw-bold">- Chibuzor, Kelechi</h5>
               </div>
             </div>
           </div>

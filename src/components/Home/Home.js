@@ -21,6 +21,7 @@ import DiscountTimer from "DiscountTimer";
 import HubSection from "./Hub";
 import WellnessSection from "./Wellness";
 import OneOnOneSection from "./onetutorials";
+import USSclass from '../classes/USSclass'
 
 
 
@@ -61,6 +62,10 @@ const Home = () => {
        
       </section>
 
+      <section>
+        <USSclass/>
+      </section>
+
 
       <section style={{backgroundColor: '#edf6f9' }}>
         <Benefits/>
@@ -70,11 +75,11 @@ const Home = () => {
       {/* <section >
         <OneOnOneSection/>
       </section> */}
-      <section>
+      {/* <section>
       <Topcourses/>
       <CourseSearch/>
   
-      </section>
+      </section> */}
 
 
     

@@ -5,24 +5,24 @@ import './Classes.css';
 
 const courses = [
   {
-    id: 2,
-    title: "Basic principle of X-ray Production",
-    image: "x-ray.jpeg",
+    id: 1,
+    title: "Knobs and tech in Ultrasound",
+    image: "knob.jpg",
   },
   {
-    id: 1,
-    title: "Radiographic Anatomy - skull",
-    image: "skull.jpg",
+    id: 2,
+    title: "Abdominal Ultrasound - part 1",
+    image: "Abd.jpg",
   },
   {
     id: 3,
-    title: "Radiographic Anatomy - Chest",
-    image: "chestana.jpeg",
+    title: "Obstetrics ultrasound Explained",
+    image: "obs.jpeg",
   },
   {
     id: 4,
-    title: "Basics of chest X-ray pathologies",
-    image: "chest.jpg",
+    title: "Soft tissue ultrasound Explained",
+    image: "soft tissue.jpeg",
   },
 ];
 
@@ -32,7 +32,7 @@ const Classes = () => {
   return (
     <section style={{ backgroundColor: 'white' }} className="py-5">
       <div className="container">
-        <h2 className="text-center fw-bold mb-4 fade-in-title">General radiography classes you can join</h2>
+        <h2 className="text-center fw-bold mb-4 fade-in-title">Ultrasound classes you can join</h2>
 
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
