@@ -8,6 +8,7 @@
     "@headlessui/react": "^2.2.1",
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@react-oauth/google": "^0.12.1",
+    "@typeform/embed-react": "^4.6.0",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",

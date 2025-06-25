@@ -409,7 +409,7 @@ const ClassDetails = () => {
       >
         ← Back
       </Button> */}
-      <Row style={{ marginTop: '100px'}}className="justify-content-between">
+      <Row style={{ paddingTop: '100px', paddingBottom: '100px'}}className="justify-content-between">
         <Col md={12}>
           <Card className="shadow-lg p-4">
             <h2 className="fw-bold">{course.title}</h2>
@@ -433,22 +433,6 @@ const ClassDetails = () => {
           </Card>
         </Col>
       </Row>
-
-      {/* New Sections */}
-      <section className="container my-5 py-5 bg-info-light">
-      <h2 className="text-center mb-4 fw-bold">What you stand to gain</h2>
-      {benefits.map((benefit, index) => (
-        <div key={index} className={`row align-items-center my-4 ${benefit.align === "right" ? "flex-row-reverse" : ""}`}>
-          <div className="col-md-6 text-center">
-            {benefit.icon}
-          </div>
-          <div className="col-md-6">
-            <h4 className="fw-bold">{benefit.title}</h4>
-            <p className="text-muted">{benefit.description}</p>
-          </div>
-        </div>
-      ))}
-    </section>
 
     </Container>
   );

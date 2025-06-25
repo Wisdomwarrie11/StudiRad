@@ -1,27 +1,44 @@
-import React, { useEffect } from "react";
+// TypeformEmbed.jsx
+import React, { useEffect, useState } from "react";
+import { Widget } from "@typeform/embed-react";
 
-const SubscribeForm = () => {
+const TypeformEmbed = () => {
+  const [loading, setLoading] = useState(true);
+
+  // Simulate a delay for loading
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "//embed.typeform.com/next/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500); // Wait 1.5 seconds
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section style={{ padding: "2rem", background: "#f9f9f9", marginRight: '20px' }}>
-      <h2 style={{ textAlign: "center", marginBottom: "1rem", color: "#1d3557" }}>
-        📋 Subscribe to a Class
-      </h2>
-      <div
-        data-tf-live="01JYKN6WE61HTBEJWEZF239FQ0"
-        style={{ width: "100%", minHeight: "500px" }}
-      ></div>
-    </section>
+    <div style={{ minHeight: "600px", position: "relative", padingTop: '200px' }}>
+      {loading ? (
+        <div
+          style={{
+            height: "600px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#f9f9f9",
+          }}
+        >
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading Form...</span>
+          </div>
+        </div>
+      ) : (
+        <Widget
+          id="PUGT9s0A"
+          style={{ width: "100%", height: "600px", paddingTop: '100px' }}
+          className="my-form"
+        />
+      )}
+    </div>
   );
 };
 
-export default SubscribeForm;
+export default TypeformEmbed;
