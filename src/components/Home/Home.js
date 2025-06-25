@@ -42,7 +42,7 @@ const Home = () => {
           <div className="col-lg-6 text-left text-center text-lg-start">
             <h1 style={{color: 'rgb(24, 59, 78)'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
             <p  style={{backgroundColor: 'rgb(24, 59, 78)', color: 'white', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Simplifying every step of the way...</strong></em></p>
-            <a style={{color: 'black'}} href="/studentregistration"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px', height: '50px'}} className="btn mt-3"><strong>Start your Journey</strong></button></a>
+            <a style={{color: 'black'}} href="/subscribe/"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px', height: '50px'}} className="btn mt-3"><strong>Start your Journey</strong></button></a>
           </div>
         </div>
       </div>
