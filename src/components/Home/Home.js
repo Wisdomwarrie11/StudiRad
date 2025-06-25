@@ -53,10 +53,6 @@ const Home = () => {
         <WhatWeDo/>
       </section>
 
-      <section >
-        <HowItWorks/>
-      </section>
-
       <section id="classes">
       <Classes/>
        
@@ -65,6 +61,12 @@ const Home = () => {
       <section>
         <USSclass/>
       </section>
+
+      <section >
+        <HowItWorks/>
+      </section>
+
+     
 
 
       <section style={{backgroundColor: '#edf6f9' }}>

@@ -33,7 +33,7 @@ const TypeformEmbed = () => {
       ) : (
         <Widget
           id="PUGT9s0A"
-          style={{ width: "100%", height: "600px", marginTop: '100px'}}
+          style={{ width: "100%", height: "600px", marginTop: '150px'}}
           className="my-form"
         />
       )}
