@@ -27,7 +27,7 @@ import TutorRegistrationPage from "TutorSide/TutorRegistration";
 import TutorLogin from "TutorSide/TutorLogin";
 import TutorDashboard from "TutorSide/TutorDashboard";
 import AddCourse from "components/classes/AddCourse";
-
+import SubscribeForm from "components/classes/SubscribeForm";
 
 function App() {
 
@@ -52,12 +52,11 @@ function App() {
         <Route path="/tutordashboard" element={<TutorDashboard />} />  
         <Route path="/studentlogin" element={<LoginPage />} />  
         <Route path="/course/:id" element={<CourseDetails />} />
-        <Route path="/subscribe/:id" element={<Subscribe />} />
+        <Route path="/subscribe/:id" element={<SubscribeForm />} />
         <Route path="/payment/credit-card/:id" element={<CreditCardPayment />} />
         <Route path="/payment/paypal/:id" element={<PayPalPayment />} />
         <Route path="/payment/bank-transfer/:id" element={<BankTransferPayment />} />
-        <Route path="/subscribe/:id" element={<Subscribe />} />
-        <Route path="/subscribe/:id" element={<Subscribe />} />
+        <Route path="/subscribe/" element={<SubscribeForm />} />
         <Route path="/payment/bank-transfer/:id" element={<BankTransferPayment />} />
         <Route path="/payment/credit-card/:id" element={<CreditCardPayment />} />
         <Route path="/payment/paypal/:id" element={<PayPalPayment />} />
@@ -72,6 +71,7 @@ function App() {
       <Route path="/tutorlogin" element={<TutorLogin />} /> 
       <Route path="/tutordashboard" element={<TutorDashboard />} /> 
       <Route path="/addcourse" element={<AddCourse/>} /> 
+
 
 
       </Routes>

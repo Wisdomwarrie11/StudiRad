@@ -5,22 +5,22 @@ import './Classes.css';
 
 const courses = [
   {
-    id: 1,
+    id: 5,
     title: "Knobs and tech in Ultrasound",
     image: "knob.jpg",
   },
   {
-    id: 2,
+    id: 6,
     title: "Abdominal Ultrasound - part 1",
     image: "Abd.jpg",
   },
   {
-    id: 3,
+    id: 7,
     title: "Obstetrics ultrasound Explained",
     image: "obs.jpeg",
   },
   {
-    id: 4,
+    id: 8,
     title: "Soft tissue ultrasound Explained",
     image: "soft tissue.jpeg",
   },
@@ -43,7 +43,7 @@ const Classes = () => {
                   <Col xs={6} className="text-center">
                     <div
                     className="card shadow-sm cursor-pointer course-card"
-                    onClick={() => navigate(`https://forms.gle/K91GfwZXnR7EH5h69`)}
+                    onClick={() => navigate(`/course/${course.id}`)}
                     data-aos="zoom-in"
                     data-aos-delay={index * 100} >
                     <img
@@ -72,7 +72,7 @@ const Classes = () => {
             <div key={course.id} className="col-md-3">
               <div
                 className="card shadow-sm cursor-pointer course-card"
-                onClick={() => navigate(`https://forms.gle/K91GfwZXnR7EH5h69`)}
+                onClick={() => navigate(`/course/${course.id}`)}
                 data-aos="zoom-in"
                 data-aos-delay={index * 100} // delay each card for staggered animation
       

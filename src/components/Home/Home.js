@@ -33,7 +33,7 @@ const Home = () => {
       
       {/* Hero Section */}
 
-      <section style={{marginTop: '5px', backgroundColor: ''}} className="hero d-flex align-items-center">
+      <section style={{marginTop: '10px', backgroundColor: ''}} className="hero d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
         <div className="col-lg-6 text-center mt-lg-0">
