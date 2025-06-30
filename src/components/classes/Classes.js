@@ -6,22 +6,22 @@ import './Classes.css';
 const courses = [
   {
     id: 2,
-    title: "Basic principle of X-ray Production",
+    title: "Principles of X-ray Production",
     image: "x-ray.jpeg",
   },
   {
     id: 1,
-    title: "Radiographic Anatomy - skull",
+    title: "Radiographic Anatomy-skull",
     image: "skull.jpg",
   },
   {
     id: 3,
-    title: "Radiographic Anatomy - Chest",
+    title: "Radiographic Anatomy-Chest",
     image: "chestana.jpeg",
   },
   {
     id: 4,
-    title: "Basics of chest X-ray pathologies",
+    title: "Basics of chest X-ray pathology",
     image: "chest.jpg",
   },
 ];

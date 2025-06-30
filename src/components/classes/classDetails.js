@@ -420,14 +420,13 @@ const ClassDetails = () => {
                 <li key={index}>{topic}</li>
               ))}
             </ul>
-            <h4 className="mt-4">Subscription Fee: <span className="text-success">{course.fee}</span></h4>
             <Button 
             variant="success" 
             className="mt-3" 
             style={{ width: "100%"}}
             onClick={() => navigate(`/subscribe/`)}
           >
-            Subscribe Now
+            Register and pay Now
             </Button>
 
           </Card>

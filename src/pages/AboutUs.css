@@ -1,0 +1,97 @@
+.about-us {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    animation: fadeIn 1.2s ease-in;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  .fade-in,
+  .fade-in-left,
+  .fade-in-right,
+  .slide-in,
+  .zoom-in {
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  .fade-in-left {
+    transform: translateX(-30px);
+    animation: fadeLeft 1s ease-in-out forwards;
+  }
+  .fade-in-right {
+    transform: translateX(30px);
+    animation: fadeRight 1s ease-in-out forwards;
+  }
+  .slide-in {
+    transform: translateY(-20px);
+    animation: slideIn 1s ease-in-out forwards;
+  }
+  .zoom-in {
+    transform: scale(0.9);
+    animation: zoomIn 1s ease-in-out forwards;
+  }
+  
+  .move-up {
+    animation: floatY 2s ease-in-out infinite alternate;
+  }
+  
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .hover-glow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.15);
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .feature-list li {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+  .feature-list li::before {
+    content: '✔️';
+    margin-right: 0.5rem;
+    color: #00aaff;
+  }
+  
+  .card-body img {
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.1));
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  @keyframes fadeLeft {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeRight {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes zoomIn {
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes floatY {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
+  

@@ -22,6 +22,7 @@ import HubSection from "./Hub";
 import WellnessSection from "./Wellness";
 import OneOnOneSection from "./onetutorials";
 import USSclass from '../classes/USSclass'
+import Tutorial from "pages/Tutorials";
 
 
 
@@ -49,7 +50,7 @@ const Home = () => {
     </section>
 
       {/* What We Do Section */}
-      <section style={{backgroundColor: ''}} className=" text-center">
+      <section id="about" style={{backgroundColor: ''}} className=" text-center">
         <WhatWeDo/>
       </section>
 
@@ -64,6 +65,10 @@ const Home = () => {
 
       <section >
         <HowItWorks/>
+      </section>
+
+      <section >
+        <Tutorial/>
       </section>
 
      

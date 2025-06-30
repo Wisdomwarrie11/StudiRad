@@ -10,7 +10,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import RegistrationPage from "pages/RegistrationPage";
 import LoginPage from "pages/Login";
 import CourseDetails from "components/classes/classDetails";
-import Subscribe from "components/Subscriptions/subscription";
 import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "components/Subscriptions/paymentpage";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -28,6 +27,7 @@ import TutorLogin from "TutorSide/TutorLogin";
 import TutorDashboard from "TutorSide/TutorDashboard";
 import AddCourse from "components/classes/AddCourse";
 import SubscribeForm from "components/classes/SubscribeForm";
+import AboutUs from "pages/AboutUs";
 
 function App() {
 
@@ -47,6 +47,7 @@ function App() {
       <Route path="/verify/:token" element={<VerificationPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/studentregistration" element={<RegistrationPage/>} />
+        <Route path="/about" element={<AboutUs/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/studentdashboard" element={<StudentDashboard />} />
         <Route path="/tutordashboard" element={<TutorDashboard />} />  

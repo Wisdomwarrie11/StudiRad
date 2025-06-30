@@ -1,0 +1,41 @@
+.tutorial-form {
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 1.2s ease-in;
+  }
+  
+  .tutorial-form h2 {
+    color: #004085;
+  }
+  
+  .tutorial-form form {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tutorial-form .form-label {
+    font-weight: 500;
+  }
+  
+  .tutorial-form .btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tutorial-form .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 768px) {
+    .tutorial-form form {
+      width: 100% !important;
+      padding: 1.5rem;
+    }
+  }

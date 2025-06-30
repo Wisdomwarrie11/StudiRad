@@ -40,10 +40,20 @@ const Navbar = () => {
             </strong>
             <strong>
               <li className="nav-item">
-                <Link className="nav-link" to="/studentdashboard">My Dashboard</Link>
+                <Link className="nav-link" to="/about">About</Link>
               </li>
             </strong>
             <strong>
+              <li className="nav-item">
+                <Link className="nav-link" to="/classes">Our classes</Link>
+              </li>
+            </strong>
+            {/* <strong>
+              <li className="nav-item">
+                <Link className="nav-link" to="/studentdashboard">My Dashboard</Link>
+              </li>
+            </strong> */}
+            {/* <strong>
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -64,10 +74,10 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-            </strong>
+            </strong> */}
 
             {/* REGISTER DROPDOWN */}
-            <strong>
+            {/* <strong>
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -88,7 +98,7 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-            </strong>
+            </strong> */}
 
             <strong>
               <li className="nav-item">
