@@ -28,6 +28,8 @@ import TutorDashboard from "TutorSide/TutorDashboard";
 import AddCourse from "components/classes/AddCourse";
 import SubscribeForm from "components/classes/SubscribeForm";
 import AboutUs from "pages/AboutUs";
+import Tutorial from "components/Home/Tutorials";
+import OurClasses from "components/classes/OurClasses";
 
 function App() {
 
@@ -72,6 +74,10 @@ function App() {
       <Route path="/tutorlogin" element={<TutorLogin />} /> 
       <Route path="/tutordashboard" element={<TutorDashboard />} /> 
       <Route path="/addcourse" element={<AddCourse/>} /> 
+      <Route path="/tutorial" element={<Tutorial/>} />
+      <Route path="/classes" element={<OurClasses/>} />
+
+
 
 
 

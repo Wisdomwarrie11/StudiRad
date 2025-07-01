@@ -32,7 +32,7 @@ const Classes = () => {
   return (
     <section style={{ backgroundColor: 'white' }} className="py-5">
       <div className="container">
-        <h2 className="text-center fw-bold mb-4 fade-in-title">General radiography classes you can join</h2>
+        <h2 className="text-center fw-bold mb-4 fade-in-title">Classes you can join</h2>
 
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
@@ -74,7 +74,7 @@ const Classes = () => {
                 className="card shadow-sm cursor-pointer course-card"
                 onClick={() => navigate(`/course/${course.id}`)}
                 data-aos="zoom-in"
-                data-aos-delay={index * 100} // delay each card for staggered animation
+                data-aos-delay={index * 100}
       
               >
                 <img

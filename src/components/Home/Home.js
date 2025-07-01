@@ -10,7 +10,6 @@ import Testimonials from "./Testimonials";
 import Topcourses from "components/Home/topcourses";
 import Classes from '../classes/Classes'
 import HowItWorks from "./HowItWorks";
-import InstructorSpotlight from "./InstructorSpotlight";
 import NewsletterSignup from "./NewsletterSignup";
 import FloatingCTA from "./FloatingCTA";
 import FunFact from "components/Home/FunFact";
@@ -22,7 +21,7 @@ import HubSection from "./Hub";
 import WellnessSection from "./Wellness";
 import OneOnOneSection from "./onetutorials";
 import USSclass from '../classes/USSclass'
-import Tutorial from "pages/Tutorials";
+import Tutorial from "components/Home/Tutorials";
 
 
 
@@ -64,24 +63,20 @@ const Home = () => {
       </section>
 
       <section >
-        <HowItWorks/>
-      </section>
+        <OneOnOneSection/>
+      </section> 
 
       <section >
-        <Tutorial/>
+        <HowItWorks/>
       </section>
-
-     
-
+    
 
       <section style={{backgroundColor: '#edf6f9' }}>
         <Benefits/>
       </section>
       
 
-      {/* <section >
-        <OneOnOneSection/>
-      </section> */}
+      
       {/* <section>
       <Topcourses/>
       <CourseSearch/>
@@ -112,10 +107,6 @@ const Home = () => {
       <section>
         <WellnessSection/>
       </section>
-
-      <section>
-  <InstructorSpotlight />
-</section>
 
 <section>
   <NewsletterSignup />

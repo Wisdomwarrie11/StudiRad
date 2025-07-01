@@ -32,7 +32,7 @@ const Classes = () => {
   return (
     <section style={{ backgroundColor: 'white' }} className="py-5">
       <div className="container">
-        <h2 className="text-center fw-bold mb-4 fade-in-title">Ultrasound classes you can join</h2>
+        {/* <h2 className="text-center fw-bold mb-4 fade-in-title">Ultrasound classes you can join</h2> */}
 
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
