@@ -1,44 +1,31 @@
-// TypeformEmbed.jsx
-import React, { useEffect, useState } from "react";
-import { Widget } from "@typeform/embed-react";
+import { useEffect, useState } from "react";
 
-const TypeformEmbed = () => {
+const GoogleFormRedirect = () => {
   const [loading, setLoading] = useState(true);
 
-  // Simulate a delay for loading
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500); // Wait 1.5 seconds
+      window.location.href = "https://forms.gle/Ki67EFKR6jPvkh5q7";
+    }, 2000); // 2 seconds spinner before redirect
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div style={{ minHeight: "600px", position: "relative", padingTop: '200px' }}>
-      {loading ? (
-        <div
-          style={{
-            height: "600px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#f9f9f9",
-          }}
-        >
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading Form...</span>
-          </div>
-        </div>
-      ) : (
-        <Widget
-          id="PUGT9s0A"
-          style={{ width: "100%", height: "600px", marginTop: '150px'}}
-          className="my-form"
-        />
-      )}
+    <div
+      style={{
+        height: "600px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#f9f9f9",
+      }}
+    >
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Loading Form...</span>
+      </div>
     </div>
   );
 };
 
-export default TypeformEmbed;
+export default GoogleFormRedirect;
