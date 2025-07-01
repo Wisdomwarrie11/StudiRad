@@ -2,10 +2,6 @@
     animation: fadeIn 1s ease-in-out;
   }
   
-  .gradient-text {
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
   
   .contact-form {
     background-color: #f9f9f9;

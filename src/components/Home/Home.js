@@ -12,16 +12,12 @@ import Classes from '../classes/Classes'
 import HowItWorks from "./HowItWorks";
 import NewsletterSignup from "./NewsletterSignup";
 import FloatingCTA from "./FloatingCTA";
-import FunFact from "components/Home/FunFact";
-import CourseSearch from "./searchbar";
 import WeeklyQuiz from "./WeeklyQuiz";
 import AnimatedStats from "components/Home/Stats";
-import DiscountTimer from "DiscountTimer";
 import HubSection from "./Hub";
 import WellnessSection from "./Wellness";
 import OneOnOneSection from "./onetutorials";
 import USSclass from '../classes/USSclass'
-import Tutorial from "components/Home/Tutorials";
 
 
 
