@@ -96,7 +96,7 @@ const Tutorial = () => {
         <input type="hidden" name="_next" value="/thank-you.html" />
         <input type="hidden" name="_captcha" value="false" />
 
-        <button type="submit" className="btn btn-primary w-100">Submit Request</button>
+        <button style={{ backgroundColor:'rgb(24, 59, 78)'}} type="submit" className="btn btn-primary w-100">Submit Request</button>
       </form>
     </div>
   );

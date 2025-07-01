@@ -59,7 +59,7 @@ const OneOnOneSection = () => {
                 src={item.img}
                 alt=""
                 className="img-fluid"
-                style={{ maxHeight: '250px' }}
+                style={{ maxHeight: '150px' }}
                 initial={{ opacity: 0, x: index % 2 === 0 ? 100 : -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}

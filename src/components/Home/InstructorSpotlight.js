@@ -50,7 +50,7 @@ const InstructorSpotlight = () => {
   return (
     <section className="py-5 cursor-pointer text-center bg-white" ref={sectionRef}>
       <div className="container">
-        <h2 className="mb-4">Meet some of our Instructors</h2>
+        <h2 className=" mb-4 fw-semibold">Meet some of our Instructors</h2>
         <div className="row">
           {instructors.map((inst, index) => (
             <div key={index} className="col-sm-6 col-md-4 mb-4">
