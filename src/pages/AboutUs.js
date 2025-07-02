@@ -9,7 +9,7 @@ const AboutUs = () => {
       <div
         className="hero-section d-flex align-items-center justify-content-center text-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Radstudents.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Radstudents1.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '100vh'

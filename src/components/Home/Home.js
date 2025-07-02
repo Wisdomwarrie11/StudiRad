@@ -15,7 +15,6 @@ import FloatingCTA from "./FloatingCTA";
 import WeeklyQuiz from "./WeeklyQuiz";
 import AnimatedStats from "components/Home/Stats";
 import HubSection from "./Hub";
-import WellnessSection from "./Wellness";
 import OneOnOneSection from "./onetutorials";
 import USSclass from '../classes/USSclass'
 
@@ -81,10 +80,10 @@ const Home = () => {
 
 
     
-
+{/* 
       <section>
         <HubSection/>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section className="py-5 bg-light">
@@ -100,9 +99,6 @@ const Home = () => {
         <WeeklyQuiz/>
       </section>
       
-      <section>
-        <WellnessSection/>
-      </section>
 
 
 <section>
