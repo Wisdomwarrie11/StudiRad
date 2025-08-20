@@ -7,7 +7,7 @@ const activities = [
     date: "September 11, 2025, 8:00 PM (WAT)",
     description: "Join four keynote speakers as they share insights on making the best use of your induction period and navigating your career path as a radiographer.",
     image: "Radstudents.jpg",
-    link: "/register/webinar"
+    link: "/webinarRegistration"
   },
 //   {
 //     id: 2,

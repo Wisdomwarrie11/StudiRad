@@ -1,5 +1,5 @@
-import React from "react";
-import { Carousel, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Carousel, Row, Col, Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './Classes.css'; 
 
@@ -28,6 +28,10 @@ const courses = [
 
 const Classes = () => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
     <section style={{ backgroundColor: 'white' }} className="py-5">
@@ -45,7 +49,7 @@ const Classes = () => {
                       className="card shadow-sm cursor-pointer course-card"
                       onClick={() => navigate(`/course/${course.id}`)}
                       data-aos="zoom-in"
-                      data-aos-delay={index * 100} 
+                      data-aos-delay={index * 100}
                     >
                       <img
                         src={course.image}
@@ -55,13 +59,17 @@ const Classes = () => {
                       />
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
-                        <button 
-                          disabled
-                          style={{ 
-                            width: "100%", 
-                            backgroundColor:'rgb(24, 59, 78)', 
-                            opacity: 0.6, 
-                            cursor: "not-allowed" 
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation(); // stop triggering card click
+                            handleShow();
+                          }}
+                          style={{
+                            width: "100%",
+                            backgroundColor: 'rgb(24, 59, 78)',
+                            opacity: 0.6,
+                            cursor: "not-allowed",
+                            border: "none"
                           }}
                         >
                           Join
@@ -93,13 +101,17 @@ const Classes = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title fw-bold">{course.title}</h5>
-                  <button 
-                    disabled
-                    style={{ 
-                      width: "100%", 
-                      backgroundColor:'rgb(24, 59, 78)', 
-                      opacity: 0.6, 
-                      cursor: "not-allowed" 
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleShow();
+                    }}
+                    style={{
+                      width: "100%",
+                      backgroundColor: 'rgb(24, 59, 78)',
+                      opacity: 0.6,
+                      cursor: "not-allowed",
+                      border: "none"
                     }}
                   >
                     Join
@@ -110,6 +122,21 @@ const Classes = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal for Disabled Classes */}
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title> <h2>So sorry!</h2></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h3>Classes are not ready for now. Please check back soon!</h3>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Okay
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </section>
   );
 };
