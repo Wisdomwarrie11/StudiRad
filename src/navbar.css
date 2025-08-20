@@ -13,4 +13,6 @@
     display: block;
     margin-top: 0; 
   }
-  
+  .nav-item.dropdown:hover .dropdown-menu {
+    color: rgb(1, 24, 56);
+  }

@@ -5,7 +5,7 @@ import './navbar.css';
 
 const Navbar = () => {
   return (
-    <nav style={{ backgroundColor: 'rgb(24, 59, 78)' }} className="navbar navbar-expand-lg fixed-top">
+    <nav style={{ backgroundColor: 'rgb(17, 31, 50)' }} className="navbar navbar-expand-lg fixed-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img style={{ height: '60px', width: '60px' }} src="logostudirad.png" alt="Studirad Logo" /> <p></p>

@@ -41,7 +41,8 @@ const Activities = () => {
       style={{ 
         background: "linear-gradient(135deg, rgb(24, 59, 78) 40%, rgb(221, 168, 83) 100%)",
         minHeight: "100vh", 
-        padding: "60px 20px" 
+        padding: "60px 20px",
+        marginTop: '100px' 
       }}
     >
       <div className="container">
