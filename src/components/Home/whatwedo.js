@@ -21,7 +21,7 @@ const activities = [
 
 export default function WhatWeDo() {
   return (
-    <section style={{backgroundColor: ''}} className="container">
+    <section style={{backgroundColor: '', marginTop: '30px'}} className="container">
       <h2 style = {{color: 'rgb(24, 59, 78)'}} className="text-center mb-4 fw-bold">What We Do in StudiRad</h2>
       <p style={{color: 'rgb(24, 59, 78)', fontSize: "1.1rem"}}>From coursework to career prep, Studirad supports your journey every step of the way. Study smarter, learn faster, and move closer to your radiography goals.</p>
       <div className="row g-4">

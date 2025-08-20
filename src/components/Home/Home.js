@@ -27,21 +27,68 @@ const Home = () => {
     <div style={{backgroundColor: ''}}>
       
       {/* Hero Section */}
+      <section 
+  style={{
+    marginTop: '20px',
+    backgroundImage: 'url("radioroom.jpeg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'relative',
+    color: 'white',
+    minHeight: '100vh',   
+    padding: '60px 20px' 
+  }} 
+  className="hero d-flex align-items-center"
+>
+  <div className="overlay" 
+       style={{
+         position: 'absolute',
+         top: 0, left: 0, right: 0, bottom: 0,
+         backgroundColor: 'rgba(24, 59, 78, 0.5)' 
+       }} 
+  ></div>
 
-      <section style={{marginTop: '20px', backgroundColor: ''}} className="hero d-flex align-items-center">
-      <div className="container">
-        <div className="row align-items-center">
-        <div className="col-lg-6 text-center mt-lg-0">
-            <img  src="studentgirl.png" alt="Hero" className="img-fluid hero-image" /><hr style={{width: '100%', height: '5px', backgroundColor: 'rgb(24, 59, 78)'}}/>
-          </div>
-          <div className="col-lg-6 text-left text-center text-lg-start">
-            <h1 style={{color: 'rgb(24, 59, 78)'}} className="display-4 hero-title fw-bold">Transform your <span style={{color: 'rgb(221, 168, 83)' }}>Radiography</span> Journey </h1>
-            <p  style={{backgroundColor: 'rgb(24, 59, 78)', color: 'white', paddingLeft: '10px', borderRadius: '10px'}} className="hero-subtitle"><em><strong>Simplifying every step of the way...</strong></em></p>
-            <a style={{color: 'black'}} href="/subscribe/"><button style={{backgroundColor: 'rgb(221, 168, 83)', width: '200px', height: '50px'}} className="btn mt-3"><strong>Start your Journey</strong></button></a>
-          </div>
-        </div>
+  <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+    <div className="row align-items-center">
+      <div className="col-lg-12 text-left text-center text-lg-start">
+        <h1 style={{color: 'white'}} className="display-4 hero-title fw-bold">
+          Transform your <span style={{color: 'white'}}>Radiography</span> Journey 
+        </h1>
+        <p 
+          style={{
+            backgroundColor: 'rgb(24, 59, 78)', 
+            color: 'white', 
+            padding: '12px 18px', 
+            borderRadius: '10px',
+            display: 'inline-block',
+            marginTop: '20px'
+          }} 
+          className="hero-subtitle"
+        >
+          <em><strong>Simplifying every step of the way...</strong></em>
+        </p>
+        <br />
+        <a style={{color: 'black'}} href="/subscribe/">
+          <button 
+            style={{
+              backgroundColor: 'rgb(221, 168, 83)', 
+              width: '200px', 
+              height: '50px',
+              border: 'none',
+              borderRadius: '8px',
+              marginTop: '20px'
+            }} 
+            className="btn"
+          >
+            <strong>Start your Journey</strong>
+          </button>
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+
 
       {/* What We Do Section */}
       <section id="about" style={{backgroundColor: ''}} className=" text-center">
@@ -58,10 +105,6 @@ const Home = () => {
       </section>
 
       <section >
-        <OneOnOneSection/>
-      </section> 
-
-      <section >
         <HowItWorks/>
       </section>
     
@@ -70,6 +113,10 @@ const Home = () => {
         <Benefits/>
       </section>
       
+      <section >
+        <OneOnOneSection/>
+      </section> 
+
 
       
       {/* <section>

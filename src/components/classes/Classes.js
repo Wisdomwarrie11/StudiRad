@@ -40,24 +40,33 @@ const Classes = () => {
             <Carousel.Item key={index}>
               <Row className="justify-content-center">
                 {courses.slice(index * 2, index * 2 + 2).map((course) => (
-                  <Col xs={6} className="text-center">
+                  <Col xs={6} className="text-center" key={course.id}>
                     <div
-                    className="card shadow-sm cursor-pointer course-card"
-                    onClick={() => navigate(`/course/${course.id}`)}
-                    data-aos="zoom-in"
-                    data-aos-delay={index * 100} >
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="card-img-top"
-                      style={{ width: "100%", height: "200px", objectFit: "cover" }}/>
+                      className="card shadow-sm cursor-pointer course-card"
+                      onClick={() => navigate(`/course/${course.id}`)}
+                      data-aos="zoom-in"
+                      data-aos-delay={index * 100} 
+                    >
+                      <img
+                        src={course.image}
+                        alt={course.title}
+                        className="card-img-top"
+                        style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                      />
                       <div className="card-body">
                         <h5 className="fw-bold">{course.title}</h5>
-                        <button style={{ width: "100%", backgroundColor:'rgb(24, 59, 78)' }}>
-                          Join 
+                        <button 
+                          disabled
+                          style={{ 
+                            width: "100%", 
+                            backgroundColor:'rgb(24, 59, 78)', 
+                            opacity: 0.6, 
+                            cursor: "not-allowed" 
+                          }}
+                        >
+                          Join
                         </button>
                       </div>
-                      
                     </div>
                   </Col>
                 ))}
@@ -75,7 +84,6 @@ const Classes = () => {
                 onClick={() => navigate(`/course/${course.id}`)}
                 data-aos="zoom-in"
                 data-aos-delay={index * 100}
-      
               >
                 <img
                   src={course.image}
@@ -85,9 +93,17 @@ const Classes = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title fw-bold">{course.title}</h5>
-                  <button style={{ width: "100%", backgroundColor:'rgb(24, 59, 78)'}}>
-                          Join 
-                        </button>
+                  <button 
+                    disabled
+                    style={{ 
+                      width: "100%", 
+                      backgroundColor:'rgb(24, 59, 78)', 
+                      opacity: 0.6, 
+                      cursor: "not-allowed" 
+                    }}
+                  >
+                    Join
+                  </button>
                 </div>
               </div>
             </div>

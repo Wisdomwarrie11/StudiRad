@@ -30,6 +30,8 @@ import SubscribeForm from "components/classes/SubscribeForm";
 import AboutUs from "pages/AboutUs";
 import Tutorial from "components/Home/Tutorials";
 import OurClasses from "components/classes/OurClasses";
+import activities from "pages/Activities"
+import Activities from "pages/Activities";
 
 function App() {
 
@@ -67,18 +69,16 @@ function App() {
         <Route path="/payment-failure/:id" element={<PaymentFailure />} />
         <Route path="/confirmation/:paymentMethod/:id" element={<ConfirmationPage />} />
         <Route path="/Mindful" element={<MindfulMomentPage />} />
-      <Route path="/Music" element={<MusicTherapyPage />} /> 
-      <Route path="/gratitude" element={<GratitudeNotesPage />} /> 
-      <Route path="/tutorhome" element={<TutorHero />} /> 
-      <Route path="/tutorregistration" element={<TutorRegistrationPage />} /> 
-      <Route path="/tutorlogin" element={<TutorLogin />} /> 
-      <Route path="/tutordashboard" element={<TutorDashboard />} /> 
-      <Route path="/addcourse" element={<AddCourse/>} /> 
-      <Route path="/tutorial" element={<Tutorial/>} />
-      <Route path="/classes" element={<OurClasses/>} />
-
-
-
+        <Route path="/Music" element={<MusicTherapyPage />} /> 
+        <Route path="/gratitude" element={<GratitudeNotesPage />} /> 
+        <Route path="/tutorhome" element={<TutorHero />} /> 
+        <Route path="/tutorregistration" element={<TutorRegistrationPage />} /> 
+        <Route path="/tutorlogin" element={<TutorLogin />} /> 
+        <Route path="/tutordashboard" element={<TutorDashboard />} /> 
+        <Route path="/addcourse" element={<AddCourse/>} /> 
+        <Route path="/tutorial" element={<Tutorial/>} />
+        <Route path="/classes" element={<OurClasses/>} />
+        <Route path="/activities" element={<Activities/>} />
 
 
       </Routes>
