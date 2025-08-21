@@ -26,7 +26,7 @@ const Home = () => {
       {/* Hero Section */}
       <section 
   style={{
-    marginTop: "70px",
+    marginTop: "40px",
     minHeight: "100vh",
     display: "flex",
     alignItems: "center",
@@ -42,14 +42,13 @@ const Home = () => {
       {/* ✅ Image Block */}
       <div className="col-lg-6 col-md-12 order-2 order-lg-2 text-center mt-4 mt-lg-0">
         <img 
-          src="womannurse.png" 
+          src="3in13.png" 
           alt="Radiography" 
           style={{
             width: "100%",
-            maxheight: "500px",
-            maxWidth: "500px",
+            maxheight: "400px",
+            maxWidth: "400px",
             borderRadius: "20px",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.3)"
           }}
         />
       </div>
