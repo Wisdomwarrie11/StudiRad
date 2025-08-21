@@ -26,7 +26,7 @@ const Home = () => {
       <section 
         style={{
           marginTop: '20px',
-          backgroundImage: 'url("Radstudents.jpg")',
+          backgroundImage: 'url("mri.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           position: 'relative',
