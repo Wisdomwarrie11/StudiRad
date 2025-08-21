@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "./firebase"; // ✅ make sure this points to your firebase.js config file
+import { db } from "./firebase"; 
 import { collection, addDoc } from "firebase/firestore";
 
 export default function RegistrationForm() {
@@ -15,12 +15,10 @@ export default function RegistrationForm() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  // handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -28,7 +26,6 @@ export default function RegistrationForm() {
 
     try {
       const docRef = await addDoc(collection(db, "registrations"), formData);
-      console.log("Document written with ID: ", docRef.id);
       setMessage("✅ Registration successful!");
       setFormData({
         firstName: "",
@@ -39,7 +36,7 @@ export default function RegistrationForm() {
         topic: ""
       });
     } catch (error) {
-      console.error("❌ Error adding document: ", error);
+      console.error(error);
       setMessage("❌ Something went wrong. Check console for details.");
     } finally {
       setLoading(false);
@@ -51,114 +48,96 @@ export default function RegistrationForm() {
       onSubmit={handleSubmit}
       style={{
         maxWidth: "600px",
-        marginTop: "150px",
-        margin: "0 auto",
-        padding: "20px",
-        backgroundColor: "#f9fafb",
-        borderRadius: "12px",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+        marginTop: "100px",
+        margin: "150px auto",
+        padding: "40px",
+        background: "linear-gradient(135deg, rgba(17,31,50,0.95), rgba(34,57,90,0.95))",
+        borderRadius: "16px",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+        color: "#fff",
+        fontFamily: "'Segoe UI', sans-serif",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+      <h2 style={{ textAlign: "center", marginBottom: "30px", color: "#fcd34d" }}>
         Webinar Registration
       </h2>
 
-      <input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        value={formData.firstName}
-        onChange={handleChange}
-        required
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-      />
+      {/** Inputs */}
+      {["firstName","lastName","email"].map((field, i) => (
+        <input
+          key={i}
+          type={field === "email" ? "email" : "text"}
+          name={field}
+          placeholder={field === "firstName" ? "First Name" : field === "lastName" ? "Last Name" : "Email Address"}
+          value={formData[field]}
+          onChange={handleChange}
+          required
+          style={{
+            width: "100%",
+            padding: "14px 12px",
+            marginBottom: "15px",
+            borderRadius: "8px",
+            border: "none",
+            outline: "none",
+            fontSize: "16px",
+            backgroundColor: "rgba(255,255,255,0.1)",
+            color: "#fff"
+          }}
+        />
+      ))}
 
-      <input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        value={formData.lastName}
-        onChange={handleChange}
-        required
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-      />
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email Address"
-        value={formData.email}
-        onChange={handleChange}
-        required
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-      />
-
-      {/* Qualification Dropdown */}
-      <select
-        name="qualification"
-        value={formData.qualification}
-        onChange={handleChange}
-        required
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-      >
-        <option value="">Select Qualification</option>
-        <option value="Student Radiographer">Student Radiographer</option>
-        <option value="Pre-Intern Radiographer">Pre-Intern Radiographer</option>
-        <option value="Intern Radiographer">Intern Radiographer</option>
-        <option value="Post-Graduate Radiographer">Post-Graduate Radiographer</option>
-        <option value="Others">Others</option>
-      </select>
-
-      {/* Referral Dropdown */}
-      <select
-        name="referral"
-        value={formData.referral}
-        onChange={handleChange}
-        required
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-      >
-        <option value="">How did you hear about us?</option>
-        <option value="Friends/Colleagues">Friends/Colleagues</option>
-        <option value="Social Media">Social Media</option>
-        <option value="School">School</option>
-        <option value="Email">Email</option>
-        <option value="Other">Other</option>
-      </select>
-
-      {/* Topic Dropdown */}
-      <select
-        name="topic"
-        value={formData.topic}
-        onChange={handleChange}
-        required
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-      >
-        <option value="">Which webinar topic excites you most?</option>
-        <option value="After Induction, What Next?">After Induction, What Next?</option>
-        <option value="Career Pathways in Radiography">Career Pathways in Radiography</option>
-        <option value="Research and Academia">Research and Academia</option>
-        <option value="Specializations in Radiography">Specializations in Radiography</option>
-      </select>
+      {/** Dropdowns */}
+      {[
+        {name:"qualification", label:"Select Qualification", options:["Student Radiographer","Pre-Intern Radiographer","Intern Radiographer","Post-Graduate Radiographer","Others"]},
+        {name:"referral", label:"How did you hear about us?", options:["Friends/Colleagues","Social Media","School","Email","Other"]},
+        {name:"topic", label:"Which webinar topic excites you most?", options:["After Induction, What Next?","Career Pathways in Radiography","Research and Academia","Specializations in Radiography"]}
+      ].map((dropdown,i) => (
+        <select
+          key={i}
+          name={dropdown.name}
+          value={formData[dropdown.name]}
+          onChange={handleChange}
+          required
+          style={{
+            width: "100%",
+            padding: "14px 12px",
+            marginBottom: "15px",
+            borderRadius: "8px",
+            border: "none",
+            outline: "none",
+            fontSize: "16px",
+            backgroundColor: "rgba(255,255,255,0.1)",
+            color: "#fff"
+          }}
+        >
+          <option value="" disabled>{dropdown.label}</option>
+          {dropdown.options.map((opt,i) => <option key={i} value={opt}>{opt}</option>)}
+        </select>
+      ))}
 
       <button
         type="submit"
         disabled={loading}
         style={{
           width: "100%",
-          padding: "12px",
-          backgroundColor: "#1d4ed8",
-          color: "#fff",
+          padding: "14px",
+          backgroundColor: "#fcd34d",
+          color: "#111f32",
           border: "none",
-          borderRadius: "8px",
+          borderRadius: "10px",
           fontSize: "16px",
-          cursor: "pointer"
+          cursor: "pointer",
+          fontWeight: "bold",
+          transition: "all 0.3s ease"
         }}
+        onMouseOver={e => e.currentTarget.style.backgroundColor="#fbbf24"}
+        onMouseOut={e => e.currentTarget.style.backgroundColor="#fcd34d"}
       >
         {loading ? "Submitting..." : "Register"}
       </button>
 
       {message && (
-        <p style={{ textAlign: "center", marginTop: "15px" }}>{message}</p>
+        <p style={{ textAlign: "center", marginTop: "20px", fontWeight: "bold" }}>{message}</p>
       )}
     </form>
   );
