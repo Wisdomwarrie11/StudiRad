@@ -1,172 +1,164 @@
-import React from "react";
+import React, { useState } from "react";
+import { db } from "./firebase"; // ✅ make sure this points to your firebase.js config file
+import { collection, addDoc } from "firebase/firestore";
 
-const RegistrationForm = () => {
+export default function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    qualification: "",
+    referral: "",
+    topic: ""
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  // handle input change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const docRef = await addDoc(collection(db, "registrations"), formData);
+      console.log("Document written with ID: ", docRef.id);
+      setMessage("✅ Registration successful!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        qualification: "",
+        referral: "",
+        topic: ""
+      });
+    } catch (error) {
+      console.error("❌ Error adding document: ", error);
+      setMessage("❌ Something went wrong. Check console for details.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section style={{ 
-      minHeight: "100vh", 
-      display: "flex", 
-      justifyContent: "center", 
-      alignItems: "center", 
-      backgroundColor: "#f4f6f9",
-      padding: "20px",
-      marginTop: "50px"
-    }}>
-      <div style={{
-        background: "white",
-        borderRadius: "12px",
-        boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+    <form
+      onSubmit={handleSubmit}
+      style={{
         maxWidth: "600px",
-        width: "100%",
-        padding: "40px"
-      }}>
-        <h2 style={{ 
-          fontSize: "28px", 
-          fontWeight: "bold", 
-          textAlign: "center", 
-          color: "#1f2937",
-          marginBottom: "10px"
-        }}>
-          Webinar Registration
-        </h2>
-        <p style={{ 
-          textAlign: "center", 
-          color: "#6b7280", 
-          marginBottom: "30px"
-        }}>
-          Join us and be part of an exciting learning experience.
-        </p>
+        margin: "0 auto",
+        padding: "20px",
+        backgroundColor: "#f9fafb",
+        borderRadius: "12px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+      }}
+    >
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+        Webinar Registration
+      </h2>
 
-        <form style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          {/* First Name */}
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>
-              First Name
-            </label>
-            <input type="text" placeholder="Enter your first name"
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "8px",
-                marginTop: "5px"
-              }}
-            />
-          </div>
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        value={formData.firstName}
+        onChange={handleChange}
+        required
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+      />
 
-          {/* Last Name */}
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>
-              Last Name
-            </label>
-            <input type="text" placeholder="Enter your last name"
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "8px",
-                marginTop: "5px"
-              }}
-            />
-          </div>
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        value={formData.lastName}
+        onChange={handleChange}
+        required
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+      />
 
-          {/* Email */}
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>
-              Email Address
-            </label>
-            <input type="email" placeholder="your@email.com"
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "8px",
-                marginTop: "5px"
-              }}
-            />
-          </div>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value={formData.email}
+        onChange={handleChange}
+        required
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+      />
 
-          {/* Qualification */}
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>
-              Educational Qualification
-            </label>
-            <select
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "8px",
-                marginTop: "5px"
-              }}
-            >
-              <option value="">-- Select --</option>
-              <option>Student Radiographer</option>
-              <option>Pre-intern Radiographer</option>
-              <option>Intern Radiographer</option>
-              <option>Post-graduate Radiographer</option>
-              <option>Others</option>
-            </select>
-          </div>
+      {/* Qualification Dropdown */}
+      <select
+        name="qualification"
+        value={formData.qualification}
+        onChange={handleChange}
+        required
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+      >
+        <option value="">Select Qualification</option>
+        <option value="Student Radiographer">Student Radiographer</option>
+        <option value="Pre-Intern Radiographer">Pre-Intern Radiographer</option>
+        <option value="Intern Radiographer">Intern Radiographer</option>
+        <option value="Post-Graduate Radiographer">Post-Graduate Radiographer</option>
+        <option value="Others">Others</option>
+      </select>
 
-          {/* How they heard */}
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>
-              How did you hear about this webinar
-            </label>
-            <select
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "8px",
-                marginTop: "5px"
-              }}
-            >
-              <option value="">-- Select --</option>
-              <option>Facebook</option>
-              <option>WhatsApp</option>
-              <option>LinkedIn</option>
-              <option>Word of Mouth</option>
-              <option>family or Friends</option>
-            </select>
-          </div>
+      {/* Referral Dropdown */}
+      <select
+        name="referral"
+        value={formData.referral}
+        onChange={handleChange}
+        required
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+      >
+        <option value="">How did you hear about us?</option>
+        <option value="Friends/Colleagues">Friends/Colleagues</option>
+        <option value="Social Media">Social Media</option>
+        <option value="School">School</option>
+        <option value="Email">Email</option>
+        <option value="Other">Other</option>
+      </select>
 
-          {/* Topic */}
-          <div>
-            <label style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>
-              Which webinar topic are you looking forward to the most?
-            </label>
-            <textarea rows="3" placeholder="Type your answer..."
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "8px",
-                marginTop: "5px"
-              }}
-            />
-          </div>
+      {/* Topic Dropdown */}
+      <select
+        name="topic"
+        value={formData.topic}
+        onChange={handleChange}
+        required
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+      >
+        <option value="">Which webinar topic excites you most?</option>
+        <option value="After Induction, What Next?">After Induction, What Next?</option>
+        <option value="Career Pathways in Radiography">Career Pathways in Radiography</option>
+        <option value="Research and Academia">Research and Academia</option>
+        <option value="Specializations in Radiography">Specializations in Radiography</option>
+      </select>
 
-          {/* Submit */}
-          <button type="submit"
-            style={{
-              width: "100%",
-              padding: "14px",
-              backgroundColor: "#2563eb",
-              color: "white",
-              fontWeight: "600",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-              marginTop: "10px"
-            }}
-          >
-            Register Now
-          </button>
-        </form>
-      </div>
-    </section>
+      <button
+        type="submit"
+        disabled={loading}
+        style={{
+          width: "100%",
+          padding: "12px",
+          backgroundColor: "#1d4ed8",
+          color: "#fff",
+          border: "none",
+          borderRadius: "8px",
+          fontSize: "16px",
+          cursor: "pointer"
+        }}
+      >
+        {loading ? "Submitting..." : "Register"}
+      </button>
+
+      {message && (
+        <p style={{ textAlign: "center", marginTop: "15px" }}>{message}</p>
+      )}
+    </form>
   );
-};
-
-export default RegistrationForm;
+}

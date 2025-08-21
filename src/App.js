@@ -32,7 +32,7 @@ import Tutorial from "components/Home/Tutorials";
 import OurClasses from "components/classes/OurClasses";
 import activities from "pages/Activities"
 import Activities from "pages/Activities";
-import WebinarRegistrationForm from "pages/WebinarRegistration";
+import RegistrationForm from "pages/WebinarRegistration";
 
 function App() {
 
@@ -80,7 +80,7 @@ function App() {
         <Route path="/tutorial" element={<Tutorial/>} />
         <Route path="/classes" element={<OurClasses/>} />
         <Route path="/activities" element={<Activities/>} />
-        <Route path="/webinarRegistration" element={<WebinarRegistrationForm/>} />
+        <Route path="/webinarRegistration" element={<RegistrationForm/>} />
 
 
       </Routes>

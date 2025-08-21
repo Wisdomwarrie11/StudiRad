@@ -2,12 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "yourapp.firebaseapp.com",
-  projectId: "yourapp",
-  storageBucket: "yourapp.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyD4lsIKa-b51x6CXu4v0CTkIbFkO76ApUo",
+  authDomain: "studi-rad-webinar.firebaseapp.com",
+  projectId: "studi-rad-webinar",
+  storageBucket: "studi-rad-webinar.firebasestorage.app",
+  messagingSenderId: "925521313915",
+  appId: "1:925521313915:web:527a72e06eb0d1539f22de",
+  measurementId: "G-3Z6QFNN3MK"
 };
 
 // Initialize Firebase

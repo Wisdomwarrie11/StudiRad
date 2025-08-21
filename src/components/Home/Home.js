@@ -26,7 +26,7 @@ const Home = () => {
       <section 
         style={{
           marginTop: '20px',
-          backgroundImage: 'url("radioroom.jpeg")',
+          backgroundImage: 'url("Radstudents.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           position: 'relative',
@@ -60,8 +60,8 @@ const Home = () => {
                 <button 
                   style={{
                     backgroundColor: 'rgb(17, 31, 50)', 
-                    width: '250px', 
-                    height: '80px',
+                    width: '200px', 
+                    height: '50px',
                     border: 'none',
                     borderRadius: '8px',
                     marginTop: '20px',
@@ -69,7 +69,7 @@ const Home = () => {
                   }} 
                   className="btn"
                 >
-                  <h4><strong>Start your Journey</strong></h4>
+                  <h4><strong>Start Here</strong></h4>
                 </button>
               </a>
             </div>
