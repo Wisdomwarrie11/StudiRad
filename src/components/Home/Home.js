@@ -27,7 +27,7 @@ const Home = () => {
         style={{
           marginTop: '20px',
           backgroundImage: 'url("mri.jpeg")',
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           backgroundPosition: 'center',
           position: 'relative',
           color: 'white',

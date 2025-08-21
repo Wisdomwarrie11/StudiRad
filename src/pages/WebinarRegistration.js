@@ -51,6 +51,7 @@ export default function RegistrationForm() {
       onSubmit={handleSubmit}
       style={{
         maxWidth: "600px",
+        marginTop: "150px",
         margin: "0 auto",
         padding: "20px",
         backgroundColor: "#f9fafb",

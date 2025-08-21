@@ -33,6 +33,7 @@ import OurClasses from "components/classes/OurClasses";
 import activities from "pages/Activities"
 import Activities from "pages/Activities";
 import RegistrationForm from "pages/WebinarRegistration";
+import RegistrationsDashboard from "pages/WebinarDashboard";
 
 function App() {
 
@@ -81,6 +82,7 @@ function App() {
         <Route path="/classes" element={<OurClasses/>} />
         <Route path="/activities" element={<Activities/>} />
         <Route path="/webinarRegistration" element={<RegistrationForm/>} />
+        <Route path="/webdash" element={<RegistrationsDashboard/>} />
 
 
       </Routes>
