@@ -4,7 +4,7 @@ import React from "react";
 
 const NewsletterSignup = () => {
   return (
-    <section style={{backgroundColor: 'rgb(24, 59, 78)'}} className=" text-white py-5 text-center">
+    <section style={{backgroundColor: 'rgb(17,31,50)'}} className=" text-white py-5 text-center">
       <div className="container">
         <h2 style={{color: 'white'}}>Stay in the Loop 🎓</h2>
         <p style={{color: 'white'}}>Get email updates about new courses, classes, and special offers.</p>

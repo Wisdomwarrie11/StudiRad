@@ -34,7 +34,7 @@ const AnimatedStats = () => {
 
   return (
     <section style={{ padding: "4rem 1rem", 
-    backgroundColor: 'rgb(24, 59, 78)', 
+    backgroundColor: 'rgb(17,31,50)', 
     borderRadius: '50px',
     border: "2px solid #eee",
 

@@ -4,6 +4,7 @@ import React from "react";
 import Footer from "./Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css'; 
+import './HeroSection.css'
 import Benefits from "./Benefits";
 import WhatWeDo from "./whatwedo";
 import Testimonials from "./Testimonials";
@@ -24,58 +25,71 @@ const Home = () => {
       
       {/* Hero Section */}
       <section 
-        style={{
-          marginTop: '20px',
-          backgroundImage: 'url("mri.jpeg")',
-          backgroundSize: 'contain',
-          backgroundPosition: 'center',
-          position: 'relative',
-          color: 'white',
-          minHeight: '100vh',   
-          padding: '60px 20px' 
-        }} 
-        className="hero d-flex align-items-center"
-      >
-        <div className="overlay" 
+  style={{
+    marginTop: "70px",
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    padding: "60px 20px",
+    background: "linear-gradient(190deg, rgb(17,31,50) 40%, #243b55 70%, #fcd34d 100%)",
+    color: "white"
+  }} 
+  className="hero"
+>
+  <div className="container">
+    <div className="row align-items-center">
+
+      {/* ✅ Image Block */}
+      <div className="col-lg-6 col-md-12 order-2 order-lg-2 text-center mt-4 mt-lg-0">
+        <img 
+          src="womannurse.png" 
+          alt="Radiography" 
           style={{
-            position: 'absolute',
-            top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(24, 59, 78, 0.5)' 
-          }} 
-        ></div>
+            width: "100%",
+            maxheight: "500px",
+            maxWidth: "500px",
+            borderRadius: "20px",
+            boxShadow: "0 10px 25px rgba(0,0,0,0.3)"
+          }}
+        />
+      </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="row align-items-center">
-            {/* ✅ Fixed text alignment */}
-            <div className="col-12 text-center">
-              <h1 
-                style={{ color: 'white', textAlign: 'center' }} 
-                className="display-4 hero-title fw-bold"
-              >
-                Transforming your <span style={{color: 'white'}}>Radiography</span> Journey 
-              </h1>
+      {/* ✅ Text Block */}
+      <div className="col-lg-6 col-md-12 order-1 order-lg-1 text-lg-start text-center">
+        <h1 className="fw-bold" style={{ fontSize: "3rem", lineHeight: "1.2" }}>
+          Transforming your <span style={{ color: "#fcd34d" }}>Radiography</span> Journey
+        </h1>
 
-              <br />
-              <a style={{color: 'black'}} href="/">
-                <button 
-                  style={{
-                    backgroundColor: 'rgb(17, 31, 50)', 
-                    width: '200px', 
-                    height: '50px',
-                    border: 'none',
-                    borderRadius: '8px',
-                    marginTop: '20px',
-                    color: 'white'
-                  }} 
-                  className="btn"
-                >
-                  <h4><strong>Start Here</strong></h4>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        <p style={{ marginTop: "20px", fontSize: "18px", maxWidth: "500px" }}>
+          Learn, connect, and grow with experts guiding your professional path.
+        </p>
+
+        <a href="/" style={{ textDecoration: "none" }}>
+          <button 
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#fcd34d",
+              border: "none",
+              borderRadius: "50px",
+              color: "#111827",
+              fontWeight: "600",
+              fontSize: "16px",
+              cursor: "pointer",
+              width: "auto"  // ✅ shrinks to text length
+            }}
+          >
+            Start Here
+          </button>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
 
       {/* What We Do Section */}
       <section id="about" style={{backgroundColor: ''}} className=" text-center">
@@ -98,18 +112,18 @@ const Home = () => {
         <Benefits/>
       </section>
       
-      <section >
+      {/* <section >
         <OneOnOneSection/>
-      </section> 
+      </section>  */}
 
       {/* <section>
         <Topcourses/>
         <CourseSearch/>
       </section> */}
 
-      {/* <section>
+      <section>
         <HubSection/>
-      </section> */}
+      </section>
 
       {/* Testimonials Section */}
       <section className="py-5 bg-light">
