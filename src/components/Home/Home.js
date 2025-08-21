@@ -42,7 +42,7 @@ const Home = () => {
       {/* ✅ Image Block */}
       <div className="col-lg-6 col-md-12 order-2 order-lg-2 text-center mt-4 mt-lg-0">
         <img 
-          src="3in13.png" 
+          src="3in13.PNG" 
           alt="Radiography" 
           style={{
             width: "100%",
