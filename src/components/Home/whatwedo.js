@@ -1,5 +1,5 @@
 import { Book, UserCheck, Monitor } from "lucide-react";
-import "./whatwedo.css"; // We'll define the animations here
+import "./whatwedo.css";
 
 const activities = [
   {

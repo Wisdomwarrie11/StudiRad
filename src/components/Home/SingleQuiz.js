@@ -26,13 +26,13 @@ const SingleQuestionQuiz = ({ question, onNext, onBack }) => {
     }
   };
 
-  // Reset the state when the question changes
+  
   React.useEffect(() => {
     setSelectedOption(null);
     setAttempts(0);
     setFeedback("");
     setLocked(false);
-  }, [question]); // This effect runs when the question changes
+  }, [question]); 
 
   return (
     <div style={{

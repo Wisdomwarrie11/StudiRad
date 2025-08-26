@@ -19,8 +19,8 @@ const VerifyOTP = () => {
       });
 
       if (res.status === 200) {
-        alert(res.data.msg); // Optional success message
-        navigate('/login'); // 👈 Redirect to login after successful verification
+        alert(res.data.msg);
+        navigate('/login');
       }
     } catch (err) {
       console.error(err);

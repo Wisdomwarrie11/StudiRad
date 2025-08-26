@@ -53,8 +53,7 @@ const Activities = () => {
               <div 
                 className="card h-100 shadow-lg border-0"
                 style={{
-                  background: "linear-gradient(145deg, #ffffff, #fef6e4)", // soft white-gold blend
-                  borderRadius: "12px"
+                  background: "linear-gradient(145deg, #ffffff, #fef6e4)", 
                 }}
               >
                 <img

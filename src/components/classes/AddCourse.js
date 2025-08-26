@@ -32,7 +32,6 @@ function AddCourse() {
         }
       );
       console.log(response.data);
-      // You can display success message or clear the form
     } catch (err) {
       setError('Error creating course. Please try again.');
       console.error(err);

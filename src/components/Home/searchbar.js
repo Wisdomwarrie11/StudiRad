@@ -5,7 +5,7 @@ const CourseSearch = () => {
 
   const handleSearch = () => {
     alert(`Searching for: ${searchTerm}`);
-    // In production, connect this to actual course filtering
+  
   };
 
   return (

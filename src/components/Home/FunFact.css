@@ -11,7 +11,7 @@
 /* Responsive styling for small screens */
 @media (max-width: 768px) {
   .fun-fact-text p {
-    font-size: 1rem; /* Adjust text size for mobile */
+    font-size: 1rem; 
   }
 
   .zoom-in-slide {

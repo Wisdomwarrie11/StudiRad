@@ -24,69 +24,45 @@ const Home = () => {
     <div style={{backgroundColor: ''}}>
       
       {/* Hero Section */}
-      <section 
-  style={{
-    marginTop: "40px",
-    minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
-    padding: "60px 20px",
-    background: "linear-gradient(190deg, rgb(17,31,50) 40%, #243b55 70%, #fcd34d 100%)",
-    color: "white"
-  }} 
-  className="hero"
->
-  <div className="container">
-    <div className="row align-items-center">
-
-      {/* ✅ Image Block */}
-      <div className="col-lg-6 col-md-12 order-2 order-lg-2 text-center mt-4 mt-lg-0">
-        <img 
-          src="3in13.PNG" 
-          alt="Radiography" 
-          style={{
-            width: "100%",
-            maxheight: "400px",
-            maxWidth: "400px",
-            borderRadius: "20px",
-          }}
-        />
-      </div>
-
-      {/* ✅ Text Block */}
-      <div className="col-lg-6 col-md-12 order-1 order-lg-1 text-lg-start text-center">
-        <h1 className="fw-bold" style={{ fontSize: "3rem", lineHeight: "1.2" }}>
+      <section style={{
+          marginTop: "0px",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          padding: "60px 20px",
+          background: "linear-gradient(190deg, #243b55 40%, rgb(213, 244, 247) 70%, #fcd34d 100%)",
+          color: "white"
+        }} ><div id='intro' className="container justify-content-center" style={{paddingTop: '50px'}}>
+        <div className="row align-items-center ">
+            <div className="col text-center md-mx-5 text-lg-start text-center">
+            <h1 className="fw-bold" style={{ fontSize: "3rem", lineHeight: "1.2"}}>
           Transforming your <span style={{ color: "#fcd34d" }}>Radiography</span> Journey
         </h1>
 
-        <p style={{ marginTop: "20px", fontSize: "18px", maxWidth: "500px" }}>
+        <p style={{ marginBottom: "100px", fontSize: "18px", maxWidth: "500px" }}>
           Learn, connect, and grow with experts guiding your professional path.
         </p>
-
-        <a href="/" style={{ textDecoration: "none" }}>
+      
+            </div>
+            <div className="col-md-5 text-center text-md-start">
+            <img className= 'img-fluid' src= "3in1.png" alt="" />
+            <a href="/" style={{ textDecoration: "none" }}>
           <button 
             style={{
-              marginTop: "20px",
-              padding: "10px 20px",
-              backgroundColor: "#fcd34d",
-              border: "none",
-              borderRadius: "50px",
-              color: "#111827",
-              fontWeight: "600",
-              fontSize: "16px",
-              cursor: "pointer",
-              width: "auto"  // ✅ shrinks to text length
+              marginTop: "20px", padding: "10px 50px", backgroundColor: "#fcd34d",border: "none",borderRadius: "10px",
+              color: "#111827",fontWeight: "700",fontSize: "20px",cursor: "pointer", width: "auto"
             }}
           >
             Start Here
           </button>
         </a>
+            </div>
+        </div>
+        
       </div>
 
-    </div>
-  </div>
-</section>
 
+        </section>
 
 
 

@@ -43,7 +43,7 @@ export default function Benefits() {
           const el = entry.target;
           if (entry.isIntersecting) {
             el.classList.add("fade-in-visible");
-            el.classList.remove("fade-in-section"); // Remove initial hidden state
+            el.classList.remove("fade-in-section"); 
           }
         });
       },
@@ -72,7 +72,7 @@ export default function Benefits() {
             benefit.align === "right" ? "flex-row-reverse" : ""
           }`}
           data-aos="zoom-in"
-          data-aos-delay={index * 100} // This will now properly use the index
+          data-aos-delay={index * 100} 
         >
           <div className="col-md-6 text-center">{benefit.icon}</div>
           <div className="col-md-6">

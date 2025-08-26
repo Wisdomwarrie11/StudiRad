@@ -3,7 +3,7 @@ import ProfileModal from "./ProfileModal";
 import Sidebar from "./Sidebar";
 import YourPackages from "./YourPackages";
 import SavedRecordings from "./SavedRecordings";
-import "./dashboard.css"; // Styling file
+import "./dashboard.css"; 
 
 const StudentDashboard = () => {
   const [isProfileComplete, setIsProfileComplete] = useState(false);

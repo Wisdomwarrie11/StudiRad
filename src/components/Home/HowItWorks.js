@@ -1,27 +1,27 @@
 import React from "react";
-import { User, BookOpen, PlayCircle, Award } from "lucide-react"; // Import desired icons from lucide-react
-import './HowItWorks.css'; // optional for custom styles
+import { User, BookOpen, PlayCircle, Award } from "lucide-react"; 
+import './HowItWorks.css'; 
 
 
 const steps = [
   {
-    icon:  <User size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  // User icon for Sign Up
+    icon:  <User size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  
     title: "Sign Up",
     desc: "Create your free account in seconds and access your dashboard.",
     
   },
   {
-    icon: <BookOpen size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  // Book icon for Choose a Course
+    icon: <BookOpen size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  
     title: "Choose a Course",
     desc: "Explore video courses and live virtual classes tailored to radiography.",
   },
   {
-    icon: <PlayCircle size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  // Play icon for Start Learning
+    icon: <PlayCircle size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  
     title: "Start Learning",
     desc: "Join live classes or study at your own pace with recorded sessions.",
   },
   {
-    icon: <Award size={60} style={{color: 'rgb(221, 168, 83)'}}  />,  // Award icon for Get Certified
+    icon: <Award size={60} style={{color: 'rgb(221, 168, 83)'}}  />, 
     title: "Get Certified",
     desc: "Earn certificates to boost your career and share your achievements.",
   },

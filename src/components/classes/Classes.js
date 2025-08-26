@@ -61,7 +61,7 @@ const Classes = () => {
                         <h5 className="fw-bold">{course.title}</h5>
                         <button
                           onClick={(e) => {
-                            e.stopPropagation(); // stop triggering card click
+                            e.stopPropagation(); 
                             handleShow();
                           }}
                           style={{

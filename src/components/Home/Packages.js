@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Courses.css'; // Custom styles for the component
+import './Courses.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { Tooltip, OverlayTrigger } from 'react-bootstrap'; // Tooltip component from Bootstrap
-import { FaSpinner } from 'react-icons/fa'; // Loading spinner icon
+import { useNavigate } from 'react-router-dom'; 
+import { Tooltip, OverlayTrigger } from 'react-bootstrap'; 
+import { FaSpinner } from 'react-icons/fa'; 
 
 
 const packages = [
@@ -13,51 +13,50 @@ const packages = [
     name: 'Diamond Package',
     details: 'Access to all courses, one-on-one mentoring, and exclusive materials.',
     price: '$19.99',
-    rating: 5, // Rating field
-    subscriptionLink: '/diamond', // Unique payment plan URL
+    rating: 5,
+    subscriptionLink: '/diamond', 
   },
   {
     name: 'Gold Package',
     details: 'Access to all courses and group mentoring sessions.',
     price: '$12.99',
-    rating: 4, // Rating field
-    subscriptionLink: '/gold', // Unique payment plan URL
+    rating: 4, 
+    subscriptionLink: '/gold', 
   },
   {
     name: 'Silver Package',
     details: 'Access to selected courses and community support.',
     price: '$7.99',
-    rating: 3, // Rating field
-    subscriptionLink: '/silver', // Unique payment plan URL
+    rating: 3,
+    subscriptionLink: '/silver', 
   },
   {
     name: 'Bronze Package',
     details: 'Access to free courses and basic resources.',
     price: 'Free',
-    rating: 2, // Rating field
-    subscriptionLink: '/bronze', // Unique payment plan URL
+    rating: 2, 
+    subscriptionLink: '/bronze', 
   },
 ];
 
 const CourseOutline = () => {
-  const navigate = useNavigate(); // Initialize navigate for navigation
-
+  const navigate = useNavigate(); 
   const [flippedIndex, setFlippedIndex] = useState(null);
-  const [loading, setLoading] = useState(false); // State for loading
+  const [loading, setLoading] = useState(false); 
 
   const handleFlip = (index) => {
     setFlippedIndex(flippedIndex === index ? null : index);
   };
 
   const handleSubscribe = (pkg) => {
-    setLoading(true); // Simulate loading state
+    setLoading(true); 
     setTimeout(() => {
-      setLoading(false); // Reset loading state after some time
-      navigate(pkg.subscriptionLink); // Navigate to the unique subscription page for the package
-    }, 2000); // Simulate API call delay
+      setLoading(false); 
+      navigate(pkg.subscriptionLink);
+    }, 2000);
   };
 
-  // Render stars based on rating
+
   const renderStars = (rating) => {
     return [...Array(5)].map((_, index) => (
       <FontAwesomeIcon
@@ -78,8 +77,8 @@ const CourseOutline = () => {
               <div className="card-front">
                 <div className="card-body text-center">
                   <h5 className="card-title">{pkg.name}</h5>
-                  <div>{renderStars(pkg.rating)}</div> {/* Render stars */}
-                  <p className="card-price">{pkg.price}</p> {/* Display price */}
+                  <div>{renderStars(pkg.rating)}</div> 
+                  <p className="card-price">{pkg.price}</p>
                   <OverlayTrigger
                     placement="top"
                     overlay={<Tooltip id={`tooltip-${index}`}>Click to see more details</Tooltip>}

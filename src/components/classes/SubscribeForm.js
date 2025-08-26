@@ -6,7 +6,7 @@ const GoogleFormRedirect = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       window.location.href = "https://forms.gle/Ki67EFKR6jPvkh5q7";
-    }, 2000); // 2 seconds spinner before redirect
+    }, 2000); 
 
     return () => clearTimeout(timer);
   }, []);

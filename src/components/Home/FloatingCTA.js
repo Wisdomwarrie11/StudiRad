@@ -1,4 +1,3 @@
-// src/components/FloatingCTA.js
 
 import React from "react";
 

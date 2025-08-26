@@ -1,5 +1,3 @@
-// src/components/NewsletterSignup.js
-
 import React from "react";
 
 const NewsletterSignup = () => {

@@ -1,4 +1,4 @@
-// WeeklyQuiz.jsx
+
 import React, { useState, useEffect } from "react";
 import questions from "./questionbank.json";
 import SingleQuestionQuiz from "./SingleQuiz";

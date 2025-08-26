@@ -5,7 +5,7 @@ const FunFact = () => {
   const [fact, setFact] = useState('');
 
   useEffect(() => {
-    // Fetch the fun fact from the local file
+   
     const fetchFact = async () => {
       try {
         const response = await fetch('/data/funFacts.json'); 

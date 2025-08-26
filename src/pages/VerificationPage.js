@@ -28,7 +28,7 @@ const VerificationPage = () => {
         icon: 'success',
         confirmButtonText: 'Proceed to Login',
       }).then(() => {
-        window.location.href = '/login'; // Redirect to login page after successful verification
+        window.location.href = '/login'; 
       });
     } catch (error) {
       setIsLoading(false);

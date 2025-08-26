@@ -33,7 +33,7 @@ const RegistrationPage = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/register', formData);
 
-      // SweetAlert for success
+   
       Swal.fire({
         title: 'Registration Successful!',
         text: 'Please check your email for verification.',
@@ -46,7 +46,7 @@ const RegistrationPage = () => {
       setIsLoading(false);
 
       if (error.response && error.response.data) {
-        // SweetAlert for user already exists
+     
         if (error.response.data.msg === 'User already exists') {
           Swal.fire({
             title: 'Error!',

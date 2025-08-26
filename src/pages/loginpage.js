@@ -23,11 +23,11 @@ export default function Login() {
 
     try {
       const res = await axios.post('http://localhost:5000/api/login', formData, {
-        withCredentials: true, // if you are using cookies/sessions later
+        withCredentials: true, 
       });
 
       if (res.data.success) {
-        navigate('/dashboard'); // Redirect to dashboard after login
+        navigate('/dashboard'); 
       }
     } catch (err) {
       setError(err.response?.data?.msg || 'Something went wrong. Try again.');
