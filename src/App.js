@@ -1,6 +1,3 @@
-// src/App.js
-
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Navbar from "./Navbar";
@@ -83,8 +80,6 @@ function App() {
         <Route path="/activities" element={<Activities/>} />
         <Route path="/webinarRegistration" element={<RegistrationForm/>} />
         <Route path="/webdash" element={<RegistrationsDashboard/>} />
-
-
       </Routes>
     </Router>
     </GoogleOAuthProvider>

@@ -1,35 +1,27 @@
-.testcolor{
-    color: rgb(227, 137, 2);
+.hero-card {
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15); /* transparent glass effect */
+  backdrop-filter: blur(8px);
+  color: white;
+  min-height: 220px;
 }
 
-.hero {
-    padding: 80px 0;
-  }
-  
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: bold;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.5rem;
-    color: black;
-  }
-  
-  .hero-image {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .hero .row {
-      flex-direction: column-reverse;
-      text-align: center;
-    }
-  
-    .hero-title,
-    .hero-subtitle {
-      text-align: center;
-    }
-  }
-  
+.hero-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Different transparent shades just for Hero */
+.hero-shade-0 {
+  background: rgba(255, 223, 186, 0.2);
+}
+.hero-shade-1 {
+  background: rgba(200, 230, 201, 0.2);
+}
+.hero-shade-2 {
+  background: rgba(187, 222, 251, 0.2);
+}
+.hero-shade-3 {
+  background: rgba(225, 190, 231, 0.2);
+}

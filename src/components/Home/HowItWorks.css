@@ -1,13 +1,43 @@
-
-.icon {
-  transition: transform 0.3s ease;
+/* Base card */
+.what-we-do-inner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #1a1a1a;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
-.icon:hover {
-  
-  transform: scale(1.1);
-}
-.color{
-  color: rgb(127, 238, 160)
+.what-we-do-inner:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
 }
 
+/* Shades */
+.shade-0 { background: #fef6e4; }
+.shade-1 { background: #e8f5e9; }
+.shade-2 { background: #e3f2fd; }
+.shade-3 { background: #f3e5f5; }
+
+/* Icons */
+.icon-wrapper {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  background: rgba(0,0,0,0.05);
+}
+.step-icon,
+.what-we-do-inner svg {
+  width: 60px;
+  height: 60px;
+  stroke: currentColor;
+}
