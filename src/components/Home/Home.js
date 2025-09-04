@@ -86,7 +86,7 @@ const Home = () => {
 
         {/* Independent Transparent Cards */}
         <div style={{}} className="row g-4">
-          <h1 className="fw-bold">Transform your <span style={{ color: "#dd9a2e" }}>Radiography</span>  Journey</h1>
+          <h1 style={{fontSize: '35px'}} className="fw-bold">Transform your <span style={{ color: "#dd9a2e" }}>Radiography</span>  Journey</h1>
           {activities.map((activity, index) => (
             <div key={index} className="col-6 col-sm-6 col-md-3 mb-4">
               <div className={`hero-card card border-0 p-4 text-center hero-shade-${index}`}>
@@ -104,6 +104,7 @@ const Home = () => {
         <WhatWeDo/>
       </section>
 
+      
       <section id="classes">
         <Classes/>
       </section>
@@ -112,9 +113,7 @@ const Home = () => {
         <USSclass/>
       </section>
 
-       <section>
-        <CourseSearch/>
-      </section>
+      
       <section >
       <HowItWorks/>
       </section>

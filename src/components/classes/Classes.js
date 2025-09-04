@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Carousel, Row, Col, Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './Classes.css'; 
+import CourseSearch from "components/Home/searchbar";
 
 const courses = [
   {
@@ -37,7 +38,7 @@ const Classes = () => {
     <section style={{ backgroundColor: 'white' }} className="py-5">
       <div className="container">
         <h2 className="text-center fw-bold mb-4 fade-in-title">Classes you can join</h2>
-
+        <CourseSearch/>
         {/* Mobile View - Carousel */}
         <Carousel indicators={false} interval={3000} className="d-md-none">
           {Array.from({ length: Math.ceil(courses.length / 2) }).map((_, index) => (
