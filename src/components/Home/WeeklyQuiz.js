@@ -42,7 +42,7 @@ const WeeklyQuiz = () => {
   return (
     <section style={{ backgroundColor: "#edf6f9", padding: "4rem 1rem" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <h2 style={{ fontWeight: "bold", color: "#1d3557" }}>🧠 Weekly Radiography Quiz</h2>
+        <h2 style={{ fontWeight: "bold", color: "#1d3557" }}>🧠 Our Quiz Corner</h2>
         <p style={{ color: "#6c757d" }}>Test your skills! You only get 3 questions per week.</p>
       </div>
 

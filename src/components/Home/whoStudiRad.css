@@ -1,0 +1,34 @@
+.who-section {
+    margin-top: 60px;
+  }
+  
+  .who-card {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12); /* transparent glass look */
+    backdrop-filter: blur(8px);
+    color: #183b4e;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .who-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  .who-img {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .who-img img {
+    width: 100%;        
+    height: 50%;      
+    border-radius: 12px; 
+    object-fit: cover;  
+  }
+  .test{
+    color: rgb(240, 244, 245);
+  }
+  
+  

@@ -32,8 +32,8 @@ const CourseSearch = () => {
           <button
             onClick={handleSearch}
             style={{
-              backgroundColor: 'rgb(221, 168, 83)',
-              color: "black",
+              backgroundColor: 'rgb(20,51,80)',
+              color: "white",
               border: "none",
               borderRadius: "5px",
               cursor: "pointer",

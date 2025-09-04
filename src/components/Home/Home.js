@@ -19,15 +19,23 @@ import HubSection from "./Hub";
 import OneOnOneSection from "./onetutorials";
 import USSclass from '../classes/USSclass'
 import { Book, UserCheck, Monitor, Briefcase } from "lucide-react";
+import CourseSearch from "./searchbar";
+import WhoStudiRad from "./whoStudiRad";
 
 const Home = () => {
 
   const activities = [
     {
       icon: <Book size={60} className="p-2 rounded" />,
-      title: "Expert-Led Courses",
+      title: "Get Expert-Led Courses",
       description:
         "Structured courses designed by experienced radiographers to ensure comprehensive learning.",
+    },
+     {
+      icon: <Monitor size={60} className="p-2 rounded" />,
+      title: "Interactive Learning Tools",
+      description:
+        "Quizzes and real-time assessments to enhance knowledge retention.",
     },
     {
       icon: <UserCheck size={60} className="p-2 rounded" />,
@@ -35,21 +43,16 @@ const Home = () => {
       description:
         "Students get one-on-one guidance from industry professionals.",
     },
-    {
-      icon: <Monitor size={60} className="p-2 rounded" />,
-      title: "Interactive Learning Tools",
-      description:
-        "Quizzes and real-time assessments to enhance knowledge retention.",
-    },
+   
     {
       icon: <Briefcase size={60} className="p-2 rounded" />,
-      title: "Opportunities",
+      title: "Access to opportunities",
       description:
         "Access internships, research collaborations, and job placements to advance your radiography career.",
     },
   ];
   return (
-    <div style={{backgroundColor: ''}} >
+    <div style={{backgroundColor: 'rgb(245, 243, 240)'}} >
       
       {/* Hero Section */}
       <section
@@ -69,40 +72,38 @@ const Home = () => {
     >
       <div className="container text-center">
         {/* Headline */}
-        <div className="row mb-5">
+        {/* <div className="row mb-5">
           <div className="col-12">
-            <h1 className="fw-bold" style={{ fontSize: "3rem", lineHeight: "1.2" }}>
-              Transforming your{" "}
+            <h3 className="fw-bold" style={{ fontSize: "1.5rem", lineHeight: "1.2" }}>
+              Transform your{" "}
               <span style={{ color: "#dd9a2e" }}>Radiography</span> Journey
-            </h1>
+            </h3>
             <h3 style={{ marginTop: "20px", maxWidth: "1000px", margin: "0 auto" }}>
               Learn, connect, and grow...
             </h3>
           </div>
-        </div>
+        </div> */}
 
         {/* Independent Transparent Cards */}
-        <div style={{marginTop: '100px'}} className="row g-4">
-          <h1 className="fw-bold">What we have for you</h1>
+        <div style={{}} className="row g-4">
+          <h1 className="fw-bold">Transform your <span style={{ color: "#dd9a2e" }}>Radiography</span>  Journey</h1>
           {activities.map((activity, index) => (
             <div key={index} className="col-6 col-sm-6 col-md-3 mb-4">
               <div className={`hero-card card border-0 p-4 text-center hero-shade-${index}`}>
                 <div className="mb-3">{activity.icon}</div>
-                <h5 className="fw-bold">{activity.title}</h5>
+                <h6 className="fw-bold">{activity.title}</h6>
               </div>
             </div>
           ))}
+          <button className="fw-bold hero-button  " style={{fontSize: '25px', color: 'rgb(17,31,50)',  backdropFilter: 'blur(8px)'}}>Get Started</button>
         </div>
       </div>
     </section>
 
-    <section id="about"  className=" text-center">
+    <section id="about"  className=" text-center" style={{}}>
         <WhatWeDo/>
       </section>
-    
-      <section >
-            <HowItWorks/>
-      </section>
+
       <section id="classes">
         <Classes/>
       </section>
@@ -110,6 +111,16 @@ const Home = () => {
       <section>
         <USSclass/>
       </section>
+
+       <section>
+        <CourseSearch/>
+      </section>
+      <section >
+      <HowItWorks/>
+      </section>
+      
+
+      
 
         {/* What We Do Section */}
     
@@ -124,10 +135,10 @@ const Home = () => {
         <OneOnOneSection/>
       </section>  */}
 
-      {/* <section>
-        <Topcourses/>
-        <CourseSearch/>
-      </section> */}
+  <div style={{backgroundColor: 'rgb(245, 243, 240)'}}>
+  < WhoStudiRad/>
+  </div>
+   
 
       <section>
         <HubSection/>
