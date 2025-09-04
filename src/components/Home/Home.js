@@ -27,9 +27,9 @@ const Home = () => {
   const activities = [
     {
       icon: <Book size={60} className="p-2 rounded" />,
-      title: "Get Expert-Led Courses",
+      title: "Get Expert-Led Classes",
       description:
-        "Structured courses designed by experienced radiographers to ensure comprehensive learning.",
+        "Structured classes designed by experienced radiographers to ensure comprehensive learning.",
     },
      {
       icon: <Monitor size={60} className="p-2 rounded" />,

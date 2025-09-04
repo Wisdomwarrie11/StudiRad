@@ -11,11 +11,10 @@ const CourseSearch = () => {
   return (
     <section style={{ paddingTop: "10px", marginBottom: "0px", height: '50%'}}>
       <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-        <h2 style={{ marginBottom: "20px", fontWeight: "bold" }}>Find a Course</h2>
         <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
           <input
             type="text"
-            placeholder="Search for a course..."
+            placeholder="Search for a class..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{

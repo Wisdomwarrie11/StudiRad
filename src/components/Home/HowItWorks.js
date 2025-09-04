@@ -4,7 +4,7 @@ import "./HowItWorks.css";
 
 const steps = [
   { icon: <User className="step-icon" />, title: "Sign Up", desc: "Create your free account in seconds and access your dashboard." },
-  { icon: <BookOpen className="step-icon" />, title: "Choose a Course", desc: "Explore video courses and live virtual classes tailored to radiography." },
+  { icon: <BookOpen className="step-icon" />, title: "Choose a Class", desc: "Explore video courses and live virtual classes tailored to radiography." },
   { icon: <PlayCircle className="step-icon" />, title: "Start Learning", desc: "Join live classes or study at your own pace with recorded sessions." },
   { icon: <Award className="step-icon" />, title: "Get Certified", desc: "Earn certificates to boost your career and share your achievements." },
 ];

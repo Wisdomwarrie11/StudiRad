@@ -5,7 +5,7 @@ const activities = [
   {
     icon: <Book size={60} className="p-2 rounded" />,
     title: "Expert-Led Courses",
-    description: "Structured courses designed by experienced radiographers to ensure comprehensive learning.",
+    description: "Structured classes designed by experienced radiographers to ensure comprehensive learning.",
   },
   {
     icon: <UserCheck size={60} className="p-2 rounded" />,
