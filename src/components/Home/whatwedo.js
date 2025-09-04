@@ -4,7 +4,7 @@ import "./whatwedo.css";
 const activities = [
   {
     icon: <Book size={60} className="p-2 rounded" />,
-    title: "Expert-Led Courses",
+    title: "Expert-Led Classes",
     description: "Structured classes designed by experienced radiographers to ensure comprehensive learning.",
   },
   {
