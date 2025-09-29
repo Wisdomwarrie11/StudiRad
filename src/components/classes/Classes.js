@@ -69,7 +69,7 @@ const Classes = () => {
 
           <Row className="g-4">
             {topClasses.map((course, index) => (
-              <Col key={course.id} xs={12} sm={6} lg={3}>
+              <Col key={course.id} xs={6} sm={6} lg={3}>
                 <Card
                   className="shadow-sm h-100 d-flex justify-content-center align-items-center"
                   onClick={() => navigate(`/course/${course.id}`)}
