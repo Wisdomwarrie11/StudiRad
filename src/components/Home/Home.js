@@ -1,5 +1,3 @@
-// src/pages/Home.js
-
 import React from "react";
 import Footer from "./Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +6,6 @@ import './HeroSection.css'
 import Benefits from "./Benefits";
 import WhatWeDo from "./whatwedo";
 import Testimonials from "./Testimonials";
-import Topcourses from "components/Home/topcourses";
 import Classes from '../classes/Classes'
 import HowItWorks from "./HowItWorks";
 import NewsletterSignup from "./NewsletterSignup";
@@ -16,8 +13,6 @@ import FloatingCTA from "./FloatingCTA";
 import WeeklyQuiz from "./WeeklyQuiz";
 import AnimatedStats from "components/Home/Stats";
 import HubSection from "./Hub";
-import OneOnOneSection from "./onetutorials";
-import USSclass from '../classes/USSclass'
 import { Book, UserCheck, Monitor, Briefcase } from "lucide-react";
 import CourseSearch from "./searchbar";
 import WhoStudiRad from "./whoStudiRad";
@@ -87,16 +82,10 @@ const Home = () => {
         {/* Independent Transparent Cards */}
         <div style={{}} className="row g-4">
           <h1 style={{fontSize: '35px'}} className="fw-bold">Transform your <span style={{ color: "#dd9a2e" }}>Radiography</span>  Journey</h1>
-          {activities.map((activity, index) => (
-            <div key={index} className="col-6 col-sm-6 col-md-3 mb-4">
-              <div className={`hero-card card border-0 p-4 text-center hero-shade-${index}`}>
-                <div className="mb-3">{activity.icon}</div>
-                <h6 className="fw-bold">{activity.title}</h6>
-              </div>
-            </div>
-          ))}
-          <button className="fw-bold hero-button  " style={{fontSize: '25px', color: 'rgb(17,31,50)',  backdropFilter: 'blur(8px)'}}>Get Started</button>
         </div>
+        <h3 style={{ marginTop: "20px", maxWidth: "1000px", margin: "0 auto" }}>
+        …with expert-led online courses that empower you to learn anytime, anywhere.
+            </h3>
       </div>
     </section>
 
@@ -109,9 +98,6 @@ const Home = () => {
         <Classes/>
       </section>
 
-      <section>
-        <USSclass/>
-      </section>
 
       
       <section >

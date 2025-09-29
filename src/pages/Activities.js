@@ -4,9 +4,9 @@ const activities = [
   {
     id: 1,
     title: "From Induction to Impact: Navigating the Radiographer’s Journey",
-    date: "September 11, 2025, 8:00 PM (WAT)",
+    date: "September 20, 2025, 8:00 PM (WAT)",
     description: "Join four keynote speakers as they share insights on making the best use of your induction period and navigating your career path as a radiographer.",
-    image: "Radstudents.jpg",
+    image: "StudiRad[1].jpg",
     link: "/webinarRegistration"
   },
 //   {

@@ -1,143 +1,173 @@
-import React, { useState } from "react";
-import { Carousel, Row, Col, Modal, Button } from "react-bootstrap";
+import React from "react";
+import { Row, Col, Card, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import './Classes.css'; 
-import CourseSearch from "components/Home/searchbar";
+import "./Classes.css";
 
-const courses = [
+const topClasses = [
+  { id: "xray", title: "X-ray" },
+  { id: "ultrasound", title: "Ultrasound" },
+  { id: "mri", title: "MRI" },
+  { id: "ct", title: "CT" },
+];
+
+
+const newClasses = [
   {
-    id: 2,
-    title: "Principles of X-ray Production",
+    id: "intro-radiation",
+    title: "Introduction to Radiation Physics",
     image: "x-ray.jpeg",
+    price: "Free",
+    rating: 4.7,
+    level: "Beginner",
   },
   {
-    id: 1,
-    title: "Radiographic Anatomy-skull",
-    image: "skull.jpg",
-  },
-  {
-    id: 3,
-    title: "Radiographic Anatomy-Chest",
+    id: "Rad Anatomy",
+    title: "Basic Anatomy & Physiology for Imaging",
     image: "chestana.jpeg",
+    price: "Free",
+    rating: 4.5,
+    level: "Beginner",
   },
   {
-    id: 4,
-    title: "Basics of chest X-ray pathology",
-    image: "chest.jpg",
+    id: "Pathology",
+    title: "Radiographic Pathology",
+    image: "pathology.jpeg",
+    price: "₦2,900",
+    rating: 4.8,
+    level: "Intermediate",
+  },
+  {
+    id: "Obstetrics ultrasound",
+    title: "Obstetrics Ultrasound",
+    image: "obs.jpeg",
+    price: "Free",
+    rating: 4.9,
+    level: "Intermediate",
   },
 ];
 
+// Bootstrap color mapping for levels
+const levelColors = {
+  Beginner: "success",
+  Intermediate: "warning",
+  Advanced: "danger",
+};
+
 const Classes = () => {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
 
   return (
-    <section style={{ backgroundColor: 'white' }} className="py-5">
-      <div className="container">
-        <h2 className="text-center fw-bold mb-4 fade-in-title">Classes you can join</h2>
-        <CourseSearch/>
-        {/* Mobile View - Carousel */}
-        <Carousel indicators={false} interval={3000} className="d-md-none">
-          {Array.from({ length: Math.ceil(courses.length / 2) }).map((_, index) => (
-            <Carousel.Item key={index}>
-              <Row className="justify-content-center">
-                {courses.slice(index * 2, index * 2 + 2).map((course) => (
-                  <Col xs={6} className="text-center" key={course.id}>
-                    <div
-                      className="card shadow-sm cursor-pointer course-card"
-                      onClick={() => navigate(`/course/${course.id}`)}
-                      data-aos="zoom-in"
-                      data-aos-delay={index * 100}
-                    >
-                      <img
-                        src={course.image}
-                        alt={course.title}
-                        className="card-img-top"
-                        style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                      />
-                      <div className="card-body">
-                        <h5 className="fw-bold">{course.title}</h5>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation(); 
-                            handleShow();
-                          }}
-                          style={{
-                            width: "100%",
-                            backgroundColor: 'rgb(24, 59, 78)',
-                            opacity: 0.6,
-                            cursor: "not-allowed",
-                            border: "none"
-                          }}
-                        >
-                          Join
-                        </button>
-                      </div>
-                    </div>
-                  </Col>
-                ))}
-              </Row>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+    <section style={{ backgroundColor: "white" }}>
+      <div className="container py-5">
 
-        {/* Desktop View - Grid */}
-        <div className="row d-none d-md-flex">
-          {courses.map((course, index) => (
-            <div key={course.id} className="col-md-3">
-              <div
-                className="card shadow-sm cursor-pointer course-card"
-                onClick={() => navigate(`/course/${course.id}`)}
-                data-aos="zoom-in"
-                data-aos-delay={index * 100}
-              >
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title fw-bold">{course.title}</h5>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleShow();
-                    }}
-                    style={{
-                      width: "100%",
-                      backgroundColor: 'rgb(24, 59, 78)',
-                      opacity: 0.6,
-                      cursor: "not-allowed",
-                      border: "none"
-                    }}
-                  >
-                    Join
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* ===== Section 1: Top Classes ===== */}
+        <div className="text-center mb-5">
+          <h2 className="fw-bold mb-2">Browse our top Classes</h2>
+          <p className="text-muted mb-4">
+            Choose from a variety of courses and classes
+          </p>
+
+          <Row className="g-4">
+            {topClasses.map((course, index) => (
+              <Col key={course.id} xs={12} sm={6} lg={3}>
+                <Card
+                  className="shadow-sm h-100 d-flex justify-content-center align-items-center"
+                  onClick={() => navigate(`/course/${course.id}`)}
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
+                  style={{
+                    borderRadius: "12px",
+                    cursor: "pointer",
+                    padding: "40px 0",
+                    backgroundColor: "rgb(24, 59, 78)",
+                    color: "white",
+                    fontWeight: "600",
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  {course.title}
+                </Card>
+              </Col>
+            ))}
+          </Row>
         </div>
-      </div>
 
-      {/* Modal for Disabled Classes */}
-      <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title> <h2>So sorry!</h2></Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h3>Classes are not ready for now. Please check back soon!</h3>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Okay
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        {/* ===== Section 2: New Classes ===== */}
+        <div className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <div>
+              <h2 className="fw-bold mb-1">Browse our new classes</h2>
+              <p className="text-muted mb-0">
+                Discover fresh topics and start learning today
+              </p>
+            </div>
+            <span
+              className="text-primary fw-semibold"
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/course/all")}
+            >
+              See All →
+            </span>
+          </div>
+
+          <Row className="g-4">
+            {newClasses.map((course, index) => (
+              <Col key={course.id} xs={12} sm={6} lg={3}>
+                <Card
+                  className="shadow-sm h-100"
+                  onClick={() => navigate(`/course/${course.id}`)}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                  style={{ borderRadius: "12px", cursor: "pointer" }}
+                >
+                  <Card.Img
+                    variant="top"
+                    src={course.image}
+                    alt={course.title}
+                    style={{ height: "180px", objectFit: "cover" }}
+                  />
+                  <Card.Body>
+                    <Card.Title className="fw-bold mb-2">
+                      {course.title}
+                    </Card.Title>
+
+                    {/* Price, Rating and Level badges */}
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <Badge
+                        bg={course.price === "Free" ? "success" : "primary"}
+                        style={{ fontSize: "0.85rem" }}
+                      >
+                        {course.price}
+                      </Badge>
+                      <small className="text-muted">⭐ {course.rating.toFixed(1)}</small>
+                    </div>
+
+                    <div className="mb-2">
+                      <Badge
+                        bg={levelColors[course.level]}
+                        style={{ fontSize: "0.8rem" }}
+                      >
+                        {course.level}
+                      </Badge>
+                    </div>
+
+                    <button
+                      className="btn btn-dark w-100 mt-2"
+                      style={{
+                        backgroundColor: "rgb(24, 59, 78)",
+                        border: "none",
+                      }}
+                    >
+                      View Details
+                    </button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+
+      </div>
     </section>
   );
 };
