@@ -17,7 +17,7 @@ import activities from "pages/Activities"
 import Activities from "pages/Activities";
 import RegistrationForm from "pages/WebinarRegistration";
 import RegistrationsDashboard from "pages/WebinarDashboard";
-import ClassDetails from "components/classes/ClassDetails";
+import ClassDetails from "components/classes/ClassInfo"
 
 function App() {
 
@@ -34,6 +34,7 @@ function App() {
        
       <Routes>  
         <Route path="/" element={<Home />} />
+      <Route path = "/classdetails" element = {ClassDetails}/>
       <Route path="/course/:category" element={<ClassDetails />} />
       <Route path="/course/all" element={<ClassDetails />} />
         <Route path="/studentregistration" element={<RegistrationPage/>} />

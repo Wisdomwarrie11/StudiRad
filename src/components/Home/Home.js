@@ -16,8 +16,21 @@ import HubSection from "./Hub";
 import { Book, UserCheck, Monitor, Briefcase } from "lucide-react";
 import CourseSearch from "./searchbar";
 import WhoStudiRad from "./whoStudiRad";
+import { Row, Col, Card, Badge } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "../classes/Classes.css";
+
 
 const Home = () => {
+
+  
+const topClasses = [
+  { id: "xray", title: "X-ray" },
+  { id: "ultrasound", title: "Ultrasound" },
+  { id: "mri", title: "MRI" },
+  { id: "ct", title: "CT" },
+];
+
 
   const activities = [
     {
@@ -46,6 +59,10 @@ const Home = () => {
         "Access internships, research collaborations, and job placements to advance your radiography career.",
     },
   ];
+
+
+  const navigate = useNavigate();
+
   return (
     <div style={{backgroundColor: 'rgb(245, 243, 240)'}} >
       
@@ -57,7 +74,7 @@ const Home = () => {
         display: "flex",
         alignItems: "center",
         padding: "60px 20px",
-        backgroundImage: `linear-gradient(rgba(12, 45, 60, 0.6), rgba(0, 0, 0, 0.6)), url('mri.jpeg')`,
+        backgroundImage: `linear-gradient(rgba(12, 45, 60, 0.6), rgba(0, 0, 0, 0.6)), url('download.jpeg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -97,21 +114,14 @@ const Home = () => {
       <section id="about"  className=" text-center" style={{}}>
         <WhatWeDo/>
       </section>
-      
-      <section >
-      <HowItWorks/>
-      </section>
-      
-
-      
-
-        {/* What We Do Section */}
-    
-
      
-    
+        {/* What We Do Section */}
       <section style={{backgroundColor: '#edf6f9' }}>
         <Benefits/>
+      </section>
+
+      <section >
+      <HowItWorks/>
       </section>
       
       {/* <section >
@@ -126,6 +136,39 @@ const Home = () => {
       <section>
         <HubSection/>
       </section>
+
+      <div className="container py-5">
+      <div className="text-center mb-5">
+          <h2 className="fw-bold mb-2">Browse our top Classes</h2>
+          <p className="text-muted mb-4">
+            Choose from a variety of courses and classes
+          </p>
+
+          <Row className="g-4">
+            {topClasses.map((course, index) => (
+              <Col key={course.id} xs={6} sm={6} lg={3}>
+                <Card
+                  className="shadow-sm h-100 d-flex justify-content-center align-items-center"
+                  onClick={() => navigate(`/course/${course.id}`)}
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
+                  style={{
+                    borderRadius: "12px",
+                    cursor: "pointer",
+                    padding: "40px 0",
+                    backgroundColor: "rgb(24, 59, 78)",
+                    color: "white",
+                    fontWeight: "600",
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  {course.title}
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+        </div>
 
       {/* Testimonials Section */}
       <section className="py-5 bg-light">

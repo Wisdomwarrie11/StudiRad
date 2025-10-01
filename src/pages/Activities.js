@@ -39,8 +39,8 @@ const Activities = () => {
   return (
     <section 
       style={{ 
-        background: "linear-gradient(135deg, rgb(24, 59, 78) 40%, rgb(221, 168, 83) 100%)",
-        minHeight: "100vh", 
+        background: "white",
+        minHeight: "10vh", 
         padding: "60px 20px",
         marginTop: '100px' 
       }}
@@ -60,7 +60,7 @@ const Activities = () => {
                   src={activity.image}
                   alt={activity.title}
                   className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover", borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }}
+                  style={{ height: "350px", objectFit: "cover", borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }}
                 />
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title fw-bold" style={{ color: "rgb(24, 59, 78)" }}>
