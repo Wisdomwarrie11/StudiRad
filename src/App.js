@@ -19,6 +19,7 @@ import RegistrationForm from "pages/WebinarRegistration";
 import RegistrationsDashboard from "pages/WebinarDashboard";
 import ClassDetails from "components/classes/ClassInfo"
 
+
 function App() {
 
   useEffect(() => {
@@ -34,9 +35,8 @@ function App() {
        
       <Routes>  
         <Route path="/" element={<Home />} />
-      <Route path = "/classdetails" element = {ClassDetails}/>
       <Route path="/course/:category" element={<ClassDetails />} />
-      <Route path="/course/all" element={<ClassDetails />} />
+      <Route path="/course" element={<ClassDetails />} />
         <Route path="/studentregistration" element={<RegistrationPage/>} />
         <Route path="/about" element={<AboutUs/>} />
         <Route path="/contact" element={<ContactPage/>} />

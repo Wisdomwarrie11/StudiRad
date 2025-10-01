@@ -11,4 +11,38 @@
     object-fit: cover;
   }
   
-  
+  /* Mobile: 1 card per row */
+.classes-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Tablet (≥576px): 2 cards per row */
+@media (min-width: 576px) {
+  .classes-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium (≥768px): 3 cards per row */
+@media (min-width: 768px) {
+  .classes-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large (≥992px): switch to horizontal scroll */
+@media (min-width: 992px) {
+  .classes-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .classes-wrapper > .card {
+    flex-shrink: 0;
+    width: 250px; /* fixed card width for scroll row */
+  }
+}

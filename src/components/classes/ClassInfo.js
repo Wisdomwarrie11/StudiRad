@@ -16,7 +16,16 @@ const courses = [
   },
   {
     id: 2,
-    title: "Basic Anatomy & Physiology for Imaging",
+    title: "Basic Radiographic anatomy",
+    category: "X-ray",
+    level: "Beginner",
+    price: "Free",
+    rating: 4.5,
+    img: "skullana.jpeg",
+  },
+  {
+    id: 3,
+    title: "Principles of Chest X-ray",
     category: "X-ray",
     level: "Beginner",
     price: "Free",
@@ -24,7 +33,7 @@ const courses = [
     img: "chestana.jpeg",
   },
   {
-    id: 3,
+    id: 4,
     title: "Obstetrics ultrasound",
     category: "Ultrasound",
     level: "Intermediate",
@@ -33,7 +42,7 @@ const courses = [
     img: "obs.jpeg",
   },
   {
-    id: 4,
+    id: 5,
     title: "Abdominal Ultrasound",
     category: "Ultrasound",
     level: "Intermediate",
@@ -42,7 +51,7 @@ const courses = [
     img: "Abd.jpg",
   },
   {
-    id: 5,
+    id: 6,
     title: "MRI Fundamentals",
     category: "MRI",
     level: "Beginner",
@@ -51,7 +60,7 @@ const courses = [
     img: "mri.jpeg",
   },
   {
-    id: 6,
+    id: 7,
     title: "Advanced MRI Imaging",
     category: "MRI",
     level: "Advanced",
@@ -60,7 +69,7 @@ const courses = [
     img: "MRIpro.jpeg",
   },
   {
-    id: 7,
+    id: 8,
     title: "CT Imaging Principles",
     category: "CT",
     level: "Beginner",
@@ -69,16 +78,17 @@ const courses = [
     img: "CT.jpeg",
   },
   {
-    id: 8,
+    id: 9,
     title: "Chest CT Protocols",
     category: "CT",
     level: "Intermediate",
     price: "₦3,000",
     rating: 4.6,
-    img: "",
+    img: "Ct-.jpeg",
   },
 ];
 
+// Bootstrap badge colors
 const levelColors = {
   Beginner: "success",
   Intermediate: "warning",
@@ -94,7 +104,7 @@ const ClassDetails = () => {
   const [selectedLevel, setSelectedLevel] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Scroll references for each category
+  // Refs for scrolling
   const refs = {
     "X-ray": useRef(null),
     Ultrasound: useRef(null),
@@ -102,28 +112,44 @@ const ClassDetails = () => {
     CT: useRef(null),
   };
 
-  // ✅ Scroll to selected category on page load
+  // ✅ Set category from URL when mounted/changed
   useEffect(() => {
     if (category) {
       const formatted =
-        category.toLowerCase() === "xray"
+        category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+
+      // Special case for "x-ray" since it's hyphenated
+      const finalCategory =
+        formatted === "X-ray" || formatted === "X-ray"
           ? "X-ray"
-          : category.charAt(0).toUpperCase() + category.slice(1);
-      if (refs[formatted]?.current) {
-        refs[formatted].current.scrollIntoView({ behavior: "smooth", block: "start" });
+          : formatted;
+
+      setSelectedCategory(finalCategory);
+
+      if (refs[finalCategory]?.current) {
+        refs[finalCategory].current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }
+    } else {
+      setSelectedCategory("All");
     }
   }, [category]);
 
   // ✅ Filter logic
   const filteredCourses = courses.filter((c) => {
-    const matchesSearch = c.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesLevel = selectedLevel === "All" || c.level === selectedLevel;
-    const matchesCategory = selectedCategory === "All" || c.category === selectedCategory;
+    const matchesSearch = c.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesLevel =
+      selectedLevel === "All" || c.level === selectedLevel;
+    const matchesCategory =
+      selectedCategory === "All" || c.category === selectedCategory;
     return matchesSearch && matchesLevel && matchesCategory;
   });
 
-  // ⭐ Helper to render star ratings
+  // ⭐ Rating stars
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalf = rating - fullStars >= 0.5;
@@ -132,13 +158,18 @@ const ClassDetails = () => {
         {Array.from({ length: fullStars }).map((_, i) => (
           <FaStar key={i} color="#f5c518" />
         ))}
-        {hasHalf && <FaStar color="#f5c518" style={{ opacity: 0.5 }} />}
+        {hasHalf && (
+          <FaStar color="#f5c518" style={{ opacity: 0.5 }} />
+        )}
       </>
     );
   };
 
   return (
-    <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
+    <section
+      className="py-5"
+      style={{ backgroundColor: "#f8f9fa", marginTop: "100px" }}
+    >
       <div className="container">
         {/* Header */}
         <h2 className="fw-bold mb-2 text-center">All Available Classes</h2>
@@ -157,17 +188,27 @@ const ClassDetails = () => {
             />
           </Col>
           <Col xs={6} md={4}>
-            <Form.Select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}>
+            <Form.Select
+              value={selectedLevel}
+              onChange={(e) => setSelectedLevel(e.target.value)}
+            >
               {levels.map((lvl) => (
-                <option key={lvl} value={lvl}>{lvl}</option>
+                <option key={lvl} value={lvl}>
+                  {lvl}
+                </option>
               ))}
             </Form.Select>
           </Col>
           <Col xs={6} md={4}>
-            <Form.Select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            <Form.Select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
               <option value="All">All Classes</option>
               {categories.map((cat) => (
-                <option key={cat} value={cat}>{cat}</option>
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
               ))}
             </Form.Select>
           </Col>
@@ -175,30 +216,55 @@ const ClassDetails = () => {
 
         {/* Grouped by Category */}
         {categories.map((cat) => {
-          const group = filteredCourses.filter((c) => c.category === cat);
+          const group = filteredCourses.filter(
+            (c) => c.category === cat
+          );
           return (
             <div key={cat} ref={refs[cat]} className="mb-5">
               <h4 className="fw-bold mb-3">{cat}</h4>
               <Row className="g-4">
                 {group.length > 0 ? (
                   group.map((course) => (
-                    <Col key={course.id} xs={12} sm={6} lg={3} xl={3}>
+                    <Col
+                      key={course.id}
+                      xs={12}
+                      sm={6}
+                      lg={3}
+                      xl={3}
+                    >
                       <Card
                         className="shadow-sm h-100 border-0"
-                        style={{ borderRadius: "12px", overflow: "hidden" }}
+                        style={{
+                          borderRadius: "12px",
+                          overflow: "hidden",
+                        }}
                       >
-                        <Card.Img variant="top" src={course.img} alt={course.title} />
+                        <Card.Img
+                          variant="top"
+                          src={course.img}
+                          alt={course.title}
+                          style={{
+                            height: "180px",
+                            objectFit: "cover",
+                          }}
+                        />
                         <Card.Body>
-                          <Card.Title className="fw-bold">{course.title}</Card.Title>
+                          <Card.Title className="fw-bold">
+                            {course.title}
+                          </Card.Title>
                           <Badge
                             bg={levelColors[course.level]}
                             className="mb-2 me-2"
                           >
                             {course.level}
                           </Badge>
-                          <Badge bg="secondary" className="mb-2">Not yet available</Badge>
+                          <Badge bg="secondary" className="mb-2">
+                            Not yet available
+                          </Badge>
                           <div className="d-flex justify-content-between align-items-center mt-3">
-                            <span className="fw-semibold text-primary">{course.price}</span>
+                            <span className="fw-semibold text-primary">
+                              {course.price}
+                            </span>
                             <div>{renderStars(course.rating)}</div>
                           </div>
                         </Card.Body>
@@ -206,7 +272,9 @@ const ClassDetails = () => {
                     </Col>
                   ))
                 ) : (
-                  <p className="text-muted">No classes match your filters.</p>
+                  <p className="text-muted">
+                    No classes match your filters.
+                  </p>
                 )}
               </Row>
             </div>

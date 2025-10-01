@@ -69,7 +69,7 @@ const topClasses = [
       {/* Hero Section */}
       <section
       style={{
-        marginTop: "100px",
+        marginTop: "50px",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
@@ -105,23 +105,17 @@ const topClasses = [
             </h5>
       </div>
     </section>
-
+    <section id="about"  className=" text-center" style={{}}>
+        <WhatWeDo/>
+      </section>
       
   <section id="classes">
         <Classes/>
-      </section>
-
-      <section id="about"  className=" text-center" style={{}}>
-        <WhatWeDo/>
-      </section>
+      </section>      
      
         {/* What We Do Section */}
       <section style={{backgroundColor: '#edf6f9' }}>
         <Benefits/>
-      </section>
-
-      <section >
-      <HowItWorks/>
       </section>
       
       {/* <section >
@@ -133,42 +127,11 @@ const topClasses = [
   </div>
    
 
-      <section>
+      {/* <section>
         <HubSection/>
-      </section>
+      </section> */}
 
-      <div className="container py-5">
-      <div className="text-center mb-5">
-          <h2 className="fw-bold mb-2">Browse our top Classes</h2>
-          <p className="text-muted mb-4">
-            Choose from a variety of courses and classes
-          </p>
-
-          <Row className="g-4">
-            {topClasses.map((course, index) => (
-              <Col key={course.id} xs={6} sm={6} lg={3}>
-                <Card
-                  className="shadow-sm h-100 d-flex justify-content-center align-items-center"
-                  onClick={() => navigate(`/course/${course.id}`)}
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 100}
-                  style={{
-                    borderRadius: "12px",
-                    cursor: "pointer",
-                    padding: "40px 0",
-                    backgroundColor: "rgb(24, 59, 78)",
-                    color: "white",
-                    fontWeight: "600",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  {course.title}
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </div>
-        </div>
+     
 
       {/* Testimonials Section */}
       <section className="py-5 bg-light">

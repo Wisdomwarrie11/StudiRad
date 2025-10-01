@@ -46,7 +46,7 @@ const Activities = () => {
       }}
     >
       <div className="container">
-        <h2 className="text-center fw-bold mb-5 text-white">Our Activities & Events</h2>
+        <h2 className="text-center fw-bold mb-5 text-black">Our Activities & Events</h2>
         <div className="row">
           {activities.map((activity) => (
             <div key={activity.id} className="col-md-6 col-lg-4 mb-4">

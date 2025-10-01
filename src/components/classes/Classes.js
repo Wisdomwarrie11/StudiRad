@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./Classes.css";
 
 const topClasses = [
-  { id: "xray", title: "X-ray" },
+  { id: "Conventional X-ray", title: "X-ray" },
   { id: "ultrasound", title: "Ultrasound" },
-  { id: "mri", title: "MRI" },
-  { id: "ct", title: "CT" },
+  { id: "Magnetic Resonance Imaging", title: "MRI" },
+  { id: "Computed Tomography", title: "CT" },
 ];
 
 
@@ -21,28 +21,31 @@ const newClasses = [
     level: "Beginner",
   },
   {
-    id: "Rad Anatomy",
-    title: "Basic Anatomy & Physiology for Imaging",
-    image: "chestana.jpeg",
-    price: "Free",
-    rating: 4.5,
+    id: 6,
+    title: "MRI Fundamentals",
+    category: "MRI",
     level: "Beginner",
+    price: "Free",
+    rating: 4.4,
+    image: "mri.jpeg",
   },
-  {
-    id: "Pathology",
-    title: "Radiographic Pathology",
-    image: "pathology.jpeg",
-    price: "₦2,900",
-    rating: 4.8,
-    level: "Intermediate",
-  },
+   
   {
     id: "Obstetrics ultrasound",
     title: "Obstetrics Ultrasound",
     image: "obs.jpeg",
-    price: "Free",
+    price: "₦2,700",
     rating: 4.9,
     level: "Intermediate",
+  },
+  {
+    id: 7,
+    title: "Advanced MRI Imaging",
+    category: "MRI",
+    level: "Advanced",
+    price: "₦5,700",
+    rating: 4.8,
+    image: "MRIpro.jpeg",
   },
 ];
 
@@ -58,10 +61,9 @@ const Classes = () => {
 
   return (
     <section style={{ backgroundColor: "white" }}>
+      <div  className="container py-5">
       <div className="container py-5">
-
-        {/* ===== Section 1: Top Classes ===== */}
-        <div className="text-center mb-5">
+      <div className="text-center mb-5">
           <h2 className="fw-bold mb-2">Browse our top Classes</h2>
           <p className="text-muted mb-4">
             Choose from a variety of courses and classes
@@ -91,12 +93,13 @@ const Classes = () => {
             ))}
           </Row>
         </div>
-
-        {/* ===== Section 2: New Classes ===== */}
-        <div className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
-          <div className="d-flex justify-content-between align-items-center mb-4">
-            <div>
-              <h2 className="fw-bold mb-1">Browse our new classes</h2>
+        </div>
+        
+              {/* ===== Section 2: New Classes ===== */}
+        <div className="py-5" style={{ backgroundColor: "" }}>
+          <div className="  d-flex justify-content-between align-items-center mb-4">
+            <div className="align-items-center text-center">
+              <h2 className="fw-bold mb-1 text-center">Browse our new classes</h2>
               <p className="text-muted mb-0">
                 Discover fresh topics and start learning today
               </p>
@@ -104,9 +107,10 @@ const Classes = () => {
             <span
               className="text-primary fw-semibold"
               style={{ cursor: "pointer" }}
-              onClick={() => navigate("/course/all")}
-            >
-              See All →
+              onClick={() => navigate("/course")}
+            ><h4>
+              See All Courses
+            </h4>
             </span>
           </div>
 
