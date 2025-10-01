@@ -64,7 +64,7 @@ const topClasses = [
   const navigate = useNavigate();
 
   return (
-    <div style={{backgroundColor: 'rgb(245, 243, 240)'}} >
+    <div style={{backgroundColor: ''}} >
       
       {/* Hero Section */}
       <section

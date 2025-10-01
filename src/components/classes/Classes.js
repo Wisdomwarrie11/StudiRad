@@ -94,9 +94,9 @@ const Classes = () => {
           </Row>
         </div>
         </div>
-        
+
               {/* ===== Section 2: New Classes ===== */}
-        <div className="py-5" style={{ backgroundColor: "" }}>
+        <div className="py-5" style={{ backgroundColor: "", marginBottom: "" }}>
           <div className="  d-flex justify-content-between align-items-center mb-4">
             <div className="align-items-center text-center">
               <h2 className="fw-bold mb-1 text-center">Browse our new classes</h2>
