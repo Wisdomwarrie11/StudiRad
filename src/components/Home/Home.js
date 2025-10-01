@@ -98,21 +98,22 @@ const topClasses = [
 
         {/* Independent Transparent Cards */}
         <div style={{}} className="row g-4">
-          <h1 style={{fontSize: '35px'}} className="fw-bold">Transform your <span style={{ color: "#dd9a2e" }}>Radiography</span>  Journey</h1>
+          <h1 style={{fontSize: '50px'}} className="fw-bold">Transform your <span style={{ color: "#dd9a2e" }}>Radiography</span>  Journey</h1>
         </div>
         <h5 style={{ marginTop: "20px", maxWidth: "1000px", margin: "0 auto" }}>
         …with expert-led online classes that empower you to learn anytime, anywhere.
             </h5>
       </div>
     </section>
-    <section id="about"  className=" text-center" style={{}}>
-        <WhatWeDo/>
-      </section>
       
   <section id="classes">
         <Classes/>
       </section>      
      
+      <section id="about"  className=" text-center" style={{}}>
+        <WhatWeDo/>
+      </section>
+      
         {/* What We Do Section */}
       <section style={{backgroundColor: '#edf6f9' }}>
         <Benefits/>
