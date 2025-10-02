@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Card, Badge, Form } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
+import CourseModal from "./CourseModal"; // ✅ import the modal
 import "./Classes.css";
 
 const courses = [
@@ -104,6 +105,20 @@ const ClassDetails = () => {
   const [selectedLevel, setSelectedLevel] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  // Modal state
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleShowModal = (course) => {
+    setSelectedCourse(course);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCourse(null);
+    setShowModal(false);
+  };
+
   // Refs for scrolling
   const refs = {
     "X-ray": useRef(null),
@@ -115,14 +130,12 @@ const ClassDetails = () => {
   // ✅ Set category from URL when mounted/changed
   useEffect(() => {
     if (category) {
-      const formatted =
-        category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+      const formatted = category.replace(/-/g, " ");
+      const normalized =
+        formatted.charAt(0).toUpperCase() + formatted.slice(1);
 
-      // Special case for "x-ray" since it's hyphenated
       const finalCategory =
-        formatted === "X-ray" || formatted === "X-ray"
-          ? "X-ray"
-          : formatted;
+        normalized.toLowerCase() === "x ray" ? "X-ray" : normalized;
 
       setSelectedCategory(finalCategory);
 
@@ -216,28 +229,22 @@ const ClassDetails = () => {
 
         {/* Grouped by Category */}
         {categories.map((cat) => {
-          const group = filteredCourses.filter(
-            (c) => c.category === cat
-          );
+          const group = filteredCourses.filter((c) => c.category === cat);
           return (
             <div key={cat} ref={refs[cat]} className="mb-5">
               <h4 className="fw-bold mb-3">{cat}</h4>
               <Row className="g-4">
                 {group.length > 0 ? (
                   group.map((course) => (
-                    <Col
-                      key={course.id}
-                      xs={12}
-                      sm={6}
-                      lg={3}
-                      xl={3}
-                    >
+                    <Col key={course.id} xs={12} sm={6} lg={3} xl={3}>
                       <Card
                         className="shadow-sm h-100 border-0"
                         style={{
                           borderRadius: "12px",
                           overflow: "hidden",
+                          cursor: "pointer",
                         }}
+                        onClick={() => handleShowModal(course)} // ✅ show modal
                       >
                         <Card.Img
                           variant="top"
@@ -272,15 +279,20 @@ const ClassDetails = () => {
                     </Col>
                   ))
                 ) : (
-                  <p className="text-muted">
-                    No classes match your filters.
-                  </p>
+                  <p className="text-muted">No classes match your filters.</p>
                 )}
               </Row>
             </div>
           );
         })}
       </div>
+
+      {/* ✅ Modal */}
+      <CourseModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        course={selectedCourse}
+      />
     </section>
   );
 };

@@ -17,7 +17,12 @@ import activities from "pages/Activities"
 import Activities from "pages/Activities";
 import RegistrationForm from "pages/WebinarRegistration";
 import RegistrationsDashboard from "pages/WebinarDashboard";
+import Classes from "components/classes/Classes"
 import ClassDetails from "components/classes/ClassInfo"
+import XRayPage from "components/classes/X-ray";
+import MRIPage from "components/classes/MRIPage";
+import CTPage from "components/classes/CTPage";
+import UltrasoundPage from "components/classes/USSPage";
 
 
 function App() {
@@ -35,8 +40,12 @@ function App() {
        
       <Routes>  
         <Route path="/" element={<Home />} />
-      <Route path="/course/:category" element={<ClassDetails />} />
-      <Route path="/course" element={<ClassDetails />} />
+        <Route path="/course" element={<ClassDetails />} />
+        <Route path="/" element={<Classes />} />
+        <Route path="/x-ray" element={<XRayPage />} />
+        <Route path="/mri" element={<MRIPage />} />
+        <Route path="/ct" element={<CTPage />} />
+        <Route path="/ultrasound" element={<UltrasoundPage />} />
         <Route path="/studentregistration" element={<RegistrationPage/>} />
         <Route path="/about" element={<AboutUs/>} />
         <Route path="/contact" element={<ContactPage/>} />
