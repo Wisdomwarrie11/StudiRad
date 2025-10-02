@@ -101,81 +101,85 @@ const Classes = () => {
 
               {/* ===== Section 2: New Classes ===== */}
         {/* ===== Section 2: New Classes ===== */}
-      <div className="py-5">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <div className="align-items-center text-center">
-            <h2 className="fw-bold mb-1 text-center">Browse our new classes</h2>
-            <p className="text-muted mb-0">
-              Discover fresh topics and start learning today
-            </p>
-          </div>
-          <span
-            className="text-primary fw-semibold"
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/course")}
-          >
-            <p>See All Courses</p>
-          </span>
-        </div>
+<div className="py-5">
+  {/* Header */}
+  <div className="text-center mb-4">
+    <h2 className="fw-bold mb-1">Browse our new classes</h2>
+    <p className="text-muted mb-0">
+      Discover fresh topics and start learning today
+    </p>
+  </div>
 
-        <Row className="g-4">
-          {newClasses.map((course, index) => (
-            <Col key={course.id} xs={12} sm={6} lg={3}>
-              <Card
-                className="shadow-sm h-100"
-                onClick={() => navigate(`/course/${course.id}`)} // ✅ redirect to course modal page
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                style={{ borderRadius: "12px", cursor: "pointer" }}
+  {/* Cards */}
+  <Row className="g-4">
+    {newClasses.map((course, index) => (
+      <Col key={course.id} xs={12} sm={6} lg={3}>
+        <Card
+          className="shadow-sm h-100"
+          onClick={() => navigate(`/course/${course.id}`)}
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+          style={{ borderRadius: "12px", cursor: "pointer" }}
+        >
+          <Card.Img
+            variant="top"
+            src={course.image}
+            alt={course.title}
+            style={{ height: "180px", objectFit: "cover" }}
+          />
+          <Card.Body>
+            <Card.Title className="fw-bold mb-2">{course.title}</Card.Title>
+
+            {/* Price + Rating */}
+            <div className="d-flex justify-content-between align-items-center mb-2">
+              <Badge
+                bg={course.price === "Free" ? "success" : "primary"}
+                style={{ fontSize: "0.85rem" }}
               >
-                <Card.Img
-                  variant="top"
-                  src={course.image}
-                  alt={course.title}
-                  style={{ height: "180px", objectFit: "cover" }}
-                />
-                <Card.Body>
-                  <Card.Title className="fw-bold mb-2">{course.title}</Card.Title>
+                {course.price}
+              </Badge>
+              <small className="text-muted">⭐ {course.rating.toFixed(1)}</small>
+            </div>
 
-                  {/* Price, Rating and Level badges */}
-                  <div className="d-flex justify-content-between align-items-center mb-2">
-                    <Badge
-                      bg={course.price === "Free" ? "success" : "primary"}
-                      style={{ fontSize: "0.85rem" }}
-                    >
-                      {course.price}
-                    </Badge>
-                    <small className="text-muted">⭐ {course.rating.toFixed(1)}</small>
-                  </div>
+            {/* Level */}
+            <div className="mb-2">
+              <Badge
+                bg={levelColors[course.level]}
+                style={{ fontSize: "0.8rem" }}
+              >
+                {course.level}
+              </Badge>
+            </div>
 
-                  <div className="mb-2">
-                    <Badge
-                      bg={levelColors[course.level]}
-                      style={{ fontSize: "0.8rem" }}
-                    >
-                      {course.level}
-                    </Badge>
-                  </div>
+            {/* Button inside card */}
+            <button
+              className="btn btn-dark w-100 mt-2"
+              style={{
+                backgroundColor: "rgb(24, 59, 78)",
+                border: "none",
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/course/${course.id}`);
+              }}
+            >
+              View Details
+            </button>
+          </Card.Body>
+        </Card>
+      </Col>
+    ))}
+  </Row>
 
-                  <button
-                    className="btn btn-dark w-100 mt-2"
-                    style={{
-                      backgroundColor: "rgb(24, 59, 78)",
-                      border: "none",
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation(); // stop bubbling to card
-                      navigate(`/course/${course.id}`); // ✅ button also redirects
-                    }}
-                  >
-                    View Details
-                  </button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </div>
+  {/* CTA Button Below Cards */}
+  <div style={{marginTop: '20px'}}>
+  <a onClick={() => navigate("/course")}
+  className="fw-bold" style={{textDecoration: "none", color: "rgb(6, 49, 69)", marginTop: '20px', fontSize: '25px', fontWeight: '200px'}} 
+  >See all courses → </a>
+
+  </div>
+</div>
+
 
 
       </div>
