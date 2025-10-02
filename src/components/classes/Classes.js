@@ -114,7 +114,7 @@ const Classes = () => {
             style={{ cursor: "pointer" }}
             onClick={() => navigate("/course")}
           >
-            <h4>See All Courses</h4>
+            <p>See All Courses</p>
           </span>
         </div>
 
