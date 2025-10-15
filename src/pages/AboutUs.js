@@ -25,7 +25,7 @@ const AboutUs = () => {
         <div className="mb-5 text-center fade-in">
           <h3 className="fw-bold">What We Stand For</h3>
           <p className="w-75 mx-auto text-muted fs-5">
-            StudiRad is here to bridge the gap—by providing affordable courses, real-time classes, and one-on-one support to Radiography students.
+            StudiRad Academy is here to bridge the gap—by providing affordable courses, real-time classes, and one-on-one support to Radiography students.
             It’s where learners grow and tutors shine.
           </p>
         </div>

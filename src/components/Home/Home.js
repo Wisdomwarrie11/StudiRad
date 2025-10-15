@@ -105,14 +105,15 @@ const topClasses = [
             </h5>
       </div>
     </section>
+
+    <section id="about"  className=" text-center" style={{}}>
+        <WhatWeDo/>
+      </section>
       
-  <section id="classes">
+      <section id="classes">
         <Classes/>
       </section>      
      
-      <section id="about"  className=" text-center" style={{}}>
-        <WhatWeDo/>
-      </section>
       
         {/* What We Do Section */}
       <section style={{backgroundColor: '#edf6f9' }}>
