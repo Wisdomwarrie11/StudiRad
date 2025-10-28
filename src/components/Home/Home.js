@@ -19,6 +19,7 @@ import WhoStudiRad from "./whoStudiRad";
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../classes/Classes.css";
+import Internship from "./Internship";
 
 
 const Home = () => {
@@ -112,7 +113,7 @@ const topClasses = [
       
       <section id="classes">
         <Classes/>
-      </section>      
+      </section>   
      
       
         {/* What We Do Section */}
@@ -124,16 +125,10 @@ const topClasses = [
         <OneOnOneSection/>
       </section>  */}
 
-  <div style={{backgroundColor: 'rgb(245, 243, 240)'}}>
-  < WhoStudiRad/>
-  </div>
-   
-
-      {/* <section>
-        <HubSection/>
-      </section> */}
-
-     
+      <div style={{backgroundColor: 'rgb(245, 243, 240)'}}>
+      < WhoStudiRad/>
+      </div>
+  
 
       {/* Testimonials Section */}
       <section className="py-5 bg-light">

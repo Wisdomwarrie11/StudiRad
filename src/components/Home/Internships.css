@@ -1,0 +1,55 @@
+.internship-section {
+    background-color: #f9fafb;
+    color: #063145;
+    min-height: 100vh;
+  }
+  
+  .table-responsive {
+    border-radius: 12px;
+    overflow-x: auto;
+  }
+  
+  table thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  table tbody tr:hover {
+    background-color: #eef6f9;
+    transition: 0.3s ease;
+  }
+  
+  .apply-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: rgb(6, 49, 69);
+    color: #fff !important;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .apply-link:hover {
+    background-color: rgb(10, 70, 95);
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .apply-link.agent {
+    background-color: #0d6efd;
+  }
+  
+  .apply-link.agent:hover {
+    background-color: #093c89;
+  }
+  
+  @media (max-width: 768px) {
+    .apply-link {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+    }
+  }
+  

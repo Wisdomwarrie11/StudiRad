@@ -1,0 +1,39 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+  }
+  
+  .hero {
+    min-height: 90vh;
+    background: linear-gradient(120deg, #f5fafd, #ffffff);
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-btn {
+    background-color: rgb(6, 49, 69);
+    border: none;
+  }
+  
+  .custom-btn:hover {
+    background-color: rgba(6, 49, 69, 0.9);
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    transition: all 0.3s ease;
+  }
+  
+  ul {
+    list-style-type: square;
+    line-height: 1.8;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      text-align: center;
+      padding: 60px 0;
+    }
+  }
+  

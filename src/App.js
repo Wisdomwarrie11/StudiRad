@@ -23,6 +23,11 @@ import XRayPage from "components/classes/X-ray";
 import MRIPage from "components/classes/MRIPage";
 import CTPage from "components/classes/CTPage";
 import UltrasoundPage from "components/classes/USSPage";
+import HomeApp from "components/Home/Home1";
+import Internship from "components/Home/Internship";
+import Jobs from "components/Home/Jobs";
+import Scholarship from "components/Home/Scholarship";
+import Communities from "pages/community";
 
 
 function App() {
@@ -40,6 +45,8 @@ function App() {
        
       <Routes>  
         <Route path="/" element={<Home />} />
+        <Route path="/communities" element={<Communities />} />
+        <Route path="/Home" element={<HomeApp />} />
         <Route path="/course" element={<ClassDetails />} />
         <Route path="/" element={<Classes />} />
         <Route path="/x-ray" element={<XRayPage />} />
@@ -59,6 +66,9 @@ function App() {
         <Route path="/activities" element={<Activities/>} />
         <Route path="/webinarRegistration" element={<RegistrationForm/>} />
         <Route path="/webdash" element={<RegistrationsDashboard/>} />
+        <Route path="/internship" element={<Internship />} />
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/scholarship" element={<Scholarship />} />
       </Routes>
     </Router>
   );
