@@ -61,8 +61,8 @@ const Classes = () => {
 
   return (
     <section style={{ backgroundColor: "white" }}>
-      <div  className="container py-5">
-      <div className="container py-5">
+      <div  className="container">
+      <div className="container">
       <div className="text-center mb-5">
           <h2 className="fw-bold mb-2">Browse our top Classes</h2>
           <p className="text-muted mb-4">
@@ -91,27 +91,18 @@ const Classes = () => {
       }}
     >
       {course.title}
+     
     </Card>
   </Col>
+  
 ))}
 
           </Row>
-          <div style={{marginTop: '20px'}}>
-  <a onClick={() => navigate("/course")}
-  className="fw-bold" style={{textDecoration: "none", color: "rgb(6, 49, 69)", marginTop: '20px', fontSize: '25px', fontWeight: '200px'}} 
+    <a onClick={() => navigate("/course")}
+  className="fw-bold" style={{ textDecoration: "none", color: "rgb(6, 49, 69)", marginTop: '100px', fontSize: '25px', fontWeight: '200px'}} 
   >See all courses </a>
-
-  </div>
         </div>
         </div>
-
-
-
-  {/* CTA Button Below Cards */}
-
-
-
-
 
       </div>
     </section>

@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav style={{ backgroundColor: 'white' }} className="navbar navbar-expand-lg fixed-top shadow-sm">
       <div className="container">
         <strong>
-          <Link className="navbar-brand" to="/">
+          <Link style={{ color: 'rgb(6, 49, 69)' }} className="navbar-brand" to="/">
             <span style={{ color: 'rgb(221, 168, 83)' }}>Studi</span>Rad
           </Link>
         </strong>
@@ -33,6 +33,7 @@ const Navbar = () => {
             backgroundColor: 'white',
             width: '45px',
             height: '45px',
+            color: "rgb(6, 49, 69)",
             padding: '5px',
             border: 'none',
             boxShadow: 'none',

@@ -61,7 +61,6 @@ export default function Benefits() {
   return (
     <section
       ref={sectionRef}
-      style={{marginTop: "100px" }}
       className="container my-5 py-5"
     >
       <h2 className="text-center mb-4 fw-bold">Why Choose Our Platform?</h2>

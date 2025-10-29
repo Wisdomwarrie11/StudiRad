@@ -20,6 +20,8 @@ import { Row, Col, Card, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../classes/Classes.css";
 import Internship from "./Internship";
+import OpportunitiesSection from "./Opportunities";
+
 
 
 const Home = () => {
@@ -115,6 +117,9 @@ const topClasses = [
         <Classes/>
       </section>   
      
+     <section>
+      <OpportunitiesSection/>
+     </section>
       
         {/* What We Do Section */}
       <section style={{backgroundColor: '#edf6f9' }}>
