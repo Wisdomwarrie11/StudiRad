@@ -1,3 +1,4 @@
+import { testFirestoreConnection } from "./testFirestore";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Navbar from "./Navbar";
@@ -28,6 +29,9 @@ import Internship from "components/Home/Internship";
 import Jobs from "components/Home/Jobs";
 import Scholarship from "components/Home/Scholarship";
 import Communities from "pages/community";
+import BlogPage from "pages/BlogPage";
+import AdminBlogPage from "pages/AdminBlogPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
 
 
 function App() {
@@ -37,6 +41,10 @@ function App() {
       duration: 800,
       once: false, 
     });
+  }, []);
+
+  useEffect(() => {
+    testFirestoreConnection();
   }, []);
   return (
     <Router>
@@ -68,7 +76,12 @@ function App() {
         <Route path="/webdash" element={<RegistrationsDashboard/>} />
         <Route path="/internship" element={<Internship />} />
         <Route path="/jobs" element={<Jobs />} />
-        <Route path="/scholarship" element={<Scholarship />} />
+        <Route path="/blogs" element={<BlogPage />} />
+        <Route path="/admin-blog" element={<AdminBlogPage />} />
+        <Route path="/adminlogin" element={<AdminLoginPage />} />
+        <Route path="/adminblog" element={<AdminBlogPage />} />
+        <Route path="/scholarship" element={<Scholarship />}
+         />
       </Routes>
     </Router>
   );

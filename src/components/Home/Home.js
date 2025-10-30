@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import "../classes/Classes.css";
 import Internship from "./Internship";
 import OpportunitiesSection from "./Opportunities";
+import RegistrationPage from "pages/RegistrationPage";
 
 
 
@@ -147,6 +148,8 @@ const topClasses = [
       <section>
         <WeeklyQuiz/>
       </section>
+
+      <RegistrationPage/>
       
       <section>
         <NewsletterSignup />

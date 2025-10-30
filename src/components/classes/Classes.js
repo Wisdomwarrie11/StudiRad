@@ -60,7 +60,7 @@ const Classes = () => {
   const navigate = useNavigate();
 
   return (
-    <section style={{ backgroundColor: "white" }}>
+    <section style={{ backgroundColor: "white", marginTop: "30px" }}>
       <div  className="container">
       <div className="container">
       <div className="text-center mb-5">

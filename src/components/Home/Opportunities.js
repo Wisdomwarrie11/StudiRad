@@ -8,7 +8,7 @@ const OpportunitiesSection = () => {
     <section className="opportunity-section py-5">
       <div className="container text-center">
         <h2 className="fw-bold mb-4 text-dark">
-          Explore Opportunities with <span className="brand-text">StudiRad</span>
+          Explore Opportunities with <span className="brand-text">Studi<span style={{color: "rgb(6, 49, 69)"}}>Rad</span></span>
         </h2>
         <p className="text-muted mb-5">
           Discover pathways that help radiography students and professionals grow — 
