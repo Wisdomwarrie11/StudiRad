@@ -18,7 +18,7 @@ const AdminLoginPage = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/adminblog");
+        navigate("/admindashboard");
       } else {
         setCheckingAuth(false);
       }
@@ -34,7 +34,7 @@ const AdminLoginPage = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setMessage("✅ Login successful! Redirecting...");
-      setTimeout(() => navigate("/adminblog"), 1500);
+      setTimeout(() => navigate("/admindashboard"), 1500);
     } catch (error) {
       console.error("Login error:", error);
       if (error.code === "auth/user-not-found") {

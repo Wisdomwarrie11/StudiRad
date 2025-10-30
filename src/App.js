@@ -32,6 +32,9 @@ import Communities from "pages/community";
 import BlogPage from "pages/BlogPage";
 import AdminBlogPage from "pages/AdminBlogPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
+import AdminMaterialsPage from "pages/AdminMaterialPage";
+import MaterialsPage from "pages/MaterialsPage";
+import AdminDashboard from "pages/AdminDashboard";
 
 
 function App() {
@@ -80,6 +83,9 @@ function App() {
         <Route path="/admin-blog" element={<AdminBlogPage />} />
         <Route path="/adminlogin" element={<AdminLoginPage />} />
         <Route path="/adminblog" element={<AdminBlogPage />} />
+        <Route path="/adminmaterials" element={<AdminMaterialsPage />} />
+        <Route path="/materials" element={<MaterialsPage />} />
+        <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route path="/scholarship" element={<Scholarship />}
          />
       </Routes>
