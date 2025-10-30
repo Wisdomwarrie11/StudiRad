@@ -127,6 +127,8 @@ const AdminMaterialsPage = () => {
             <option value="CT">CT</option>
             <option value="Ultrasound">Ultrasound</option>
             <option value="Projects">Projects</option>
+            <option value="Projects">Professional Exams PQ</option>
+
           </Form.Select>
         </Form.Group>
 

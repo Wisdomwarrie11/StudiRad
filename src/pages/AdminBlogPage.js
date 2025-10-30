@@ -1,8 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { storage } from "../firebase";
-import imageCompression from "browser-image-compression"; // 👈 Add this import
-import { db } from "../firebase";
+import { db, storage, auth } from "../firebase";
 import {
   collection,
   addDoc,
@@ -12,31 +9,36 @@ import {
   updateDoc,
   serverTimestamp,
 } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   Container,
   Form,
   Button,
-  Alert,
   Card,
   Row,
   Col,
+  Spinner,
+  Modal,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import imageCompression from "browser-image-compression";
 
 const AdminBlogPage = () => {
-  const [imageFile, setImageFile] = useState(null);
-  const [writer, setWriter] = useState("");
-  const [role, setRole] = useState("");
   const [title, setTitle] = useState("");
   const [writerName, setWriterName] = useState("");
   const [writerRole, setWriterRole] = useState("");
   const [content, setContent] = useState("");
+  const [imageFile, setImageFile] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+
+  const [editModalShow, setEditModalShow] = useState(false);
+  const [editPostId, setEditPostId] = useState(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
+  const [editLoading, setEditLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,52 +60,36 @@ const AdminBlogPage = () => {
     e.preventDefault();
     setMessage("");
     setLoading(true);
-  
+
     try {
-      let imageUrl = ""; // ✅ define this before use
-  
-      // ✅ If admin uploaded an image
+      let imageUrl = "";
+
       if (imageFile) {
-        const options = {
-          maxSizeMB: 0.4,
-          maxWidthOrHeight: 1000,
-          useWebWorker: true,
-        };
-  
-        // ✅ Compress image before upload
+        const options = { maxSizeMB: 1, maxWidthOrHeight: 1024, useWebWorker: true };
         const compressedFile = await imageCompression(imageFile, options);
-  
-        // ✅ Upload to Firebase Storage
-        const storageRef = ref(storage, `blogImages/${Date.now()}-${compressedFile.name}`);
-        await uploadBytes(storageRef, compressedFile);
-  
-        // ✅ Get the download URL for storage
-        imageUrl = await getDownloadURL(storageRef);
+
+        const imageRef = ref(storage, `blogImages/${Date.now()}_${compressedFile.name}`);
+        await uploadBytes(imageRef, compressedFile);
+        imageUrl = await getDownloadURL(imageRef);
       }
-  
-      // ✅ Automatically generate snippet
-      const snippet = content.split(" ").slice(0, 25).join(" ") + "...";
-  
-      // ✅ Add post to Firestore
+
       await addDoc(collection(db, "blogs"), {
         title,
         content,
-        snippet,
+        writerName,
+        writerRole,
         imageUrl,
-        writer,
-        role,
         createdAt: serverTimestamp(),
       });
-  
+
       setMessage("✅ Blog post successfully added!");
       setTitle("");
       setContent("");
+      setWriterName("");
+      setWriterRole("");
       setImageFile(null);
-      setWriter("");
-      setRole("");
-  
-      // ✅ Redirect to blog page after success
-      navigate("/blog");
+
+      setTimeout(() => navigate("/blogs"), 1500);
     } catch (error) {
       console.error("Error adding blog post:", error);
       setMessage("❌ Failed to add post. Please check Firebase rules or connection.");
@@ -119,37 +105,44 @@ const AdminBlogPage = () => {
     }
   };
 
-  const handleEdit = (id, currentTitle, currentContent) => {
-    const newTitle = prompt("Edit title:", currentTitle);
-    const newContent = prompt("Edit content:", currentContent);
+  const openEditModal = (post) => {
+    setEditPostId(post.id);
+    setEditTitle(post.title);
+    setEditContent(post.content);
+    setEditModalShow(true);
+  };
 
-    if (newTitle && newContent) {
-      updateDoc(doc(db, "blogs", id), {
-        title: newTitle,
-        content: newContent,
+  const handleEditSave = async () => {
+    if (!editTitle.trim() || !editContent.trim()) return;
+
+    setEditLoading(true);
+    try {
+      await updateDoc(doc(db, "blogs", editPostId), {
+        title: editTitle,
+        content: editContent,
         updatedAt: new Date(),
-      })
-        .then(() => {
-          alert("Blog updated successfully!");
-          fetchPosts();
-        })
-        .catch((error) => {
-          console.error("Error updating blog: ", error);
-        });
+      });
+      setEditModalShow(false);
+      fetchPosts();
+    } catch (error) {
+      console.error("Error updating blog:", error);
+    } finally {
+      setEditLoading(false);
     }
   };
 
   return (
-    <Container className="py-5" style={{ maxWidth: "800px" }}>
+    <Container className="py-5" style={{ maxWidth: "800px", marginTop: "50px" }}>
       <h2 className="text-center mb-4 fw-bold">Admin Blog Management</h2>
 
       {message && (
-        <Alert
-          variant={message.includes("✅") ? "success" : "danger"}
-          className="text-center"
+        <div
+          className={`text-center mb-3 p-2 rounded ${
+            message.includes("✅") ? "bg-success text-white" : "bg-danger text-white"
+          }`}
         >
           {message}
-        </Alert>
+        </div>
       )}
 
       <Form onSubmit={handleSubmit} className="mb-5">
@@ -216,13 +209,16 @@ const AdminBlogPage = () => {
         <Button
           type="submit"
           disabled={loading}
-          style={{
-            backgroundColor: "rgb(6, 49, 69)",
-            border: "none",
-            width: "100%",
-          }}
+          style={{ backgroundColor: "#063145", border: "none", width: "100%" }}
         >
-          {loading ? "Posting..." : "Post Blog"}
+          {loading ? (
+            <>
+              <Spinner animation="border" size="sm" className="me-2" variant="light" />
+              Posting...
+            </>
+          ) : (
+            "Post Blog"
+          )}
         </Button>
       </Form>
 
@@ -240,15 +236,12 @@ const AdminBlogPage = () => {
               <div className="d-flex justify-content-end">
                 <Button
                   variant="secondary"
-                  onClick={() => handleEdit(post.id, post.title, post.content)}
+                  onClick={() => openEditModal(post)}
                   className="me-2"
                 >
                   Edit
                 </Button>
-                <Button
-                  variant="danger"
-                  onClick={() => handleDelete(post.id)}
-                >
+                <Button variant="danger" onClick={() => handleDelete(post.id)}>
                   Delete
                 </Button>
               </div>
@@ -256,6 +249,49 @@ const AdminBlogPage = () => {
           </Card>
         ))
       )}
+
+      {/* Edit Modal */}
+      <Modal show={editModalShow} onHide={() => setEditModalShow(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Blog</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                type="text"
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Content</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={6}
+                value={editContent}
+                onChange={(e) => setEditContent(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setEditModalShow(false)}>
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            onClick={handleEditSave}
+            disabled={editLoading}
+          >
+            {editLoading ? (
+              <Spinner animation="border" size="sm" className="me-2" />
+            ) : null}
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };

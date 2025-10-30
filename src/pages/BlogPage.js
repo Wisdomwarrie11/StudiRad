@@ -134,7 +134,7 @@ const BlogPage = () => {
                     {blog.title}
                   </h5>
                   <small className="text-muted mb-3">
-                    By {blog.writer} ({blog.role}) •{" "}
+                    By {blog.writerName} ({blog.writerRole}) •{" "}
                     {blog.createdAt?.toDate().toDateString()}
                   </small>
                   <p className="text-secondary" style={{ flexGrow: 1 }}>
