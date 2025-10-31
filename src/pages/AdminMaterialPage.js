@@ -96,7 +96,7 @@ const AdminMaterialsPage = () => {
   };
 
   return (
-    <Container className="py-5" style={{ maxWidth: "800px" }}>
+    <Container className="py-5" style={{ maxWidth: "800px", marginTop:'50px' }}>
       <h2 className="text-center fw-bold mb-4">Upload Reading Materials</h2>
 
       {message && (

@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import Navbar from "./Navbar";
 import ContactPage from "components/Home/contact";
 import RegistrationPage from "pages/RegistrationPage";
-import LoginPage from "pages/Login";
+import LoginPage from "pages/LoginPage";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
@@ -64,11 +64,11 @@ function App() {
         <Route path="/mri" element={<MRIPage />} />
         <Route path="/ct" element={<CTPage />} />
         <Route path="/ultrasound" element={<UltrasoundPage />} />
-        <Route path="/studentregistration" element={<RegistrationPage/>} />
+        <Route path="/registration" element={<RegistrationPage/>} />
         <Route path="/about" element={<AboutUs/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/tutordashboard" element={<TutorDashboard />} />  
-        <Route path="/studentlogin" element={<LoginPage />} />  
+        <Route path="/login" element={<LoginPage />} />  
         <Route path="/tutorhome" element={<TutorHero />} /> 
         <Route path="/tutorregistration" element={<TutorRegistrationPage />} /> 
         <Route path="/tutorlogin" element={<TutorLogin />} /> 

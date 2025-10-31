@@ -148,8 +148,6 @@ const topClasses = [
       <section>
         <WeeklyQuiz/>
       </section>
-
-      <RegistrationPage/>
       
       <section>
         <NewsletterSignup />

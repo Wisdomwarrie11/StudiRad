@@ -9,18 +9,43 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  getDoc,
 } from "firebase/firestore";
-import { Container, Card, Button, Modal, Form } from "react-bootstrap";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Container, Card, Button, Modal, Form, Alert } from "react-bootstrap";
 import { HandThumbsUp, ChatDots, Share } from "react-bootstrap-icons";
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [commentText, setCommentText] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
+  const [alertMessage, setAlertMessage] = useState("");
 
-  // Use a simple user ID for demo (replace with auth user ID later)
-  const userId = "anonymous-user";
+  const auth = getAuth();
 
+  // ✅ Monitor authentication state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user && user.emailVerified) {
+        setCurrentUser(user);
+
+        // Fetch user profile from Firestore
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setUserProfile(userDoc.data());
+        }
+      } else {
+        setCurrentUser(null);
+        setUserProfile(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth]);
+
+  // ✅ Load blogs in real time
   useEffect(() => {
     const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -33,19 +58,29 @@ const BlogPage = () => {
     return () => unsubscribe();
   }, []);
 
-  // Like / Unlike toggle
+  // ✅ Toggle Like / Unlike
   const toggleLike = async (blog) => {
+    if (!currentUser) {
+      setAlertMessage("⚠️ You must be logged in to like a post.");
+      setTimeout(() => setAlertMessage(""), 2500);
+      return;
+    }
+
+    const userId = currentUser.uid;
     const blogRef = doc(db, "blogs", blog.id);
+    const hasLiked = blog.likedBy?.includes(userId);
+    const currentCount = blog.likeCount || blog.likedBy?.length || 0;
+
     try {
-      if (blog.likedBy?.includes(userId)) {
-        // Unlike
+      if (hasLiked) {
         await updateDoc(blogRef, {
           likedBy: arrayRemove(userId),
+          likeCount: currentCount > 0 ? currentCount - 1 : 0,
         });
       } else {
-        // Like
         await updateDoc(blogRef, {
           likedBy: arrayUnion(userId),
+          likeCount: currentCount + 1,
         });
       }
     } catch (err) {
@@ -53,7 +88,7 @@ const BlogPage = () => {
     }
   };
 
-  // Handle Share
+  // ✅ Handle Share
   const handleShare = (title) => {
     if (navigator.share) {
       navigator.share({
@@ -66,15 +101,24 @@ const BlogPage = () => {
     }
   };
 
-  // Handle Comment Submit
+  // ✅ Handle Comment Submit (Only registered users)
   const handleAddComment = async () => {
+    if (!currentUser || !userProfile) {
+      setAlertMessage("⚠️ You must be logged in to comment.");
+      setTimeout(() => setAlertMessage(""), 2500);
+      return;
+    }
+
     if (!commentText.trim()) return;
+
     const blogRef = doc(db, "blogs", selectedBlog.id);
     const newComment = {
-      name: "Anonymous User",
+      name: userProfile.fullName || currentUser.email,
+      uid: currentUser.uid,
       text: commentText.trim(),
       createdAt: new Date(),
     };
+
     try {
       await updateDoc(blogRef, {
         comments: arrayUnion(newComment),
@@ -84,27 +128,28 @@ const BlogPage = () => {
       console.error("Error adding comment:", err);
     }
   };
+
+  // ✅ Snippet Generator
   const getSnippet = (text, min = 100, max = 300) => {
     if (!text) return "";
     if (text.length <= max) return text;
-  
-    // Take first max characters
     let snippet = text.substring(0, max);
-  
-    // Find last space to avoid cutting words
     const lastSpace = snippet.lastIndexOf(" ");
-    if (lastSpace > min) {
-      snippet = snippet.substring(0, lastSpace);
-    }
-  
+    if (lastSpace > min) snippet = snippet.substring(0, lastSpace);
     return snippet + "...";
   };
-  
+
   return (
-    <Container style={{marginTop: "50px"}} className="py-5">
+    <Container style={{ marginTop: "50px" }} className="py-5">
       <h2 className="text-center fw-bold mb-5" style={{ color: "rgb(6,49,69)" }}>
         StudiRad Blog & Articles
       </h2>
+
+      {alertMessage && (
+        <Alert variant="warning" className="text-center fw-semibold">
+          {alertMessage}
+        </Alert>
+      )}
 
       {blogs.length === 0 ? (
         <p className="text-center text-muted">No blog posts available yet.</p>
@@ -126,6 +171,7 @@ const BlogPage = () => {
                     }}
                   />
                 )}
+
                 <Card.Body className="d-flex flex-column">
                   <h5
                     className="fw-bold mb-2"
@@ -137,10 +183,10 @@ const BlogPage = () => {
                     By {blog.writerName} ({blog.writerRole}) •{" "}
                     {blog.createdAt?.toDate().toDateString()}
                   </small>
+
                   <p className="text-secondary" style={{ flexGrow: 1 }}>
                     {getSnippet(blog.content, 100, 200)}
                   </p>
-
 
                   <Button
                     variant="outline-dark"
@@ -164,14 +210,13 @@ const BlogPage = () => {
                     Read More
                   </Button>
 
-                  {/* Like / Comment / Share Row */}
+                  {/* ✅ Like / Comment / Share Row */}
                   <div className="d-flex justify-content-between align-items-center mt-3 px-1">
-                    {/* Like */}
                     <div
                       onClick={() => toggleLike(blog)}
                       style={{
                         cursor: "pointer",
-                        color: blog.likedBy?.includes(userId)
+                        color: blog.likedBy?.includes(currentUser?.uid)
                           ? "rgb(221,168,83)"
                           : "rgb(100,100,100)",
                         display: "flex",
@@ -181,10 +226,9 @@ const BlogPage = () => {
                       }}
                     >
                       <HandThumbsUp size={18} />
-                      <span>{blog.likedBy?.length || 0} Likes</span>
+                      <span>{blog.likeCount || blog.likedBy?.length || 0} Likes</span>
                     </div>
 
-                    {/* Comment */}
                     <div
                       onClick={() => setSelectedBlog(blog)}
                       style={{
@@ -200,7 +244,6 @@ const BlogPage = () => {
                       <span>{blog.comments?.length || 0} Comments</span>
                     </div>
 
-                    {/* Share */}
                     <div
                       onClick={() => handleShare(blog.title)}
                       style={{
@@ -223,7 +266,7 @@ const BlogPage = () => {
         </div>
       )}
 
-      {/* Full Blog Modal with Comments */}
+      {/* ✅ Blog Modal with Comments */}
       <Modal
         show={!!selectedBlog}
         onHide={() => setSelectedBlog(null)}
@@ -243,19 +286,41 @@ const BlogPage = () => {
               className="img-fluid mb-3 rounded-3"
             />
           )}
+
           <p className="text-muted mb-2">
-            By <strong>{selectedBlog?.writer}</strong> ({selectedBlog?.role}) •{" "}
+            By <strong>{selectedBlog?.writerName}</strong> (
+            {selectedBlog?.writerRole}) •{" "}
             {selectedBlog?.createdAt?.toDate().toDateString()}
           </p>
           <hr />
+
           <p style={{ whiteSpace: "pre-wrap", lineHeight: "1.7" }}>
             {selectedBlog?.content}
           </p>
 
-          {/* Comments Section */}
+          <div
+            onClick={() => toggleLike(selectedBlog)}
+            style={{
+              cursor: "pointer",
+              color: selectedBlog?.likedBy?.includes(currentUser?.uid)
+                ? "rgb(221,168,83)"
+                : "rgb(100,100,100)",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              fontSize: "1rem",
+              marginBottom: "15px",
+            }}
+          >
+            <HandThumbsUp size={20} />
+            <span>
+              {selectedBlog?.likeCount || selectedBlog?.likedBy?.length || 0} Likes
+            </span>
+          </div>
+
           <hr />
           <h6 className="fw-bold mb-3">Comments</h6>
-          {selectedBlog?.comments && selectedBlog.comments.length > 0 ? (
+          {selectedBlog?.comments?.length > 0 ? (
             selectedBlog.comments.map((c, i) => (
               <div key={i} className="mb-2">
                 <strong>{c.name}</strong>{" "}
@@ -269,28 +334,33 @@ const BlogPage = () => {
             <p className="text-muted">No comments yet.</p>
           )}
 
-          <Form className="mt-3">
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Write a comment..."
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-              />
-            </Form.Group>
-            <Button
-            onClick={handleAddComment}
-            className="mt-2 w-auto"
-            style={{
-              backgroundColor: "rgb(221,168,83)",
-              border: "none",
-              padding: "0.4rem 1.2rem",
-            }}
-          >
-            Post Comment
-          </Button>
-
-          </Form>
+          {currentUser ? (
+            <Form className="mt-3">
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="Write a comment..."
+                  value={commentText}
+                  onChange={(e) => setCommentText(e.target.value)}
+                />
+              </Form.Group>
+              <Button
+                onClick={handleAddComment}
+                className="mt-2 w-auto"
+                style={{
+                  backgroundColor: "rgb(221,168,83)",
+                  border: "none",
+                  padding: "0.4rem 1.2rem",
+                }}
+              >
+                Post Comment
+              </Button>
+            </Form>
+          ) : (
+            <p className="text-danger mt-3">
+              ⚠️ Please log in to add a comment.
+            </p>
+          )}
         </Modal.Body>
       </Modal>
     </Container>

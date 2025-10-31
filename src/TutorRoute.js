@@ -9,7 +9,7 @@ import ContactPage from "components/Home/contact";
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
 import TutorDashboard from "components/Dashboard/TutorDashboard";
 import RegistrationPage from "pages/RegistrationPage";
-import LoginPage from "pages/Login";
+import LoginPage from "pages/LoginPage";
 import CourseDetails from "components/classes/classDetails";
 import Subscribe from "components/Subscriptions/subscription";
 import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "components/Subscriptions/paymentpage";
