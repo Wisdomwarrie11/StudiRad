@@ -1,6 +1,3 @@
-// src/App.js
-
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Navbar from "./Navbar";
@@ -10,7 +7,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import TutorDashboard from "components/Dashboard/TutorDashboard";
 import RegistrationPage from "pages/RegistrationPage";
 import LoginPage from "pages/LoginPage";
-import CourseDetails from "components/classes/classDetails";
 import Subscribe from "components/Subscriptions/subscription";
 import { CreditCardPayment, PayPalPayment, BankTransferPayment } from "components/Subscriptions/paymentpage";
 import AOS from 'aos';
@@ -22,7 +18,7 @@ import ConfirmationPage from "components/Subscriptions/ConfirmationPage";
 import MindfulMomentPage from "components/Home/Mindful";
 import MusicTherapyPage from "components/Home/Music";
 import GratitudeNotesPage from "components/Home/gratitude";
-import VerificationPage from "pages/VerificationPage";
+import VerificationPage from "pages/VerifyOTPPage";
 import TutorHero from "TutorSide/TutorHome";
 
 
