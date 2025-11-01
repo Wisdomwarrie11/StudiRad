@@ -10,7 +10,7 @@ const communities = [
     icon: <FaUserGraduate size={60} color="rgb(6, 49, 69)" />,
     description:
       "A support hub for radiography students to share study materials, internship advice, and academic experiences.",
-    link: "https://chat.whatsapp.com/studentcommunitylink",
+    link: "https://chat.whatsapp.com/IwoTXyziU9m5wdf72yOSgH",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const communities = [
     icon: <FaUserMd size={60} color="rgb(6, 49, 69)" />,
     description:
       "A professional space for radiographers to network, share expertise, and access mentorship opportunities.",
-    link: "https://chat.whatsapp.com/professionalcommunitylink",
+    link: "https://chat.whatsapp.com/EmYDwMvx5x24bz77eoHIVF",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const communities = [
     icon: <FaLightbulb size={60} color="rgb(6, 49, 69)" />,
     description:
       "A collaborative space for discussing case studies, research topics, and academic project ideas.",
-    link: "https://chat.whatsapp.com/brainstormingcommunitylink",
+    link: "https://chat.whatsapp.com/JzCorkmFuqH0DH2eioLN30",
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const communities = [
     icon: <FaRocket size={60} color="rgb(6, 49, 69)" />,
     description:
       "A forward-thinking group for radiographers interested in technology, AI, and advancing imaging practices.",
-    link: "https://chat.whatsapp.com/innovationcommunitylink",
+    link: "https://chat.whatsapp.com/H9XatJqwvtR5qOgMQBaXsi",
   },
 ];
 

@@ -35,6 +35,7 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminMaterialsPage from "pages/AdminMaterialPage";
 import MaterialsPage from "pages/MaterialsPage";
 import AdminDashboard from "pages/AdminDashboard";
+import VerifyOtpPage from "pages/VerifyOTPPage";
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
         <Route path="/ct" element={<CTPage />} />
         <Route path="/ultrasound" element={<UltrasoundPage />} />
         <Route path="/registration" element={<RegistrationPage/>} />
+        <Route path="/verify-otp" element={<VerifyOtpPage/>} />
         <Route path="/about" element={<AboutUs/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/tutordashboard" element={<TutorDashboard />} />  

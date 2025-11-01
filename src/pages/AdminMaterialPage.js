@@ -1,6 +1,6 @@
 // src/pages/AdminMaterialsPage.js
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Alert, Table } from "react-bootstrap";
+import { Container, Form, Button, Alert, Table, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import {
@@ -11,7 +11,7 @@ import {
   doc,
   serverTimestamp,
   orderBy,
-  query
+  query,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -23,6 +23,7 @@ const AdminMaterialsPage = () => {
   const [message, setMessage] = useState("");
   const [materials, setMaterials] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(true);
 
   const navigate = useNavigate();
 
@@ -34,12 +35,23 @@ const AdminMaterialsPage = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  // ✅ Fetch uploaded materials
+  // ✅ Fetch uploaded materials (ordered by latest)
   const fetchMaterials = async () => {
-    const q = query(collection(db, "materials"), orderBy("createdAt", "desc"));
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setMaterials(data);
+    setFetching(true);
+    try {
+      const q = query(collection(db, "materials"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setMaterials(data);
+    } catch (error) {
+      console.error("Error fetching materials:", error);
+      setMessage("❌ Failed to load materials.");
+    } finally {
+      setFetching(false);
+    }
   };
 
   useEffect(() => {
@@ -72,7 +84,7 @@ const AdminMaterialsPage = () => {
       setTitle("");
       setUploader("");
       setLink("");
-      fetchMaterials(); // refresh list
+      fetchMaterials(); // Refresh list
     } catch (error) {
       console.error("Error uploading material:", error);
       setMessage("❌ Failed to upload. Please check Firebase connection or rules.");
@@ -95,8 +107,21 @@ const AdminMaterialsPage = () => {
     }
   };
 
+  // ✅ Format date nicely
+  const formatDate = (timestamp) => {
+    if (!timestamp?.toDate) return "—";
+    const date = timestamp.toDate();
+    return date.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
   return (
-    <Container className="py-5" style={{ maxWidth: "800px", marginTop:'50px' }}>
+    <Container className="py-5" style={{ maxWidth: "850px", marginTop: "60px" }}>
       <h2 className="text-center fw-bold mb-4">Upload Reading Materials</h2>
 
       {message && (
@@ -109,7 +134,7 @@ const AdminMaterialsPage = () => {
       )}
 
       {/* Upload form */}
-      <Form onSubmit={handleSubmit} className="mb-5 p-3 shadow-sm rounded bg-light">
+      <Form onSubmit={handleSubmit} className="mb-5 p-4 shadow-sm rounded bg-light">
         <Form.Group className="mb-3">
           <Form.Label>Course Category</Form.Label>
           <Form.Select
@@ -127,8 +152,7 @@ const AdminMaterialsPage = () => {
             <option value="CT">CT</option>
             <option value="Ultrasound">Ultrasound</option>
             <option value="Projects">Projects</option>
-            <option value="Projects">Professional Exams PQ</option>
-
+            <option value="Professional Exams PQ">Professional Exams PQ</option>
           </Form.Select>
         </Form.Group>
 
@@ -180,7 +204,13 @@ const AdminMaterialsPage = () => {
 
       {/* Uploaded materials list */}
       <h4 className="mb-3 fw-semibold text-center">Uploaded Materials</h4>
-      {materials.length === 0 ? (
+
+      {fetching ? (
+        <div className="text-center">
+          <Spinner animation="border" variant="primary" />
+          <p className="text-muted mt-2">Loading materials...</p>
+        </div>
+      ) : materials.length === 0 ? (
         <p className="text-center text-muted">No materials uploaded yet.</p>
       ) : (
         <Table striped bordered hover responsive>
@@ -199,14 +229,10 @@ const AdminMaterialsPage = () => {
                 <td>{item.course}</td>
                 <td>{item.title}</td>
                 <td>{item.uploader}</td>
-                <td>
-                  {item.createdAt?.toDate
-                    ? item.createdAt.toDate().toLocaleDateString()
-                    : "—"}
-                </td>
+                <td>{formatDate(item.createdAt)}</td>
                 <td>
                   <Button
-                    className="mt-2 w-auto"
+                    className="mt-1 w-auto"
                     variant="danger"
                     size="sm"
                     onClick={() => handleDelete(item.id)}

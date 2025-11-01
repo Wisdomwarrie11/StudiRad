@@ -1,3 +1,4 @@
+// ...keep existing imports
 import React, { useState, useEffect } from "react";
 import { db, storage, auth } from "../firebase";
 import {
@@ -30,6 +31,7 @@ const AdminBlogPage = () => {
   const [writerRole, setWriterRole] = useState("");
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [category, setCategory] = useState("General"); // <-- new category state
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -38,6 +40,7 @@ const AdminBlogPage = () => {
   const [editPostId, setEditPostId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
   const [editContent, setEditContent] = useState("");
+  const [editCategory, setEditCategory] = useState("General"); // <-- new edit category
   const [editLoading, setEditLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -78,6 +81,7 @@ const AdminBlogPage = () => {
         content,
         writerName,
         writerRole,
+        category, // <-- save category
         imageUrl,
         createdAt: serverTimestamp(),
       });
@@ -88,6 +92,7 @@ const AdminBlogPage = () => {
       setWriterName("");
       setWriterRole("");
       setImageFile(null);
+      setCategory("General");
 
       setTimeout(() => navigate("/blogs"), 1500);
     } catch (error) {
@@ -109,6 +114,7 @@ const AdminBlogPage = () => {
     setEditPostId(post.id);
     setEditTitle(post.title);
     setEditContent(post.content);
+    setEditCategory(post.category || "General"); // <-- load category for edit
     setEditModalShow(true);
   };
 
@@ -120,6 +126,7 @@ const AdminBlogPage = () => {
       await updateDoc(doc(db, "blogs", editPostId), {
         title: editTitle,
         content: editContent,
+        category: editCategory, // <-- update category
         updatedAt: new Date(),
       });
       setEditModalShow(false);
@@ -173,6 +180,21 @@ const AdminBlogPage = () => {
             </Form.Group>
           </Col>
         </Row>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Category</Form.Label>
+          <Form.Select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          >
+            <option value="General">General</option>
+            <option value="Technology">Technology</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Safety">Safety</option>
+          </Form.Select>
+        </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Blog Title</Form.Label>
@@ -231,7 +253,7 @@ const AdminBlogPage = () => {
             <Card.Body>
               <Card.Title>{post.title}</Card.Title>
               <Card.Subtitle className="text-muted mb-2">
-                {post.writerName} • {post.writerRole}
+                {post.writerName} • {post.writerRole} • {post.category || "General"}
               </Card.Subtitle>
               <div className="d-flex justify-content-end">
                 <Button
@@ -273,6 +295,20 @@ const AdminBlogPage = () => {
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
               />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Category</Form.Label>
+              <Form.Select
+                value={editCategory}
+                onChange={(e) => setEditCategory(e.target.value)}
+                required
+              >
+                <option value="General">General</option>
+                <option value="Technology">Technology</option>
+                <option value="Health">Health</option>
+                <option value="Education">Education</option>
+                <option value="Safety">Safety</option>
+              </Form.Select>
             </Form.Group>
           </Form>
         </Modal.Body>

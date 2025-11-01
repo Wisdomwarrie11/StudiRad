@@ -20,6 +20,8 @@ import {
   Form,
   InputGroup,
   FormControl,
+  Nav,
+  Pagination,
 } from "react-bootstrap";
 import { Book, HandThumbsUp, ChatDots, Share } from "react-bootstrap-icons";
 
@@ -28,10 +30,14 @@ const MaterialsPage = () => {
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [commentText, setCommentText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const userId = "anonymous-user"; // Replace with auth user ID later
+  const userId = "anonymous-user"; // replace later with authenticated user
+  const materialsPerPage = 8;
 
   const courses = [
+    "All",
     "Anatomy",
     "Physiology",
     "Rad Tech",
@@ -44,7 +50,22 @@ const MaterialsPage = () => {
     "Professional Exams PQ",
   ];
 
-  // Fetch all materials
+  // 🎨 Course Color Map
+  const courseColors = {
+    Anatomy: "#007BFF",
+    Physiology: "#28A745",
+    "Rad Tech": "#6F42C1",
+    "Rad Equipment": "#E83E8C",
+    Pathology: "#DC3545",
+    CT: "#17A2B8",
+    MRI: "#FD7E14",
+    USS: "#20C997",
+    Projects: "#6610F2",
+    "Professional Exams PQ": "#6C757D",
+    All: "rgb(6,49,69)",
+  };
+
+  // 🧠 Fetch all materials
   useEffect(() => {
     const q = query(collection(db, "materials"), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -54,24 +75,28 @@ const MaterialsPage = () => {
     return () => unsubscribe();
   }, []);
 
-  // Filter materials by search
-  const filteredMaterials = (course = null) => {
-    let filtered = materials;
+  // 🔍 Filter materials
+  const filteredMaterials = materials.filter((m) => {
+    const matchesSearch =
+      m.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      m.uploader.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCourse =
+      activeTab === "All" || m.course === activeTab;
+    return matchesSearch && matchesCourse;
+  });
 
-    if (course) {
-      filtered = filtered.filter((m) => m.course === course);
-    }
+  // 📖 Pagination
+  const totalPages = Math.ceil(filteredMaterials.length / materialsPerPage);
+  const indexOfLastMaterial = currentPage * materialsPerPage;
+  const indexOfFirstMaterial = indexOfLastMaterial - materialsPerPage;
+  const currentMaterials = filteredMaterials.slice(
+    indexOfFirstMaterial,
+    indexOfLastMaterial
+  );
 
-    if (!searchTerm.trim()) return filtered;
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
-    return filtered.filter(
-      (m) =>
-        m.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        m.uploader.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  };
-
-  // Like / Unlike toggle
+  // 👍 Like / Unlike
   const toggleLike = async (material) => {
     const materialRef = doc(db, "materials", material.id);
     try {
@@ -85,7 +110,7 @@ const MaterialsPage = () => {
     }
   };
 
-  // Add comment
+  // 💬 Add comment
   const handleAddComment = async () => {
     if (!commentText.trim()) return;
     const materialRef = doc(db, "materials", selectedMaterial.id);
@@ -102,7 +127,7 @@ const MaterialsPage = () => {
     }
   };
 
-  // Share
+  // 📤 Share
   const handleShare = (title) => {
     if (navigator.share) {
       navigator.share({
@@ -115,16 +140,13 @@ const MaterialsPage = () => {
     }
   };
 
-  // All available materials
-  const availableMaterials = filteredMaterials();
-
   return (
-    <Container style={{marginTop: "50px"}} className="py-5">
-      <h2 className="text-center mb-4" style={{ color: "rgb(6,49,69)" }}>
+    <Container style={{ marginTop: "50px" }} className="py-5">
+      <h2 className="text-center mb-4 fw-bold" style={{ color: "rgb(6,49,69)" }}>
         Reading Materials Library
       </h2>
 
-      {/* Search */}
+      {/* 🔍 Search Bar */}
       <InputGroup className="mb-4">
         <FormControl
           placeholder="Search materials by title or uploader..."
@@ -133,131 +155,161 @@ const MaterialsPage = () => {
         />
       </InputGroup>
 
-      {/* Available Materials at top */}
-      {availableMaterials.length > 0 && (
-        <>
-          <h4 className="mb-3" style={{ color: "rgb(6,49,69)" }}>
-            Recent Materials
-          </h4>
-          <Row xs={1} sm={2} md={3} lg={4} className="g-3 mb-5">
-            {availableMaterials.map((m) => (
-              <Col key={m.id}>
-                <Card
-                  className="h-100 shadow-sm border-0 rounded-3 p-3 d-flex align-items-center text-center"
-                  style={{ cursor: "pointer", transition: "transform 0.2s" }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform = "scale(1.05)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.transform = "scale(1)")
-                  }
+      {/* 🗂️ Category Tabs */}
+      <Nav variant="tabs" className="justify-content-center mb-4 flex-wrap">
+        {courses.map((course) => (
+          <Nav.Item key={course}>
+            <Nav.Link
+              eventKey={course}
+              onClick={() => {
+                setActiveTab(course);
+                setCurrentPage(1);
+              }}
+              style={{
+                color:
+                  activeTab === course
+                    ? "white"
+                    : courseColors[course] || "rgb(6,49,69)",
+                backgroundColor:
+                  activeTab === course
+                    ? courseColors[course] || "rgb(6,49,69)"
+                    : "transparent",
+                borderRadius: "10px",
+                fontWeight: "500",
+                margin: "3px",
+                transition: "0.3s",
+              }}
+            >
+              {course}
+            </Nav.Link>
+          </Nav.Item>
+        ))}
+      </Nav>
+
+      {/* 📚 Materials Grid */}
+      <Row xs={1} sm={2} md={3} lg={4} className="g-3 mb-4">
+        {currentMaterials.map((m) => (
+          <Col key={m.id}>
+            <Card
+              className="h-100 shadow-sm border-0 rounded-3 text-center p-3"
+              style={{
+                transition: "transform 0.3s",
+                borderTop: `4px solid ${
+                  courseColors[m.course] || "rgb(6,49,69)"
+                }`,
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "scale(1.05)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            >
+              <Book
+                size={40}
+                style={{
+                  color: courseColors[m.course] || "rgb(6,49,69)",
+                }}
+                className="mb-2"
+              />
+              <Card.Body>
+                <Card.Title style={{ fontSize: "1rem" }}>{m.title}</Card.Title>
+                <Card.Text className="text-muted" style={{ fontSize: "0.85rem" }}>
+                  Uploaded by {m.uploader}
+                </Card.Text>
+
+                {/* Actions */}
+                <div className="d-flex justify-content-between align-items-center mt-2 px-2">
+                  <div
+                    onClick={() => toggleLike(m)}
+                    style={{
+                      cursor: "pointer",
+                      color: m.likedBy?.includes(userId)
+                        ? courseColors[m.course] || "rgb(221,168,83)"
+                        : "rgb(100,100,100)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "0.85rem",
+                    }}
+                  >
+                    <HandThumbsUp size={18} />
+                    <span>{m.likedBy?.length || 0}</span>
+                  </div>
+
+                  <div
+                    onClick={() => setSelectedMaterial(m)}
+                    style={{
+                      cursor: "pointer",
+                      color: "rgb(100,100,100)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "0.85rem",
+                    }}
+                  >
+                    <ChatDots size={18} />
+                    <span>{m.comments?.length || 0}</span>
+                  </div>
+
+                  <div
+                    onClick={() => handleShare(m.title)}
+                    style={{
+                      cursor: "pointer",
+                      color: "rgb(100,100,100)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "0.85rem",
+                    }}
+                  >
+                    <Share size={18} />
+                  </div>
+                </div>
+
+                <a
+                  href={m.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 d-block"
                 >
-                  <Book
-                    size={40}
-                    style={{ color: "rgb(6,49,69)" }}
-                    className="mb-2"
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "1rem" }}>{m.title}</Card.Title>
-                    <Card.Text
-                      className="text-muted"
-                      style={{ fontSize: "0.85rem" }}
-                    >
-                      Uploaded by {m.uploader}
-                    </Card.Text>
+                  <Button
+                    variant="outline-dark"
+                    style={{
+                      color: courseColors[m.course] || "rgb(221,168,83)",
+                      borderColor: courseColors[m.course] || "rgb(221,168,83)",
+                      borderRadius: "10px",
+                      fontSize: "0.85rem",
+                    }}
+                    className="w-100 mt-2"
+                  >
+                    Read Material
+                  </Button>
+                </a>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
 
-                    {/* Actions */}
-                    <div className="d-flex justify-content-between align-items-center mt-2 px-2">
-                      <div
-                        onClick={() => toggleLike(m)}
-                        style={{
-                          cursor: "pointer",
-                          color: m.likedBy?.includes(userId)
-                            ? "rgb(221,168,83)"
-                            : "rgb(100,100,100)",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "5px",
-                          fontSize: "0.85rem",
-                        }}
-                      >
-                        <HandThumbsUp size={18} />
-                        <span>{m.likedBy?.length || 0}</span>
-                      </div>
-
-                      <div
-                        onClick={() => setSelectedMaterial(m)}
-                        style={{
-                          cursor: "pointer",
-                          color: "rgb(100,100,100)",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "5px",
-                          fontSize: "0.85rem",
-                        }}
-                      >
-                        <ChatDots size={18} />
-                        <span>{m.comments?.length || 0}</span>
-                      </div>
-
-                      <div
-                        onClick={() => handleShare(m.title)}
-                        style={{
-                          cursor: "pointer",
-                          color: "rgb(100,100,100)",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "5px",
-                          fontSize: "0.85rem",
-                        }}
-                      >
-                        <Share size={18} />
-                      </div>
-                    </div>
-
-                    {/* Open Material */}
-                    <a
-                      href={m.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-2 d-block"
-                    >
-                      <Button
-                        variant="outline-dark"
-                        style={{
-                          color: "rgb(221,168,83)",
-                          borderColor: "rgb(221,168,83)",
-                          borderRadius: "10px",
-                          fontSize: "0.85rem",
-                        }}
-                        className="w-100 mt-2"
-                      >
-                        Read Material
-                      </Button>
-                    </a>
-                  </Card.Body>
-                </Card>
-              </Col>
+      {/* 🔢 Pagination */}
+      {totalPages > 1 && (
+        <div className="d-flex justify-content-center">
+          <Pagination>
+            {[...Array(totalPages)].map((_, i) => (
+              <Pagination.Item
+                key={i + 1}
+                active={i + 1 === currentPage}
+                onClick={() => handlePageChange(i + 1)}
+              >
+                {i + 1}
+              </Pagination.Item>
             ))}
-          </Row>
-        </>
+          </Pagination>
+        </div>
       )}
 
-      {/* Course sections for empty courses */}
-      {courses.map((course, idx) => {
-        const courseMaterials = filteredMaterials(course);
-        if (courseMaterials.length > 0) return null; // Skip courses with materials
-        return (
-          <div key={idx} className="mb-4">
-            <h5 className="mb-2" style={{ color: "rgb(6,49,69)" }}>
-              {course}
-            </h5>
-            <p className="text-muted">No material available yet</p>
-          </div>
-        );
-      })}
-
-      {/* Comments Modal */}
+      {/* 💬 Comments Modal */}
       <Modal
         show={!!selectedMaterial}
         onHide={() => setSelectedMaterial(null)}

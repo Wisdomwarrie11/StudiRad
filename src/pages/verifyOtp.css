@@ -1,0 +1,25 @@
+/* src/styles/verifyOtp.css */
+
+.verify-btn {
+    background-color: #063145 !important;
+    border: none !important;
+    padding: 0.6rem 1.5rem !important;
+    min-width: 160px !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+  }
+  
+  .resend-btn {
+    min-width: 160px !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+  }
+  
+  .otp-input {
+    border: 2px solid #063145 !important;
+    width: 70% !important;
+    margin: 0 auto !important;
+    letter-spacing: 5px !important;
+    text-align: center !important;
+  }
+  

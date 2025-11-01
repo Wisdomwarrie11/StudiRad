@@ -1,10 +1,11 @@
 // src/pages/RegisterPage.js
 import React, { useState } from "react";
-import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { Form, Button, Container, Alert, Spinner } from "react-bootstrap";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 const RegisterPage = () => {
   const [fullName, setFullName] = useState("");
@@ -16,30 +17,54 @@ const RegisterPage = () => {
 
   const navigate = useNavigate();
 
+  // ✅ Generate a 6-digit OTP
+  const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString();
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMessage("");
 
     try {
-      // Create user
+      // Step 1: Create user in Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Save user details to Firestore
+      // Step 2: Generate OTP and expiry (10 min)
+      const otp = generateOtp();
+      const otpExpiry = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+      // Step 3: Save user + OTP details in Firestore
       await setDoc(doc(db, "users", user.uid), {
         fullName,
         email,
         role,
+        otp,
+        otpExpiry,
         verified: false,
         createdAt: new Date(),
       });
 
-      // Send email verification
-      await sendEmailVerification(user);
+      // Step 4: Send OTP via EmailJS
+      await emailjs.send(
+        "service_ktgszfh", // Replace with your EmailJS service ID
+        "template_dg0adum", // Replace with your EmailJS template ID
+        {
+          to_name: fullName,
+          to_email: email,
+          otp_code: otp,
+        },
+        "oYz9P4v4ylM0rh7Di" // Replace with your EmailJS public key
+      ).then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+      })
+      .catch((error) => {
+        console.log("FAILED...", error);
+      });;
 
-      setMessage("📩 Verification email sent! Please check your inbox.");
-      setTimeout(() => navigate("/verify-success"), 2500);
+      // Step 5: Notify and redirect
+      setMessage("✅ OTP sent to your email. Please verify within 10 minutes.");
+      setTimeout(() => navigate("/verify-otp", { state: { email } }), 2000);
     } catch (error) {
       console.error("Registration error:", error);
       setMessage(`❌ ${error.message}`);
@@ -56,7 +81,7 @@ const RegisterPage = () => {
 
       {message && (
         <Alert
-          variant={message.startsWith("📩") ? "success" : "danger"}
+          variant={message.startsWith("✅") ? "success" : "danger"}
           className="text-center"
         >
           {message}
