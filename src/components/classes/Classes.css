@@ -1,49 +1,132 @@
-
-  
-  .course-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  /* Mobile: 1 card per row */
-.classes-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+:root{
+  /* Theme: deep navy + gold accent */
+  --bg-start: #0f1724;        /* deep navy */
+  --bg-end: #1f2a44;          /* lighter navy */
+  --card-bg: #d8f0f3;         /* card interior */
+  --muted: #a7b0c5;
+  --accent: #d4af37;          /* gold */
+  --accent-2: #f6d88b;        /* light gold for gradients */
+  --glass: rgba(255,255,255,0.06);
+  --radius: 14px;
 }
 
-/* Tablet (≥576px): 2 cards per row */
-@media (min-width: 576px) {
-  .classes-wrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* If you prefer the blue gradient theme, swap these values:
+:root{
+  --bg-start: #eef2f3;
+  --bg-end: #8ec5fc;
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --accent: #0466d6;
+  --accent-2: #58a6ff;
+}
+*/
+
+html,body { height:100%; }
+
+.classes-section{
+  padding: 60px 0 120px;
+  background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: #fff;
+  min-height: 100vh;
 }
 
-/* Medium (≥768px): 3 cards per row */
-@media (min-width: 768px) {
-  .classes-wrapper {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.container { max-width: 1140px; }
+
+/* header */
+.classes-header h2{
+  font-size: 28px;
+  margin-bottom: 6px;
+  color: #fff;
+}
+.classes-header .muted{
+  color: var(--muted);
+  margin-bottom: 24px;
 }
 
-/* Large (≥992px): switch to horizontal scroll */
-@media (min-width: 992px) {
-  .classes-wrapper {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .classes-wrapper > .card {
-    flex-shrink: 0;
-    width: 250px; /* fixed card width for scroll row */
-  }
+/* filters */
+.filters-row { margin-bottom: 26px; }
+.filter-input, .filter-select{
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+  box-shadow: none;
 }
- 
+.filter-input::placeholder { color: rgba(255,255,255,0.6); }
+.filter-select option { color: #000; }
+
+/* accordion header */
+.category-accordion .accordion-button {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 14px 18px;
+}
+.accordion-title { display:flex; gap:12px; align-items:center; justify-content:space-between; width:100%; }
+.accordion-count { color: var(--muted); font-size: 13px; }
+
+/* course card */
+.course-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 260ms ease, background 260ms ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.course-card:hover{
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+}
+.card-thumb img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  display:block;
+  transition: transform 300ms ease;
+}
+.course-card:hover .card-thumb img{
+  transform: scale(1.04);
+}
+
+/* text */
+.title-ellipsis{
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.meta { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+.level-badge { font-weight:600; box-shadow: none; }
+.not-available { color: var(--muted); font-size: 12px; padding-left:6px; }
+
+/* footer row */
+.card-footer { margin-top: auto; color: #fff; font-weight:600; }
+.price-text { color: var(--accent-2); font-weight:700; }
+.stars .star { color: var(--accent); margin-left:2px; }
+.stars .half { opacity: 0.6; }
+
+/* load more button */
+.load-more-btn{
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  background: linear-gradient(90deg, rgba(212,175,55,0.12), rgba(212,175,55,0.06));
+}
+
+/* responsive tweaks */
+@media (max-width: 767px){
+  .card-thumb img { height: 150px; }
+  .classes-header h2 { font-size: 22px; }
+  .filters-row { gap: 10px; }
+}

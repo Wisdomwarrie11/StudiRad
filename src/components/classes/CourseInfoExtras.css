@@ -1,0 +1,155 @@
+.extras-section {
+  background: linear-gradient(160deg, #0f1724, #1f2a44);
+  color: #fff;
+}
+
+.section-title {
+  color: #f6d88b;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(246, 216, 139, 0.3);
+}
+
+.styled-table {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.styled-table thead {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), rgba(246, 216, 139, 0.1));
+}
+
+.styled-table th {
+  color: #edad24;
+  font-weight: 600;
+  border: none;
+  text-align: center;
+  padding: 12px;
+}
+
+.styled-table td {
+  color: #20262e;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 10px;
+}
+
+.styled-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.icon-green {
+  color: #38c172;
+  font-size: 18px;
+}
+.icon-red {
+  color: #e3342f;
+  font-size: 18px;
+}
+.icon-yellow {
+  color: #ffc107;
+  font-size: 18px;
+}
+.icon-gold {
+  color: #d4af37;
+  font-size: 22px;
+}
+
+/* Form */
+.form-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  color: #fff;
+}
+
+.form-card label {
+  color: #f6d88b;
+  font-weight: 600;
+}
+
+.form-card input,
+.form-card select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.form-card input::placeholder {
+  color: rgba(1, 31, 53, 0.7);
+}
+
+.request-btn {
+  border-radius: 999px;
+  font-weight: 600;
+  color: #000;
+  background: linear-gradient(90deg, #f6d88b, #d4af37);
+  border: none;
+  padding: 10px 30px;
+  transition: transform 0.2s ease;
+}
+
+.request-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #d4af37, #f6d88b);
+}
+
+/* --- Font Family and General Text Styling --- */
+* {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(246, 216, 139, 0.25);
+}
+
+/* --- Table Headers and Content --- */
+.styled-table th {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: white;
+  text-align: center;
+  border: none;
+  padding: 14px;
+}
+
+.styled-table td {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #010d18;
+  text-align: center;
+  padding: 12px;
+}
+
+/* --- Form Label Styling --- */
+.form-card label {
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- Input & Select Field Text --- */
+.form-card input,
+.form-card select {
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+/* --- Request Button --- */
+.request-btn {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
