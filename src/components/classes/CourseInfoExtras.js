@@ -107,11 +107,6 @@ export default function CourseInfoExtras() {
                 <td><FaTimesCircle className="icon-red" /></td>
                 <td><FaCheckCircle className="icon-green" /></td>
               </tr>
-              <tr>
-                <td>Access Duration</td>
-                <td>Limited</td>
-                <td>Extended</td>
-              </tr>
             </tbody>
           </Table>
         </motion.div>
