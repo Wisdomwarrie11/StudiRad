@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
-import { auth } from "../firebase";
+import { adminAuth } from "../firebaseAdmin";  // <-- use the admin config
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
@@ -16,7 +16,7 @@ const AdminLoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(adminAuth, (user) => {
       if (user) {
         navigate("/admindashboard");
       } else {
@@ -32,13 +32,13 @@ const AdminLoginPage = () => {
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(adminAuth, email, password);
       setMessage("✅ Login successful! Redirecting...");
       setTimeout(() => navigate("/admindashboard"), 1500);
     } catch (error) {
       console.error("Login error:", error);
       if (error.code === "auth/user-not-found") {
-        setMessage("❌ No user found with this email.");
+        setMessage("❌ No admin found with this email.");
       } else if (error.code === "auth/wrong-password") {
         setMessage("❌ Incorrect password.");
       } else {

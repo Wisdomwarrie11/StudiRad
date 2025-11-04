@@ -36,7 +36,7 @@ import AdminMaterialsPage from "pages/AdminMaterialPage";
 import MaterialsPage from "pages/MaterialsPage";
 import AdminDashboard from "pages/AdminDashboard";
 import VerifyOtpPage from "pages/VerifyOTPPage";
-
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
 function App() {
 
@@ -87,6 +87,7 @@ function App() {
         <Route path="/adminblog" element={<AdminBlogPage />} />
         <Route path="/adminmaterials" element={<AdminMaterialsPage />} />
         <Route path="/materials" element={<MaterialsPage />} />
+        <Route path="/admindashboard" element={<AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>}/>
         <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route path="/scholarship" element={<Scholarship />}
          />
