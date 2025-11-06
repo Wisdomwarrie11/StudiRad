@@ -95,7 +95,7 @@ const AdminMaterialsPage = () => {
 
   // ✅ Delete material
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this material?")) {
+    if (window.confirm("Are you sure you want to delete this material? You cannot undo this action.")) {
       try {
         await deleteDoc(doc(db, "materials", id));
         setMessage("🗑️ Material deleted successfully.");

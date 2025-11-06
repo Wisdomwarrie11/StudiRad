@@ -33,7 +33,6 @@ const MaterialsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-
   const userId = "anonymous-user"; // replace later with authenticated user
   const materialsPerPage = 8;
 
@@ -100,35 +99,35 @@ const MaterialsPage = () => {
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
   // 👍 Like / Unlike
-  const toggleLike = async (material) => {
-    const materialRef = doc(db, "materials", material.id);
-    try {
-      if (material.likedBy?.includes(userId)) {
-        await updateDoc(materialRef, { likedBy: arrayRemove(userId) });
-      } else {
-        await updateDoc(materialRef, { likedBy: arrayUnion(userId) });
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const toggleLike = async (material) => {
+  //   const materialRef = doc(db, "materials", material.id);
+  //   try {
+  //     if (material.likedBy?.includes(userId)) {
+  //       await updateDoc(materialRef, { likedBy: arrayRemove(userId) });
+  //     } else {
+  //       await updateDoc(materialRef, { likedBy: arrayUnion(userId) });
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   // 💬 Add comment
-  const handleAddComment = async () => {
-    if (!commentText.trim()) return;
-    const materialRef = doc(db, "materials", selectedMaterial.id);
-    const newComment = {
-      name: "Anonymous User",
-      text: commentText.trim(),
-      createdAt: new Date(),
-    };
-    try {
-      await updateDoc(materialRef, { comments: arrayUnion(newComment) });
-      setCommentText("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const handleAddComment = async () => {
+  //   if (!commentText.trim()) return;
+  //   const materialRef = doc(db, "materials", selectedMaterial.id);
+  //   const newComment = {
+  //     name: "Anonymous User",
+  //     text: commentText.trim(),
+  //     createdAt: new Date(),
+  //   };
+  //   try {
+  //     await updateDoc(materialRef, { comments: arrayUnion(newComment) });
+  //     setCommentText("");
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   // 📤 Share
   const handleShare = (title) => {
@@ -225,7 +224,7 @@ const MaterialsPage = () => {
 
                 {/* Actions */}
                 <div className="d-flex justify-content-between align-items-center mt-2 px-2">
-                  <div
+                  {/* <div
                     onClick={() => toggleLike(m)}
                     style={{
                       cursor: "pointer",
@@ -240,9 +239,9 @@ const MaterialsPage = () => {
                   >
                     <HandThumbsUp size={18} />
                     <span>{m.likedBy?.length || 0}</span>
-                  </div>
+                  </div> */}
 
-                  <div
+                  {/* <div
                     onClick={() => setSelectedMaterial(m)}
                     style={{
                       cursor: "pointer",
@@ -255,7 +254,7 @@ const MaterialsPage = () => {
                   >
                     <ChatDots size={18} />
                     <span>{m.comments?.length || 0}</span>
-                  </div>
+                  </div> */}
 
                   <div
                     onClick={() => handleShare(m.title)}
@@ -349,7 +348,7 @@ const MaterialsPage = () => {
           )}
 
           {/* Add Comment */}
-          <Form className="mt-3">
+          {/* <Form className="mt-3">
             <Form.Group>
               <Form.Control
                 type="text"
@@ -365,7 +364,7 @@ const MaterialsPage = () => {
             >
               Post Comment
             </Button>
-          </Form>
+          </Form> */}
         </Modal.Body>
       </Modal>
     </Container>
