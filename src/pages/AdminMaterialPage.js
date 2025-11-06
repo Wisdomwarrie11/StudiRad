@@ -145,8 +145,8 @@ const AdminMaterialsPage = () => {
             <option value="">Select Course</option>
             <option value="Anatomy">Anatomy</option>
             <option value="Physiology">Physiology</option>
-            <option value="Radiographic Technology">Radiographic Technology</option>
-            <option value="Radiographic Equipment">Radiographic Equipment</option>
+            <option value="Radiographic Technology">Rad Techny</option>
+            <option value="Radiographic Equipment">Rad Equipment</option>
             <option value="Pathology">Pathology</option>
             <option value="MRI">MRI</option>
             <option value="CT">CT</option>
