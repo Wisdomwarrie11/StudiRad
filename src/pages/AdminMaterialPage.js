@@ -1,6 +1,7 @@
 // src/pages/AdminMaterialsPage.js
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Alert, Table, Spinner } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import {
@@ -26,6 +27,20 @@ const AdminMaterialsPage = () => {
   const [fetching, setFetching] = useState(true);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+// Prefill data if coming from AdminReviewPage
+useEffect(() => {
+  if (location.state) {
+    const { course, title, uploader, link } = location.state;
+    if (course) setCourse(course);
+    if (title) setTitle(title);
+    if (uploader) setUploader(uploader);
+    if (link) setLink(link);
+  }
+}, [location.state]);
+
 
   // ✅ Protect page (only logged-in admins)
   useEffect(() => {

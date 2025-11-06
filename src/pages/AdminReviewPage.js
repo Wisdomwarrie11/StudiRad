@@ -2,22 +2,27 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table, Button, Spinner, Alert } from "react-bootstrap";
 import { db } from "../firebase";
-import {
-  collection,
-  getDocs,
-  deleteDoc,
-  doc,
-  addDoc,
-  orderBy,
-  query,
-  serverTimestamp,
-} from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AdminReviewPage = () => {
   const [pendingMaterials, setPendingMaterials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // ✅ Show success message if redirected back after upload
+  useEffect(() => {
+    if (location.state?.successMessage) {
+      setMessage(location.state.successMessage);
+      // clear the state so message doesn’t persist on refresh
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
+  // ✅ Fetch pending materials
   const fetchPendingMaterials = async () => {
     setLoading(true);
     try {
@@ -40,39 +45,27 @@ const AdminReviewPage = () => {
     fetchPendingMaterials();
   }, []);
 
-  // ✅ Approve material
-  const handleApprove = async (item) => {
+  // ✅ Approve material (redirect to AdminMaterialsPage)
+  const handleApprove = (item) => {
     if (window.confirm(`Approve "${item.title}" for upload?`)) {
-      try {
-        const materialData = {
-          course: item.course || "Unknown Course",
-          title: item.title || "Untitled Material",
-          uploader: item.uploader || "Anonymous",
+      navigate("/adminmaterials", {
+        state: {
+          course: item.course || "",
+          title: item.title || "",
+          uploader: item.uploader || "",
           link: item.link || "",
-          createdAt: serverTimestamp(),
-          approvedFrom: item.email || "unknown",
-        };
-  
-        console.log("Approving material data:", materialData);
-  
-        await addDoc(collection(db, "materials"), materialData);
-  
-        await deleteDoc(doc(db, "pendingMaterials", item.id));
-  
-        setMessage(`✅ "${item.title}" has been approved and uploaded.`);
-        fetchPendingMaterials();
-      } catch (error) {
-        console.error("Error approving material:", error);
-        setMessage("❌ Failed to approve material.");
-      }
+          fromReview: true, // tag to track origin
+        },
+      });
     }
   };
-  
 
-  // ❌ Reject material
+  // ❌ Reject material (still deletes from Firestore)
   const handleReject = async (id, title) => {
     if (window.confirm(`Reject "${title}" and remove from review list?`)) {
       try {
+        // Only deletion still interacts with Firebase
+        const { deleteDoc, doc } = await import("firebase/firestore");
         await deleteDoc(doc(db, "pendingMaterials", id));
         setMessage(`🗑️ "${title}" has been rejected and deleted.`);
         fetchPendingMaterials();
@@ -102,7 +95,11 @@ const AdminReviewPage = () => {
 
       {message && (
         <Alert
-          variant={message.includes("✅") ? "success" : "danger"}
+          variant={
+            message.includes("✅") || message.includes("🗑️")
+              ? "success"
+              : "danger"
+          }
           className="text-center"
         >
           {message}
@@ -126,7 +123,14 @@ const AdminReviewPage = () => {
           }}
         >
           <Table striped bordered hover responsive className="mb-0">
-            <thead style={{ backgroundColor: "rgb(6, 49, 69)", color: "white", position: "sticky", top: 0 }}>
+            <thead
+              style={{
+                backgroundColor: "rgb(6, 49, 69)",
+                color: "white",
+                position: "sticky",
+                top: 0,
+              }}
+            >
               <tr>
                 <th>Course</th>
                 <th>Title</th>
@@ -145,7 +149,11 @@ const AdminReviewPage = () => {
                   <td>{item.uploader}</td>
                   <td>{item.email}</td>
                   <td>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       View
                     </a>
                   </td>
@@ -160,10 +168,10 @@ const AdminReviewPage = () => {
                       Approve
                     </Button>
                     <Button
-                    className="w-auto"
+                      className="w-auto"
                       variant="danger"
                       size="sm"
-                      style={{marginTop: "10px"}}
+                      style={{ marginTop: "10px" }}
                       onClick={() => handleReject(item.id, item.title)}
                     >
                       Reject
