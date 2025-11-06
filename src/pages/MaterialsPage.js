@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import {
   collection,
@@ -49,6 +50,8 @@ const MaterialsPage = () => {
     "Projects",
     "Professional Exams PQ",
   ];
+  const navigate = useNavigate();
+
 
   // 🎨 Course Color Map
   const courseColors = {
@@ -154,6 +157,8 @@ const MaterialsPage = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </InputGroup>
+      <button   onClick={() => navigate("/submit-material")}
+      style={{marginBottom: "50px"}} className="w-auto">Add material</button>
 
       {/* 🗂️ Category Tabs */}
       <Nav variant="tabs" className="justify-content-center mb-4 flex-wrap">

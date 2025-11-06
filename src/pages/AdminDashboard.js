@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Navbar, Nav, Button } from "react-bootstrap";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { FileText, Book, Gear, BoxArrowRight } from "react-bootstrap-icons";
+import { FileText, Book, Gear, Bell, BoxArrowRight } from "react-bootstrap-icons";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -25,6 +25,12 @@ const AdminDashboard = () => {
       description: "Upload study resources and materials.",
       icon: <Book size={40} color="#063145" />,
       path: "/adminmaterials",
+    },
+    {
+      title: "Notification",
+      description: "Manage uploaded materials or blogs by users",
+      icon: <Bell size={40} color="#063145" />,
+      path: "/admin/reviewmaterials",
     },
     {
       title: "Settings",

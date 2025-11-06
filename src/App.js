@@ -30,6 +30,7 @@ import Jobs from "components/Home/Jobs";
 import Scholarship from "components/Home/Scholarship";
 import Communities from "pages/community";
 import BlogPage from "pages/BlogPage";
+import AdminReviewPage from "./pages/AdminReviewPage";
 import AdminBlogPage from "pages/AdminBlogPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminMaterialsPage from "pages/AdminMaterialPage";
@@ -37,6 +38,7 @@ import MaterialsPage from "pages/MaterialsPage";
 import AdminDashboard from "pages/AdminDashboard";
 import VerifyOtpPage from "pages/VerifyOTPPage";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
+import SubmitMaterialPage from "pages/SubmitMaterialPage";
 
 function App() {
 
@@ -80,6 +82,7 @@ function App() {
         <Route path="/webinarRegistration" element={<RegistrationForm/>} />
         <Route path="/webdash" element={<RegistrationsDashboard/>} />
         <Route path="/internship" element={<Internship />} />
+        <Route path="/admin/reviewmaterials" element={<AdminReviewPage />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/admin-blog" element={<AdminBlogPage />} />
@@ -87,6 +90,7 @@ function App() {
         <Route path="/adminblog" element={<AdminBlogPage />} />
         <Route path="/adminmaterials" element={<AdminMaterialsPage />} />
         <Route path="/materials" element={<MaterialsPage />} />
+        <Route path="/submit-material" element={<SubmitMaterialPage />} />
         <Route path="/admindashboard" element={<AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>}/>
         <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route path="/scholarship" element={<Scholarship />}
