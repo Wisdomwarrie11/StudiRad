@@ -58,7 +58,7 @@ const AdminLoginPage = () => {
   }
 
   return (
-    <Container className="py-5" style={{ maxWidth: "400px" }}>
+    <Container className="py-5" style={{ maxWidth: "400px", marginTop: "50px"}}>
       <h3 className="text-center mb-4 fw-bold" style={{ color: "rgb(6, 49, 69)" }}>
         Admin Login
       </h3>

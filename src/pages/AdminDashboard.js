@@ -39,12 +39,12 @@ const AdminDashboard = () => {
       {/* Navbar */}
       <Navbar
         expand="lg"
-        style={{ backgroundColor: "#063145" }}
+        style={{ backgroundColor: "#063145", marginTop: "50px" }}
         variant="dark"
         className="py-3 shadow-sm"
       >
         <Container>
-          <Navbar.Brand className="fw-bold">StudiRad Admin</Navbar.Brand>
+          <Navbar.Brand className="fw-bold">StudiRad Admin Dashboard</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
