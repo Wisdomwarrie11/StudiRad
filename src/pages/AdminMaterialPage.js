@@ -203,48 +203,58 @@ const AdminMaterialsPage = () => {
       </Form>
 
       {/* Uploaded materials list */}
-      <h4 className="mb-3 fw-semibold text-center">Uploaded Materials</h4>
+<h4 className="mb-3 fw-semibold text-center">Uploaded Materials</h4>
 
-      {fetching ? (
-        <div className="text-center">
-          <Spinner animation="border" variant="primary" />
-          <p className="text-muted mt-2">Loading materials...</p>
-        </div>
-      ) : materials.length === 0 ? (
-        <p className="text-center text-muted">No materials uploaded yet.</p>
-      ) : (
-        <Table striped bordered hover responsive>
-          <thead style={{ backgroundColor: "rgb(6, 49, 69)", color: "white" }}>
-            <tr>
-              <th>Course</th>
-              <th>Title</th>
-              <th>Uploader</th>
-              <th>Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {materials.map((item) => (
-              <tr key={item.id}>
-                <td>{item.course}</td>
-                <td>{item.title}</td>
-                <td>{item.uploader}</td>
-                <td>{formatDate(item.createdAt)}</td>
-                <td>
-                  <Button
-                    className="mt-1 w-auto"
-                    variant="danger"
-                    size="sm"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
+{fetching ? (
+  <div className="text-center">
+    <Spinner animation="border" variant="primary" />
+    <p className="text-muted mt-2">Loading materials...</p>
+  </div>
+) : materials.length === 0 ? (
+  <p className="text-center text-muted">No materials uploaded yet.</p>
+) : (
+  <div
+    style={{
+      maxHeight: "400px",
+      overflowY: "auto",
+      borderRadius: "8px",
+      border: "1px solid #dee2e6",
+    }}
+  >
+    <Table striped bordered hover responsive className="mb-0">
+      <thead style={{ backgroundColor: "rgb(6, 49, 69)", color: "white", position: "sticky", top: 0, zIndex: 1 }}>
+        <tr>
+          <th style={{ width: "20%" }}>Course</th>
+          <th style={{ width: "30%" }}>Title</th>
+          <th style={{ width: "20%" }}>Uploader</th>
+          <th style={{ width: "20%" }}>Date</th>
+          <th style={{ width: "10%" }}>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {materials.map((item) => (
+          <tr key={item.id}>
+            <td>{item.course}</td>
+            <td>{item.title}</td>
+            <td>{item.uploader}</td>
+            <td>{formatDate(item.createdAt)}</td>
+            <td>
+              <Button
+                className="mt-1 w-auto"
+                variant="danger"
+                size="sm"
+                onClick={() => handleDelete(item.id)}
+              >
+                Delete
+              </Button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  </div>
+)}
+
     </Container>
   );
 };
