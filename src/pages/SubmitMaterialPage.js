@@ -1,6 +1,6 @@
 // src/pages/SubmitMaterialPage.js
 import React, { useState } from "react";
-import { Container, Form, Button, Alert, Modal } from "react-bootstrap";
+import { Container, Form, Button, Alert, Modal, ProgressBar } from "react-bootstrap";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -9,29 +9,65 @@ const SubmitMaterialPage = () => {
   const [title, setTitle] = useState("");
   const [uploader, setUploader] = useState("");
   const [email, setEmail] = useState("");
-  const [link, setLink] = useState("");
+  const [file, setFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState("");
+
+  const handleFileUpload = async () => {
+    if (!file) {
+      setError("⚠️ Please select a file before submitting.");
+      return null;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "ml_default"); // your Cloudinary preset
+
+    try {
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dgorssyvm/auto/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      if (data.secure_url) return data.secure_url;
+      else throw new Error("Cloudinary upload failed");
+    } catch (err) {
+      console.error("Upload error:", err);
+      setError("❌ File upload failed. Please try again.");
+      return null;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    if (!course || !title || !uploader || !email || !link) {
-      setError("⚠️ Please fill in all fields before submitting.");
+    if (!course || !title || !uploader || !email || !file) {
+      setError("⚠️ Please fill in all fields and select a file.");
       setLoading(false);
       return;
     }
 
     try {
+      const fileUrl = await handleFileUpload();
+      if (!fileUrl) {
+        setLoading(false);
+        return;
+      }
+
       await addDoc(collection(db, "pendingMaterials"), {
         course,
         title,
         uploader,
         email,
-        link,
+        fileUrl,
         createdAt: serverTimestamp(),
         status: "pending",
       });
@@ -41,7 +77,7 @@ const SubmitMaterialPage = () => {
       setTitle("");
       setUploader("");
       setEmail("");
-      setLink("");
+      setFile(null);
     } catch (error) {
       console.error("Error submitting material:", error);
       setError("❌ Failed to send material. Please try again.");
@@ -110,15 +146,18 @@ const SubmitMaterialPage = () => {
         </Form.Group>
 
         <Form.Group className="mb-4">
-          <Form.Label>Google Document Link</Form.Label>
+          <Form.Label>Upload File (PDF, DOCX, PPT, etc.)</Form.Label>
           <Form.Control
-            type="url"
-            placeholder="Paste Google Docs or resource link"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
+            type="file"
+            accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.png"
+            onChange={(e) => setFile(e.target.files[0])}
             required
           />
         </Form.Group>
+
+        {uploadProgress > 0 && (
+          <ProgressBar now={uploadProgress} label={`${uploadProgress}%`} className="mb-3" />
+        )}
 
         <Button
           type="submit"

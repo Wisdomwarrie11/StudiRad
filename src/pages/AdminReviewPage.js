@@ -1,188 +1,156 @@
-// src/pages/AdminReviewPage.js
 import React, { useEffect, useState } from "react";
-import { Container, Table, Button, Spinner, Alert } from "react-bootstrap";
+import { collection, onSnapshot, doc, deleteDoc, addDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Container, Row, Col, Card, Button, Modal, Spinner } from "react-bootstrap";
 
 const AdminReviewPage = () => {
   const [pendingMaterials, setPendingMaterials] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
+  const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // ✅ Show success message if redirected back after upload
+  // 🧠 Fetch pending materials
   useEffect(() => {
-    if (location.state?.successMessage) {
-      setMessage(location.state.successMessage);
-      // clear the state so message doesn’t persist on refresh
-      window.history.replaceState({}, document.title);
-    }
-  }, [location.state]);
-
-  // ✅ Fetch pending materials
-  const fetchPendingMaterials = async () => {
-    setLoading(true);
-    try {
-      const q = query(collection(db, "pendingMaterials"), orderBy("createdAt", "desc"));
-      const snapshot = await getDocs(q);
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+    const unsub = onSnapshot(collection(db, "pendingMaterials"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setPendingMaterials(data);
+    });
+    return () => unsub();
+  }, []);
+
+  // ✅ Approve material (move to materials collection)
+  const handleApprove = async (material) => {
+    try {
+      setLoading(true);
+
+      // Copy to main "materials" collection
+      await addDoc(collection(db, "materials"), {
+        title: material.title,
+        description: material.description || "",
+        uploader: material.uploader || "Anonymous",
+        course: material.course,
+        link: material.link, // ✅ Cloudinary URL
+        createdAt: new Date(),
+      });
+
+      // Remove from pending
+      await deleteDoc(doc(db, "pendingMaterials", material.id));
+
+      alert("Material approved successfully!");
+      setSelectedMaterial(null);
     } catch (error) {
-      console.error("Error fetching pending materials:", error);
-      setMessage("❌ Failed to load pending materials.");
+      console.error("Error approving material:", error);
+      alert("Failed to approve material. Check console for details.");
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchPendingMaterials();
-  }, []);
+  // ❌ Reject material (delete from Firestore only)
+  const handleReject = async (material) => {
+    const confirmDelete = window.confirm("Are you sure you want to reject this material?");
+    if (!confirmDelete) return;
 
-  // ✅ Approve material (redirect to AdminMaterialsPage)
-  const handleApprove = (item) => {
-    if (window.confirm(`Approve "${item.title}" for upload?`)) {
-      navigate("/adminmaterials", {
-        state: {
-          course: item.course || "",
-          title: item.title || "",
-          uploader: item.uploader || "",
-          link: item.link || "",
-          fromReview: true, // tag to track origin
-        },
-      });
+    try {
+      setLoading(true);
+      await deleteDoc(doc(db, "pendingMaterials", material.id));
+      alert("Material rejected and removed from Firestore.");
+      setSelectedMaterial(null);
+    } catch (error) {
+      console.error("Error rejecting material:", error);
+      alert("Failed to reject material.");
+    } finally {
+      setLoading(false);
     }
-  };
-
-  // ❌ Reject material (still deletes from Firestore)
-  const handleReject = async (id, title) => {
-    if (window.confirm(`Reject "${title}" and remove from review list?`)) {
-      try {
-        // Only deletion still interacts with Firebase
-        const { deleteDoc, doc } = await import("firebase/firestore");
-        await deleteDoc(doc(db, "pendingMaterials", id));
-        setMessage(`🗑️ "${title}" has been rejected and deleted.`);
-        fetchPendingMaterials();
-      } catch (error) {
-        console.error("Error rejecting material:", error);
-        setMessage("❌ Failed to reject material.");
-      }
-    }
-  };
-
-  // ✅ Format date
-  const formatDate = (timestamp) => {
-    if (!timestamp?.toDate) return "—";
-    const date = timestamp.toDate();
-    return date.toLocaleString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
   };
 
   return (
-    <Container className="py-5" style={{ maxWidth: "900px", marginTop: "60px" }}>
-      <h3 className="text-center fw-bold mb-4">Pending Materials for Review</h3>
+    <Container className="py-5">
+      <h2 className="text-center mb-4" style={{ color: "rgb(6,49,69)" }}>
+        Admin Review Page
+      </h2>
 
-      {message && (
-        <Alert
-          variant={
-            message.includes("✅") || message.includes("🗑️")
-              ? "success"
-              : "danger"
-          }
-          className="text-center"
-        >
-          {message}
-        </Alert>
-      )}
-
-      {loading ? (
-        <div className="text-center">
-          <Spinner animation="border" variant="primary" />
-          <p className="text-muted mt-2">Loading pending submissions...</p>
-        </div>
-      ) : pendingMaterials.length === 0 ? (
-        <p className="text-center text-muted">No pending materials at the moment.</p>
-      ) : (
-        <div
-          style={{
-            maxHeight: "450px",
-            overflowY: "auto",
-            borderRadius: "8px",
-            border: "1px solid #dee2e6",
-          }}
-        >
-          <Table striped bordered hover responsive className="mb-0">
-            <thead
+      <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+        {pendingMaterials.map((material) => (
+          <Col key={material.id}>
+            <Card
+              className="shadow-sm border-0 h-100 p-3 text-center"
               style={{
-                backgroundColor: "rgb(6, 49, 69)",
-                color: "white",
-                position: "sticky",
-                top: 0,
+                borderTop: "4px solid rgb(6,49,69)",
+                transition: "transform 0.3s",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
             >
-              <tr>
-                <th>Course</th>
-                <th>Title</th>
-                <th>Uploader</th>
-                <th>Email</th>
-                <th>Link</th>
-                <th>Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pendingMaterials.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.course}</td>
-                  <td>{item.title}</td>
-                  <td>{item.uploader}</td>
-                  <td>{item.email}</td>
-                  <td>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View
-                    </a>
-                  </td>
-                  <td>{formatDate(item.createdAt)}</td>
-                  <td className="text-center">
-                    <Button
-                      variant="success"
-                      size="sm"
-                      className="me-2 w-auto"
-                      onClick={() => handleApprove(item)}
-                    >
-                      Approve
-                    </Button>
-                    <Button
-                      className="w-auto"
-                      variant="danger"
-                      size="sm"
-                      style={{ marginTop: "10px" }}
-                      onClick={() => handleReject(item.id, item.title)}
-                    >
-                      Reject
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-      )}
+              <Card.Body>
+                <Card.Title className="fw-bold">{material.title}</Card.Title>
+                <Card.Text className="text-muted mb-1">
+                  Course: {material.course}
+                </Card.Text>
+                <Card.Text className="small">
+                  Uploaded by: {material.uploader}
+                </Card.Text>
+
+                <Button
+                  variant="outline-primary"
+                  size="sm"
+                  className="mt-2"
+                  onClick={() => setSelectedMaterial(material)}
+                >
+                  Review
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+
+      {/* 📋 Review Modal */}
+      <Modal
+        show={!!selectedMaterial}
+        onHide={() => setSelectedMaterial(null)}
+        centered
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Review Material</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedMaterial && (
+            <>
+              <h5>{selectedMaterial.title}</h5>
+              <p>
+                <strong>Course:</strong> {selectedMaterial.course}
+              </p>
+              <p>
+                <strong>Uploaded by:</strong> {selectedMaterial.uploader}
+              </p>
+              <p>
+                <strong>Description:</strong>{" "}
+                {selectedMaterial.description || "No description provided."}
+              </p>
+
+              {/* 📄 Preview of uploaded file */}
+              <div className="text-center my-3">
+                <iframe
+                  src={selectedMaterial.link}
+                  title="Material Preview"
+                  width="100%"
+                  height="400px"
+                  style={{ borderRadius: "10px", border: "1px solid #ddd" }}
+                ></iframe>
+              </div>
+            </>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={() => handleApprove(selectedMaterial)} disabled={loading}>
+            {loading ? <Spinner size="sm" /> : "Approve"}
+          </Button>
+          <Button variant="danger" onClick={() => handleReject(selectedMaterial)} disabled={loading}>
+            {loading ? <Spinner size="sm" /> : "Reject"}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
