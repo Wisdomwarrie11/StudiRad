@@ -1,8 +1,8 @@
 // src/pages/AdminMaterialsPage.js
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Alert, Table, Spinner } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
-import { db, auth } from "../firebase";
+import { useLocation } from "react-router-dom";
+import { db } from "../firebase";
 import {
   collection,
   addDoc,
@@ -13,23 +13,21 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
 
 const AdminMaterialsPage = () => {
   const [course, setCourse] = useState("");
   const [title, setTitle] = useState("");
   const [uploader, setUploader] = useState("");
   const [link, setLink] = useState("");
-  const [publicId, setPublicId] = useState(""); // 👈 Cloudinary public_id for deletion
+  const [publicId, setPublicId] = useState("");
   const [message, setMessage] = useState("");
   const [materials, setMaterials] = useState([]);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
 
-  const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Prefill data if coming from review page
+  // Prefill data if coming from review page
   useEffect(() => {
     if (location.state) {
       const { course, title, uploader, link } = location.state;
@@ -40,15 +38,7 @@ const AdminMaterialsPage = () => {
     }
   }, [location.state]);
 
-  // ✅ Protect page (admins only)
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) navigate("/adminlogin");
-    });
-    return () => unsubscribe();
-  }, [navigate]);
-
-  // ✅ Fetch all materials
+  // Fetch all materials
   const fetchMaterials = async () => {
     setFetching(true);
     try {
@@ -71,30 +61,34 @@ const AdminMaterialsPage = () => {
     fetchMaterials();
   }, []);
 
-  // ✅ Handle Cloudinary Upload
+  // ✅ Cloudinary Upload Widget (for PDFs/docs)
   const handleCloudinaryUpload = () => {
     const myWidget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "YOUR_CLOUD_NAME",
-        uploadPreset: "YOUR_UPLOAD_PRESET",
+        cloudName: "dgorssyvm",
+        uploadPreset: "ml_default",
         sources: ["local", "url", "camera"],
         multiple: false,
-        resourceType: "auto",
+        resource_type: "raw", // <-- critical fix
         folder: "studiRad_materials",
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Upload success:", result.info);
-          setLink(result.info.secure_url);
-          setPublicId(result.info.public_id);
+          const uploaded = result.info;
+          console.log("Upload success:", uploaded);
+          setLink(uploaded.secure_url);
+          setPublicId(uploaded.public_id);
           setMessage("✅ File uploaded successfully!");
+        } else if (error) {
+          console.error("Upload error:", error);
+          setMessage("❌ Upload failed. Try again.");
         }
       }
     );
     myWidget.open();
   };
 
-  // ✅ Handle Upload to Firestore
+  // ✅ Save Material to Firestore
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -107,15 +101,16 @@ const AdminMaterialsPage = () => {
     }
 
     try {
-      await addDoc(collection(db, "materials"), {
+      const docRef = await addDoc(collection(db, "materials"), {
         course,
         title,
         uploader,
         link,
-        publicId, // 👈 store public_id so we can delete later
+        publicId,
         createdAt: serverTimestamp(),
       });
 
+      console.log("✅ Firestore document written with ID:", docRef.id);
       setMessage("✅ Material uploaded successfully!");
       setCourse("");
       setTitle("");
@@ -124,43 +119,38 @@ const AdminMaterialsPage = () => {
       setPublicId("");
       fetchMaterials();
     } catch (error) {
-      console.error("Error uploading material:", error);
-      setMessage("❌ Failed to upload. Please check Firebase connection or rules.");
+      console.error("❌ Error uploading material to Firestore:", error);
+      setMessage("❌ Failed to upload. Please check Firebase rules.");
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ Handle Delete (Firestore + Cloudinary)
+  // ✅ Delete Material (Firestore + Cloudinary)
   const handleDelete = async (id, publicId) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this material? This will remove it from Cloudinary too."
-      )
-    ) {
-      try {
-        // Delete from Firestore
-        await deleteDoc(doc(db, "materials", id));
+    if (!window.confirm("Are you sure you want to delete this material?")) return;
 
-        // Delete from Cloudinary via backend route
-        if (publicId) {
-          await fetch("https://your-server-url.com/delete-file", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ public_id: publicId }),
-          });
-        }
+    try {
+      await deleteDoc(doc(db, "materials", id));
 
-        setMessage("🗑️ Material deleted successfully from both Firestore and Cloudinary.");
-        fetchMaterials();
-      } catch (error) {
-        console.error("Error deleting material:", error);
-        setMessage("❌ Failed to delete material.");
+      // Cloudinary deletion (requires backend endpoint for security)
+      if (publicId) {
+        await fetch("https://your-backend-url.com/delete-file", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ public_id: publicId }),
+        });
       }
+
+      setMessage("🗑️ Material deleted successfully.");
+      fetchMaterials();
+    } catch (error) {
+      console.error("Error deleting material:", error);
+      setMessage("❌ Failed to delete material.");
     }
   };
 
-  // ✅ Format Firestore timestamp
+  // Format Firestore timestamp
   const formatDate = (timestamp) => {
     if (!timestamp?.toDate) return "—";
     const date = timestamp.toDate();
@@ -173,7 +163,6 @@ const AdminMaterialsPage = () => {
     });
   };
 
-  // ✅ JSX
   return (
     <Container className="py-5" style={{ maxWidth: "850px", marginTop: "60px" }}>
       <h2 className="text-center fw-bold mb-4">Upload Reading Materials</h2>
@@ -187,6 +176,7 @@ const AdminMaterialsPage = () => {
         </Alert>
       )}
 
+      {/* Upload Form */}
       <Form onSubmit={handleSubmit} className="mb-5 p-4 shadow-sm rounded bg-light">
         <Form.Group className="mb-3">
           <Form.Label>Course Category</Form.Label>
@@ -263,6 +253,7 @@ const AdminMaterialsPage = () => {
         </Button>
       </Form>
 
+      {/* Uploaded Materials List */}
       <h4 className="mb-3 fw-semibold text-center">Uploaded Materials</h4>
 
       {fetching ? (

@@ -97,38 +97,6 @@ const MaterialsPage = () => {
   );
 
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
-
-  // 👍 Like / Unlike
-  // const toggleLike = async (material) => {
-  //   const materialRef = doc(db, "materials", material.id);
-  //   try {
-  //     if (material.likedBy?.includes(userId)) {
-  //       await updateDoc(materialRef, { likedBy: arrayRemove(userId) });
-  //     } else {
-  //       await updateDoc(materialRef, { likedBy: arrayUnion(userId) });
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
-  // 💬 Add comment
-  // const handleAddComment = async () => {
-  //   if (!commentText.trim()) return;
-  //   const materialRef = doc(db, "materials", selectedMaterial.id);
-  //   const newComment = {
-  //     name: "Anonymous User",
-  //     text: commentText.trim(),
-  //     createdAt: new Date(),
-  //   };
-  //   try {
-  //     await updateDoc(materialRef, { comments: arrayUnion(newComment) });
-  //     setCommentText("");
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   // 📤 Share
   const handleShare = (title) => {
     if (navigator.share) {
@@ -224,38 +192,6 @@ const MaterialsPage = () => {
 
                 {/* Actions */}
                 <div className="d-flex justify-content-between align-items-center mt-2 px-2">
-                  {/* <div
-                    onClick={() => toggleLike(m)}
-                    style={{
-                      cursor: "pointer",
-                      color: m.likedBy?.includes(userId)
-                        ? courseColors[m.course] || "rgb(221,168,83)"
-                        : "rgb(100,100,100)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      fontSize: "0.85rem",
-                    }}
-                  >
-                    <HandThumbsUp size={18} />
-                    <span>{m.likedBy?.length || 0}</span>
-                  </div> */}
-
-                  {/* <div
-                    onClick={() => setSelectedMaterial(m)}
-                    style={{
-                      cursor: "pointer",
-                      color: "rgb(100,100,100)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      fontSize: "0.85rem",
-                    }}
-                  >
-                    <ChatDots size={18} />
-                    <span>{m.comments?.length || 0}</span>
-                  </div> */}
-
                   <div
                     onClick={() => handleShare(m.title)}
                     style={{
@@ -347,24 +283,7 @@ const MaterialsPage = () => {
             <p className="text-muted">No comments yet</p>
           )}
 
-          {/* Add Comment */}
-          {/* <Form className="mt-3">
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Write a comment..."
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-              />
-            </Form.Group>
-            <Button
-              onClick={handleAddComment}
-              className="mt-2 w-auto"
-              style={{ backgroundColor: "rgb(221,168,83)", border: "none" }}
-            >
-              Post Comment
-            </Button>
-          </Form> */}
+        
         </Modal.Body>
       </Modal>
     </Container>
