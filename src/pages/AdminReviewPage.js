@@ -17,33 +17,32 @@ const AdminReviewPage = () => {
     return () => unsub();
   }, []);
 
-  // ✅ Approve material (move to materials collection)
-  const handleApprove = async (material) => {
-    try {
-      setLoading(true);
-
-      // Copy to main "materials" collection
-      await addDoc(collection(db, "materials"), {
-        title: material.title,
-        description: material.description || "",
-        uploader: material.uploader || "Anonymous",
-        course: material.course,
-        link: material.link, // ✅ Cloudinary URL
-        createdAt: new Date(),
-      });
-
-      // Remove from pending
-      await deleteDoc(doc(db, "pendingMaterials", material.id));
-
-      alert("Material approved successfully!");
-      setSelectedMaterial(null);
-    } catch (error) {
-      console.error("Error approving material:", error);
-      alert("Failed to approve material. Check console for details.");
-    } finally {
-      setLoading(false);
+// ✅ Approve material (move to main collection safely)
+const handleApprove = async (material) => {
+  try {
+    if (!material.fileUrl) {
+      alert("⚠️ This material has no uploaded file link. Please reject or re-upload it.");
+      return;
     }
-  };
+
+    await addDoc(collection(db, "materials"), {
+      title: material.title || "Untitled Material",
+      description: material.description || "",
+      uploader: material.uploader || "Anonymous",
+      course: material.course || "Uncategorized",
+      link: material.fileUrl, // 
+      createdAt: new Date(),
+    });
+
+    await deleteDoc(doc(db, "pendingMaterials", material.id));
+
+    alert("✅ Material approved successfully!");
+    setSelectedMaterial(null);
+  } catch (error) {
+    console.error("Error approving material:", error);
+    alert("❌ Failed to approve material. Check console for details.");
+  }
+};
 
   // ❌ Reject material (delete from Firestore only)
   const handleReject = async (material) => {
@@ -53,7 +52,7 @@ const AdminReviewPage = () => {
     try {
       setLoading(true);
       await deleteDoc(doc(db, "pendingMaterials", material.id));
-      alert("Material rejected and removed from Firestore.");
+      alert("Material rejected");
       setSelectedMaterial(null);
     } catch (error) {
       console.error("Error rejecting material:", error);
@@ -93,7 +92,7 @@ const AdminReviewPage = () => {
                 <Button
                   variant="outline-primary"
                   size="sm"
-                  className="mt-2"
+                  className="mt-2 w-auto"
                   onClick={() => setSelectedMaterial(material)}
                 >
                   Review
@@ -131,13 +130,18 @@ const AdminReviewPage = () => {
 
               {/* 📄 Preview of uploaded file */}
               <div className="text-center my-3">
-                <iframe
-                  src={selectedMaterial.link}
-                  title="Material Preview"
-                  width="100%"
-                  height="400px"
-                  style={{ borderRadius: "10px", border: "1px solid #ddd" }}
-                ></iframe>
+              {selectedMaterial.fileUrl && selectedMaterial.fileUrl.endsWith(".pdf") ? (
+              <iframe
+                src={selectedMaterial.fileUrl}
+                title="Material Preview"
+                width="100%"
+                height="400px"
+                style={{ borderRadius: "10px", border: "1px solid #ddd" }}
+              ></iframe>
+              ) : (
+                <p className="text-muted text-center">Preview not available. Please download to view this file.</p>
+              )}
+
               </div>
             </>
           )}

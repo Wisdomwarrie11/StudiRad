@@ -25,6 +25,8 @@ import {
   Pagination,
 } from "react-bootstrap";
 import { Book, HandThumbsUp, ChatDots, Share } from "react-bootstrap-icons";
+import QuizGeneratorPage from "./QuizGeneratorPage";
+import ImageToPdfPage from "./ImagetoPdfPage";
 
 const MaterialsPage = () => {
   const [materials, setMaterials] = useState([]);
@@ -48,6 +50,7 @@ const MaterialsPage = () => {
     "USS",
     "Projects",
     "Professional Exams PQ",
+    "Others"
   ];
   const navigate = useNavigate();
 
@@ -64,6 +67,7 @@ const MaterialsPage = () => {
     USS: "#20C997",
     Projects: "#6610F2",
     "Professional Exams PQ": "#6C757D",
+    Others: "#5410F4",
     All: "rgb(6,49,69)",
   };
 
@@ -231,6 +235,8 @@ const MaterialsPage = () => {
           </Col>
         ))}
       </Row>
+
+      <ImageToPdfPage/>
 
       {/* 🔢 Pagination */}
       {totalPages > 1 && (
