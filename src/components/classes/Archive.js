@@ -107,3 +107,14 @@
           </Col>
         ))}
       </Row>
+
+      
+  // ✅ Protect page (admins only)
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (!user) navigate("/adminlogin");
+  //   });
+  //   return () => unsubscribe();
+  // }, [navigate]);
+
+  // ✅ Fetch all materials

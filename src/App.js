@@ -39,6 +39,9 @@ import AdminDashboard from "pages/AdminDashboard";
 import VerifyOtpPage from "pages/VerifyOTPPage";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import SubmitMaterialPage from "pages/SubmitMaterialPage";
+import DashboardLayout from "./layouts/DashboardLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
 
@@ -93,6 +96,16 @@ function App() {
         <Route path="/submit-material" element={<SubmitMaterialPage />} />
         <Route path="/admindashboard" element={<AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>}/>
         <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardPage />} />
+        </Route> 
         <Route path="/scholarship" element={<Scholarship />}
          />
       </Routes>

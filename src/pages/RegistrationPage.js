@@ -6,6 +6,8 @@ import { auth, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
+import { Timestamp } from "firebase/firestore";
+
 
 const RegisterPage = () => {
   const [fullName, setFullName] = useState("");
@@ -32,17 +34,17 @@ const RegisterPage = () => {
 
       // Step 2: Generate OTP and expiry (10 min)
       const otp = generateOtp();
-      const otpExpiry = Date.now() + 10 * 60 * 1000; // 10 minutes
-
+      const otpExpiry = Timestamp.fromDate(new Date(Date.now() + 10 * 60 * 1000));
+      
       // Step 3: Save user + OTP details in Firestore
       await setDoc(doc(db, "users", user.uid), {
         fullName,
         email,
         role,
         otp,
-        otpExpiry,
+        otpExpiry,                // already Timestamp from above
         verified: false,
-        createdAt: new Date(),
+        createdAt: Timestamp.now() // use Firestore Timestamp instead of Date
       });
 
       // Step 4: Send OTP via EmailJS
@@ -74,7 +76,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <Container className="py-5" style={{ maxWidth: "600px" }}>
+    <Container className="py-5" style={{ maxWidth: "600px", marginTop: "40px"}}>
       <h2 className="text-center mb-4 fw-bold" style={{ color: "#063145" }}>
         Register an Account
       </h2>

@@ -10,6 +10,7 @@ import {
   getDocs,
   updateDoc,
   doc,
+  getDoc,
 } from "firebase/firestore";
 import emailjs from "@emailjs/browser";
 import "./verifyOtp.css";
@@ -21,21 +22,20 @@ const VerifyOtpPage = () => {
 
   const [otpInput, setOtpInput] = useState("");
   const [message, setMessage] = useState("");
-  const [timeLeft, setTimeLeft] = useState(300); // ✅ 5 minutes
+  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
   const [isResending, setIsResending] = useState(false);
   const [resendEnabled, setResendEnabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // ✅ Countdown timer
+  // Countdown timer
   useEffect(() => {
     if (timeLeft <= 0) {
       setResendEnabled(true);
       return;
     }
-
     const timer = setInterval(() => {
       setTimeLeft((prev) => prev - 1);
     }, 1000);
-
     return () => clearInterval(timer);
   }, [timeLeft]);
 
@@ -45,70 +45,77 @@ const VerifyOtpPage = () => {
     return `${min}:${sec < 10 ? "0" : ""}${sec}`;
   };
 
-  // ✅ Handle OTP Verification
-  const handleVerify = async () => {
-    if (!otpInput.trim()) return setMessage("⚠️ Please enter the OTP.");
-
-    try {
-      const q = query(collection(db, "users"), where("email", "==", email));
-      const querySnapshot = await getDocs(q);
-
-      if (querySnapshot.empty) {
-        setMessage("❌ No user found for this email.");
-        return;
-      }
-
-      const userDoc = querySnapshot.docs[0];
-      const userData = userDoc.data();
-
-      console.log("DEBUG → User data from Firestore:", userData);
-
-      // ✅ Safety checks
-      if (!userData.otp || !userData.otpExpiry) {
-        setMessage("⚠️ No OTP was found. Please request a new one.");
-        setResendEnabled(true);
-        return;
-      }
-
-      // ✅ Expiry check (convert if Firestore Timestamp)
-      const expiryTime =
-        userData.otpExpiry?.toMillis?.() ?? new Date(userData.otpExpiry).getTime();
-
-      if (Date.now() > expiryTime) {
-        setMessage("⏰ OTP expired. Please request a new one.");
-        setResendEnabled(true);
-        return;
-      }
-
-      // ✅ Compare OTP values as strings
-      if (String(otpInput) !== String(userData.otp)) {
-        setMessage("❌ Incorrect OTP. Please try again.");
-        return;
-      }
-
-      // ✅ Mark user verified
-      await updateDoc(doc(db, "users", userDoc.id), {
-        verified: true,
-        otp: null,
-        otpExpiry: null,
-      });
-
-      setMessage("✅ Verification successful!");
-      setTimeout(() => navigate("/"), 2000);
-    } catch (error) {
-      console.error("OTP verification error details:", error);
-      setMessage(`❌ Verification failed: ${error.message || "Try again."}`);
+  // ✅ Handle OTP Verification (fixed logic)
+// Handle OTP Verification
+const handleVerify = async () => {
+  try {
+    if (!otpInput || otpInput.trim() === "") {
+      setMessage("Please enter the OTP sent to your email.");
+      return;
     }
-  };
 
-  // ✅ Handle Resend OTP
+    // 🔹 Find user by email
+    const q = query(collection(db, "users"), where("email", "==", email));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      setMessage("User not found. Please register again.");
+      return;
+    }
+
+    const userDoc = querySnapshot.docs[0];
+    const userRef = doc(db, "users", userDoc.id);
+    const userData = userDoc.data();
+
+    // 🔹 Handle expiry timestamp correctly (works for number or Firestore Timestamp)
+    let expiryTime;
+    if (typeof userData.otpExpiry === "number") {
+      expiryTime = userData.otpExpiry;
+    } else if (userData.otpExpiry?.toMillis) {
+      expiryTime = userData.otpExpiry.toMillis();
+    } else {
+      expiryTime = new Date(userData.otpExpiry).getTime();
+    }
+
+    const currentTime = Date.now();
+
+    // 🔹 Check for OTP match
+    if (userData.otp !== otpInput.trim()) {
+      setMessage("❌ Invalid OTP. Please check and try again.");
+      return;
+    }
+
+    // 🔹 Check for OTP expiry
+    if (currentTime > expiryTime) {
+      setMessage("❌ OTP has expired. Please request a new one.");
+      return;
+    }
+
+    // 🔹 Update Firestore (mark as verified)
+    await updateDoc(userRef, {
+      verified: true,
+      otp: null,
+      otpExpiry: null,
+    });
+
+    setMessage("✅ Email successfully verified! You can now log in.");
+    setTimeout(() => navigate("/login"), 1500);
+
+  } catch (error) {
+    console.error("Verification failed:", error);
+    setMessage(`❌ Verification failed: ${error.message}`);
+  }
+};
+
+
+  // Handle Resend OTP (unchanged)
   const handleResend = async () => {
     if (isResending) return;
     setIsResending(true);
 
     try {
       const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      const newExpiry = Date.now() + 5 * 60 * 1000; // 5 mins
+      const newExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
 
       const q = query(collection(db, "users"), where("email", "==", email));
       const querySnapshot = await getDocs(q);
@@ -121,13 +128,12 @@ const VerifyOtpPage = () => {
       const userDoc = querySnapshot.docs[0];
       const userData = userDoc.data();
 
-      // ✅ Update Firestore
       await updateDoc(doc(db, "users", userDoc.id), {
         otp: newOtp,
         otpExpiry: newExpiry,
       });
 
-      // ✅ Send OTP email
+      // Send OTP email
       await emailjs.send(
         "service_ktgszfh",
         "template_dg0adum",
@@ -152,10 +158,7 @@ const VerifyOtpPage = () => {
   };
 
   return (
-    <Container
-      className="py-5"
-      style={{ maxWidth: "480px", marginTop: "50px" }}
-    >
+    <Container className="py-5" style={{ maxWidth: "480px", marginTop: "50px" }}>
       <h3 className="text-center mb-4 fw-bold" style={{ color: "#063145" }}>
         Verify Your Email
       </h3>
@@ -195,6 +198,7 @@ const VerifyOtpPage = () => {
           <Button
             variant="dark"
             onClick={handleVerify}
+            disabled={loading}
             style={{
               backgroundColor: "#063145",
               border: "none",
@@ -203,7 +207,7 @@ const VerifyOtpPage = () => {
               borderRadius: "8px",
             }}
           >
-            Verify
+            {loading ? "Verifying..." : "Verify"}
           </Button>
         </div>
 

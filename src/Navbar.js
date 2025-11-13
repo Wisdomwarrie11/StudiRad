@@ -87,6 +87,11 @@ const Navbar = () => {
                 <Link className="nav-link" to="/contact">Contact us</Link>
               </li>
             </strong>
+            <strong>
+              <li>
+                <Link className='nav-link' style={{backgroundColor: "rgb(98, 109, 112)", borderRadius: "10%", color: "white"}} to="/dashboard">Account</Link>
+              </li>
+            </strong>
           </ul>
         </div>
       </div>
