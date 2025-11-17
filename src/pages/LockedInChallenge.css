@@ -1,0 +1,65 @@
+.lockedin-page {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Hero */
+  .hero-section {
+    background: linear-gradient(135deg, #424c6f, #04385d);
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  .hero-btn {
+    background: #e6b400;
+    color: #000;
+    font-weight: 600;
+    border-radius: 30px;
+  }
+  .hero-btn:hover {
+    background: #ffe45e;
+    color: #0d1b4c;
+  }
+  
+  /* About */
+  .about-section .note-box {
+    background: #d9e6ff;
+    padding: 15px;
+    border-left: 4px solid #e6b400;
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+  
+  /* Who */
+  .who-section {
+    background: linear-gradient(135deg, #001f36, #004f73);
+  }
+  .who-card {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    transition: 0.3s;
+  }
+  .who-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.3);
+  }
+  
+  /* How List */
+  .how-list {
+    max-width: 600px;
+    margin: auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  /* CTA */
+  .cta-section {
+    background: #000;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  

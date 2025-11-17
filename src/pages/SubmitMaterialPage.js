@@ -16,33 +16,36 @@ const SubmitMaterialPage = () => {
   const [error, setError] = useState("");
 
   const handleFileUpload = async () => {
-    if (!file) {
-      setError("⚠️ Please select a file before submitting.");
-      return null;
-    }
+  if (!file) {
+    setError("⚠️ Please select a file before submitting.");
+    return null;
+  }
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "ml_default"); // your Cloudinary preset
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "ml_default"); // your Cloudinary preset
+  formData.append("resource_type", "raw"); // ← important for PDFs, DOCX, PPT
+  formData.append("folder", "studiRad_materials"); // optional: store in folder
 
-    try {
-      const response = await fetch(
-        "https://api.cloudinary.com/v1_1/dgorssyvm/auto/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+  try {
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dgorssyvm/raw/upload", // ← use raw/upload endpoint
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
-      const data = await response.json();
-      if (data.secure_url) return data.secure_url;
-      else throw new Error("Cloudinary upload failed");
-    } catch (err) {
-      console.error("Upload error:", err);
-      setError("❌ File upload failed. Please try again.");
-      return null;
-    }
-  };
+    const data = await response.json();
+    if (data.secure_url) return data.secure_url;
+    else throw new Error("Cloudinary upload failed");
+  } catch (err) {
+    console.error("Upload error:", err);
+    setError("❌ File upload failed. Please try again.");
+    return null;
+  }
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

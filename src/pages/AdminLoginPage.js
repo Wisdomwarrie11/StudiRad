@@ -18,7 +18,7 @@ const AdminLoginPage = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(adminAuth, (user) => {
       if (user) {
-        navigate("/admindashboard");
+        navigate("/");
       } else {
         setCheckingAuth(false);
       }

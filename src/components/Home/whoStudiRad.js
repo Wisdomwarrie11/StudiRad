@@ -36,8 +36,8 @@ export default function WhoStudiRad() {
   return (
     <section  className="who-section container py-5">
       <div className="text-center mb-5">
-        <h2 className="fw-bold">Who StudiRad Is Meant For</h2>
-        <p className="text-muted">
+        <h2 style={{color: "white"}} className="fw-bold">Who StudiRad Is Meant For</h2>
+        <p style={{color: "white"}} className="text-muted">
           A platform designed to connect learners, educators, and professionals across radiography.
         </p>
       </div>

@@ -42,6 +42,7 @@ import SubmitMaterialPage from "pages/SubmitMaterialPage";
 import DashboardLayout from "./layouts/DashboardLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardPage from "./pages/DashboardPage";
+import LockedInChallenge from "pages/LockedInChallenge";
 
 function App() {
 
@@ -94,6 +95,8 @@ function App() {
         <Route path="/adminmaterials" element={<AdminMaterialsPage />} />
         <Route path="/materials" element={<MaterialsPage />} />
         <Route path="/submit-material" element={<SubmitMaterialPage />} />
+        <Route path="/challenge" element={<LockedInChallenge />} />
+
         <Route path="/admindashboard" element={<AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>}/>
         <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route

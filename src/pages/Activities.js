@@ -2,6 +2,23 @@ import React from "react";
 
 const activities = [
   {
+    id: 3,
+    title: "6 Weeks Locked-In Challenge",
+    date: "Coming Soon",
+    description: "6 weeks of intense Studies and assessment",
+    image: "LockedIn.jpg",
+    link: "/challenge"
+  },
+  {
+    id: 2,
+    title: "Inside Radiography: The NeuroImaging Experience",
+    date: "7th November 2025",
+    description: "An educating session designed to introduce Radiographers to the concept of neuroimaging and it role in medical Imaging.",
+    image: "Episode 1.jpg",
+    link: "#"
+  },
+ 
+  {
     id: 1,
     title: "From Induction to Impact: Navigating the Radiographer’s Journey",
     date: "September 20, 2025, 8:00 PM (WAT)",
@@ -9,22 +26,7 @@ const activities = [
     image: "StudiRad[1].jpg",
     link: "/webinarRegistration"
   },
-//   {
-//     id: 2,
-//     title: "Bootcamp: Basics of Radiographic Imaging",
-//     date: "October 2025",
-//     description: "An intensive bootcamp designed to simplify radiographic imaging concepts with hands-on demonstrations.",
-//     image: "bootcamp.jpg",
-//     link: "#"
-//   },
-//   {
-//     id: 3,
-//     title: "Seminar: Innovations in Medical Imaging",
-//     date: "November 2025",
-//     description: "Explore the latest advancements in medical imaging technology and their implications for clinical practice.",
-//     image: "seminar.jpg",
-//     link: "#"
-//   },
+
 //   {
 //     id: 4,
 //     title: "Upcoming Event: Annual Radiography Conference",

@@ -89,7 +89,7 @@ const Navbar = () => {
             </strong>
             <strong>
               <li>
-                <Link className='nav-link' style={{backgroundColor: "rgb(98, 109, 112)", borderRadius: "10%", color: "white"}} to="/dashboard">Account</Link>
+                <Link className='nav-link' to="/dashboard">Account</Link>
               </li>
             </strong>
           </ul>
