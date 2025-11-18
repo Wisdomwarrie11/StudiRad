@@ -1,16 +1,59 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {FaBook, FaUserCheck, FaClipboardCheck, FaChartLine, FaAward, FaClock } from "react-icons/fa";
+import { 
+  FaBook, FaUserCheck, FaClipboardCheck, FaChartLine, FaAward, FaClock, FaFlask, FaXRay, FaRadiation, FaMicroscope, FaBrain, FaRobot 
+} from "react-icons/fa";
 import "./LockedInChallenge.css";
 
 const LockedInChallenge = () => {
   const howItWorks = [
-    { icon: <FaBook size={30} />, title: "Weekly Study Scope", description: "Receive structured weekly study topics." },
-    { icon: <FaClock size={30} />, title: "Self-Paced Learning", description: "Study independently at your own pace." },
-    { icon: <FaClipboardCheck size={30} />, title: "Weekly Assessments", description: "Complete graded weekly assessments." },
-    { icon: <FaChartLine size={30} />, title: "Track Growth", description: "Monitor your progress privately." },
-    { icon: <FaAward size={30} />, title: "Final Evaluation", description: "Compete in Week 6 final assessment for rewards." },
-    { icon: <FaUserCheck size={30} />, title: "Recognition & Reward", description: "Top scorers get recognition and prizes." },
+    { 
+      icon: <FaBook size={30} />, 
+      title: "Weekly Study Scope", 
+      details: `• You get assigned weekly study areas based on the course outline.
+• Access to recommended reading materials, videos, and resources every week.
+• Focus on essential topics relevant to international standards.` 
+    },
+    { 
+      icon: <FaClock size={30} />, 
+      title: "Self-Paced Learning", 
+      details: `• Learn at your own pace; no scheduled classes or lectures.
+• Materials and resources are available for you to access anytime.
+• Review topics multiple times as needed.
+• Adjust study hours according to your personal schedule.` 
+    },
+    { 
+      icon: <FaClipboardCheck size={30} />, 
+      title: "Weekly Assessments", 
+      details: `• Complete weekly graded assessments to test understanding.
+• Assessments focus on the topics covered in the weekly scope.
+• Track your progress and identify areas for improvement.
+• Only you can see your grades to encourage private growth.` 
+    },
+    { 
+      icon: <FaChartLine size={30} />, 
+      title: "Track Growth", 
+      details: `• Visualize your progress over the 6 weeks.
+• See your performance trends and areas where you excel or need improvement.
+• Maintain motivation by tracking consistent study habits.
+• Compare your scores with your previous attempts privately.` 
+    },
+    { 
+      icon: <FaAward size={30} />, 
+      title: "Final Evaluation", 
+      details: `• At the end of 6 weeks, take the final assessment covering all core topics.
+• Test your cumulative knowledge and readiness.
+• Identify gaps in learning for future improvement.
+• High-performing participants may qualify for rewards.` 
+    },
+    { 
+      icon: <FaUserCheck size={30} />, 
+      title: "Recognition & Reward", 
+      details: `• Top scorers and most consistent participants receive recognition.
+• Earn rewards for dedication and performance.
+• Gain motivation to continue learning and growing.
+• Celebrate your learning journey with your peers.` 
+    },
   ];
 
   const benefits = [
@@ -22,16 +65,53 @@ const LockedInChallenge = () => {
   ];
 
   const courses = [
-    { week: "Week 1", course: "Advanced Radiographic Physics & Imaging Principles", topics: "X-ray interactions, Digital image formation & optimization, Patient dose management", alignment: "Aligned with globally recommended radiography physics knowledge" },
-    { week: "Week 2", course: "Advanced Anatomy & Cross-Sectional Imaging", topics: "Cross-sectional anatomy, Pathological variants, Interventional anatomy", alignment: "Aligned with international imaging anatomy standards" },
-    { week: "Week 3", course: "Complex Procedures & Positioning", topics: "Trauma imaging, Contrast studies, Pediatric/geriatric positioning", alignment: "Aligned with globally recommended procedural competency" },
-    { week: "Week 4", course: "Advanced Radiation Safety & Protection", topics: "ALARA principles, Occupational monitoring, Regulatory compliance", alignment: "Aligned with international radiation safety standards" },
-    { week: "Week 5", course: "Image Evaluation & Quality Assurance", topics: "Image quality metrics, Artifact troubleshooting, QA protocols", alignment: "Aligned with international QA practices" },
-    { week: "Week 6", course: "Specialized & Emerging Modalities", topics: "Advanced CT, MRI sequences, AI-assisted imaging", alignment: "Aligned with emerging global radiography trends" },
+    { 
+      week: "Week 1", 
+      course: "Advanced Radiographic Physics & Imaging Principles", 
+      topics: "X-ray interactions, Digital image formation & optimization, Patient dose management", 
+      alignment: "Aligned with globally recommended radiography physics knowledge",
+      icon: <FaFlask />
+    },
+    { 
+      week: "Week 2", 
+      course: "Advanced Anatomy & Cross-Sectional Imaging", 
+      topics: "Cross-sectional anatomy, Pathological variants, Interventional anatomy", 
+      alignment: "Aligned with international imaging anatomy standards",
+      icon: <FaBrain />
+    },
+    { 
+      week: "Week 3", 
+      course: "Complex Procedures & Positioning", 
+      topics: "Trauma imaging, Contrast studies, Pediatric/geriatric positioning", 
+      alignment: "Aligned with globally recommended procedural competency",
+      icon: <FaXRay />
+    },
+    { 
+      week: "Week 4", 
+      course: "Advanced Radiation Safety & Protection", 
+      topics: "ALARA principles, Occupational monitoring, Regulatory compliance", 
+      alignment: "Aligned with international radiation safety standards",
+      icon: <FaRadiation />
+    },
+    { 
+      week: "Week 5", 
+      course: "Image Evaluation & Quality Assurance", 
+      topics: "Image quality metrics, Artifact troubleshooting, QA protocols", 
+      alignment: "Aligned with international QA practices",
+      icon: <FaMicroscope />
+    },
+    { 
+      week: "Week 6", 
+      course: "Specialized & Emerging Modalities", 
+      topics: "Advanced CT, MRI sequences, AI-assisted imaging", 
+      alignment: "Aligned with emerging global radiography trends",
+      icon: <FaRobot />
+    },
   ];
 
   return (
-    <div style={{marginTop: "50px"}} className="lockedin-page">
+    <div style={{ marginTop: "50px" }} className="lockedin-page">
+
       {/* Hero */}
       <section className="hero-section text-center text-light">
         <div className="container py-5">
@@ -41,17 +121,37 @@ const LockedInChallenge = () => {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works Flip Cards */}
       <section className="how-section py-5 bg-light">
         <div className="container">
-          <h2 style={{color: "#001f36"}} className="section-title text-center mb-5">How It Works</h2>
+          <h2 style={{ color: "#001f36" }} className="section-title text-center mb-5">How It Works</h2>
           <div className="row g-4">
             {howItWorks.map((item, index) => (
               <div className="col-12 col-md-4" key={index}>
-                <div className="card h-100 text-center shadow-sm border-0 py-4">
-                  <div className="card-icon mb-3">{item.icon}</div>
-                  <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.description}</p>
+                <div className="flip-card">
+                  <div className="flip-card-inner" id={`flip-card-${index}`}>
+                    {/* Front */}
+                    <div className="flip-card-front h-100 d-flex flex-column justify-content-center align-items-center shadow-sm border-0 py-4">
+                      <div className="card-icon mb-3">{item.icon}</div>
+                      <h5 className="card-title">{item.title}</h5>
+                      <button 
+                        className="btn btn-outline-primary mt-3 w-auto"
+                        onClick={() => document.getElementById(`flip-card-${index}`).classList.toggle("flipped")}
+                      >
+                        See More
+                      </button>
+                    </div>
+                    {/* Back */}
+                    <div className="flip-card-back h-100 d-flex flex-column justify-content-center align-items-center shadow-sm border-0 py-4">
+                      <p className="card-text text-center">{item.details}</p>
+                      <button 
+                        className="btn btn-outline-light mt-3 w-auto"
+                        onClick={() => document.getElementById(`flip-card-${index}`).classList.remove("flipped")}
+                      >
+                        Back
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -65,40 +165,138 @@ const LockedInChallenge = () => {
           <h2 className="section-title mb-4">Benefits of Joining</h2>
           <ul className="list-unstyled">
             {benefits.map((benefit, index) => (
-              <li key={index} className="mb-2 fs-5"><FaUserCheck className="me-2 text-warning"/> {benefit}</li>
+              <li key={index} className="mb-2 fs-5 benefit-item"><FaUserCheck className="me-2 text-warning"/> {benefit}</li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Courses Table */}
+      {/* Courses Accordion */}
       <section className="courses-section py-5">
         <div className="container">
-          <h2 style={{color: "#001f36"}} className="section-title text-center mb-4">Course Outline & Topics</h2>
-          <div className="table-responsive">
-            <table className="table table-bordered table-hover align-middle">
-              <thead className="table-dark text-center">
-                <tr>
-                  <th>Week</th>
-                  <th>Course</th>
-                  <th>Topics</th>
-                  <th>Alignment with International Standards</th>
-                </tr>
-              </thead>
-              <tbody>
-                {courses.map((c, idx) => (
-                  <tr key={idx}>
-                    <td className="text-center">{c.week}</td>
-                    <td>{c.course}</td>
-                    <td>{c.topics}</td>
-                    <td>{c.alignment}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <h2 style={{ color: "#001f36" }} className="section-title text-center mb-4">Course Outline & Topics</h2>
+          <div className="accordion" id="coursesAccordion">
+            {courses.map((c, idx) => (
+              <div className="accordion-item mb-3" key={idx}>
+                <h2 className="accordion-header" id={`heading${idx}`}>
+                  <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#collapse${idx}`}
+                    aria-expanded="false"
+                    aria-controls={`collapse${idx}`}
+                  >
+                    <span className="me-2">{c.icon}</span> {c.week}: {c.course}
+                  </button>
+                </h2>
+                <div
+                  id={`collapse${idx}`}
+                  className="accordion-collapse collapse"
+                  aria-labelledby={`heading${idx}`}
+                  data-bs-parent="#coursesAccordion"
+                >
+                  <div className="accordion-body">
+                    <p><strong>Topics:</strong> {c.topics}</p>
+                    <p><strong>Alignment with International Standards:</strong> {c.alignment}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Registration Details Section */}
+<section className="registration-section py-5 bg-light">
+  <div className="container">
+    <h2 className="section-title text-center mb-4" style={{ color: "#001f36" }}>
+      Registration Details
+    </h2>
+
+    <div className="row justify-content-center">
+      <div className="col-md-8">
+        <div className="card shadow border-0 p-4 text-center">
+          <h5 className="fw-bold mb-3">Registration Deadline</h5>
+          <p className="fs-5 text-danger fw-bold">Ends: 31st January 2026</p>
+
+          <hr />
+
+          <h5 className="fw-bold mb-2">Registration Fee</h5>
+          <p className="mb-1"><strong>₦5,000</strong></p>
+
+          <div className="alert alert-warning small mt-3">
+            <strong>Note:</strong> Before proceeding with payment, please read the <a href=""></a> disclaimer.
+            <button
+            className="btn btn-outline-danger mt-3 w-auto"
+            data-bs-toggle="modal"
+            data-bs-target="#disclaimerModal"
+          >
+            View Disclaimer
+          </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      {/* Registration Details Section */}
+<section className="registration-section py-5 bg-light">
+  <div className="container">
+    <h2 className="section-title text-center mb-4" style={{ color: "#001f36" }}>
+      Important Dates
+    </h2>
+
+    <div className="row justify-content-center">
+      <div className="col-md-8">
+        <div className="card shadow border-0 p-4">
+          <ul className="list-group list-group-flush fs-6">
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Registration Closes:</strong> <span>31st January 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Onboarding Session:</strong> <span>4th February 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>First Assessment:</strong> <span>13th February 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Second Assessment:</strong> <span>20th February 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Third Assessment:</strong> <span>27th February 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Fourth Assessment:</strong> <span>6th March 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Fifth Assessment:</strong> <span>13th March 2026</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <strong>Grand Assessment:</strong> <span>20th March 2026</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div className="alert alert-warning small mt-3">
+            <strong>Note:</strong> Before proceeding with payment, please read the <a href=""></a> disclaimer.
+            <button
+            className="btn btn-outline-danger mt-3 w-auto"
+            data-bs-toggle="modal"
+            data-bs-target="#disclaimerModal"
+          >
+            View Disclaimer
+          </button>
+
+          </div>
+  </div>
+  
+</section>
+
 
       {/* CTA */}
       <section id="register" className="cta-section text-center text-light py-5" style={{ background: "#001f36" }}>
@@ -106,7 +304,90 @@ const LockedInChallenge = () => {
         <p className="mt-2">Limited Slots • Serious Minds Only</p>
         <a href="YOUR_REGISTRATION_LINK_HERE" className="btn hero-btn btn-lg mt-3">Register Now</a>
       </section>
+{/* Disclaimer Modal */}
+<div
+  className="modal fade"
+  id="disclaimerModal"
+  tabIndex="-1"
+  aria-labelledby="disclaimerModalLabel"
+  aria-hidden="true"
+>
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+      
+      <div className="modal-header">
+        <h5 className="modal-title fw-bold" id="disclaimerModalLabel">Important Disclaimer</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div className="modal-body" style={{ fontSize: "0.95rem", lineHeight: "1.5" }}>
+        <p>
+          StudiRad is an independent academic-support initiative focused on promoting
+          consistency, discipline, and self-driven academic development among Radiographers.
+          StudiRad does <strong>not</strong> represent, partner with, nor operate under the authority
+          of any Nigerian or international Radiography certification board, academic council,
+          licensing body, residency body, internship program, or examination organization.
+        </p>
+
+        <p>
+          The weekly and final assessments provided within the StudiRad Locked-In Challenge
+          are created solely for educational growth, practice and personal benchmarking. They are
+          <strong>not</strong> sourced from, endorsed by, or reproduced from any official exam question
+          bank or confidential database.
+        </p>
+
+        <p>
+          StudiRad does <strong>not</strong> offer lectures, one-on-one training, teaching classes,
+          internship preparation coaching, or mentorship during this 6-week program. 
+          The platform provides suggested resources and a structured learning outline to guide
+          your individual self-study.
+        </p>
+
+        <p>
+          All payments must be made <strong>only</strong> to the officially provided account or channel
+          listed on StudiRad platforms. StudiRad will <strong>never</strong> call or message participants
+          privately requesting payment, login details, OTP, or personal data.
+        </p>
+
+        <p className="text-danger fw-bold">
+          StudiRad is not liable for unmet personal expectations, personal academic outcomes, 
+          examination results, internship or job placement decisions, or certification eligibility.
+        </p>
+
+        <p>
+          By proceeding, you acknowledge that you are engaging voluntarily for developmental
+          motivation and knowledge improvement only.
+        </p>
+
+        <p className="fw-bold">Do you understand and agree to these terms?</p>
+      </div>
+
+      <div className="modal-footer">
+        <button 
+          type="button" 
+          className="btn btn-secondary" 
+          data-bs-dismiss="modal"
+          onClick={() => console.log("User did NOT accept terms")}
+        >
+          I Do Not Accept
+        </button>
+        <button 
+          type="button" 
+          className="btn btn-success"
+          data-bs-dismiss="modal"
+          onClick={() => console.log("User accepted terms")}
+        >
+          I Accept
+        </button>
+      </div>
+
     </div>
+  </div>
+</div>
+
+    </div>
+    
+    
   );
 };
 
