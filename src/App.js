@@ -44,6 +44,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardPage from "./pages/DashboardPage";
 import LockedInChallenge from "pages/LockedInChallenge";
 
+
 function App() {
 
   useEffect(() => {
@@ -96,6 +97,7 @@ function App() {
         <Route path="/materials" element={<MaterialsPage />} />
         <Route path="/submit-material" element={<SubmitMaterialPage />} />
         <Route path="/challenge" element={<LockedInChallenge />} />
+
 
         <Route path="/admindashboard" element={<AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>}/>
         <Route path="/admindashboard" element={<AdminDashboard />} />

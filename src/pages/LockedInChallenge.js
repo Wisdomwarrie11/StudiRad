@@ -7,53 +7,12 @@ import "./LockedInChallenge.css";
 
 const LockedInChallenge = () => {
   const howItWorks = [
-    { 
-      icon: <FaBook size={30} />, 
-      title: "Weekly Study Scope", 
-      details: `• You get assigned weekly study areas based on the course outline.
-• Access to recommended reading materials, videos, and resources every week.
-• Focus on essential topics relevant to international standards.` 
-    },
-    { 
-      icon: <FaClock size={30} />, 
-      title: "Self-Paced Learning", 
-      details: `• Learn at your own pace; no scheduled classes or lectures.
-• Materials and resources are available for you to access anytime.
-• Review topics multiple times as needed.
-• Adjust study hours according to your personal schedule.` 
-    },
-    { 
-      icon: <FaClipboardCheck size={30} />, 
-      title: "Weekly Assessments", 
-      details: `• Complete weekly graded assessments to test understanding.
-• Assessments focus on the topics covered in the weekly scope.
-• Track your progress and identify areas for improvement.
-• Only you can see your grades to encourage private growth.` 
-    },
-    { 
-      icon: <FaChartLine size={30} />, 
-      title: "Track Growth", 
-      details: `• Visualize your progress over the 6 weeks.
-• See your performance trends and areas where you excel or need improvement.
-• Maintain motivation by tracking consistent study habits.
-• Compare your scores with your previous attempts privately.` 
-    },
-    { 
-      icon: <FaAward size={30} />, 
-      title: "Final Evaluation", 
-      details: `• At the end of 6 weeks, take the final assessment covering all core topics.
-• Test your cumulative knowledge and readiness.
-• Identify gaps in learning for future improvement.
-• High-performing participants may qualify for rewards.` 
-    },
-    { 
-      icon: <FaUserCheck size={30} />, 
-      title: "Recognition & Reward", 
-      details: `• Top scorers and most consistent participants receive recognition.
-• Earn rewards for dedication and performance.
-• Gain motivation to continue learning and growing.
-• Celebrate your learning journey with your peers.` 
-    },
+    { icon: <FaBook size={30} />, title: "Weekly Study Scope", details: `• Assigned weekly study areas\n• Access resources and videos\n• Focus on essential topics` },
+    { icon: <FaClock size={30} />, title: "Self-Paced Learning", details: `• Learn at your own pace\n• Access anytime\n• Review topics multiple times` },
+    { icon: <FaClipboardCheck size={30} />, title: "Weekly Assessments", details: `• Complete weekly assessments\n• Track progress\n• Private grading` },
+    { icon: <FaChartLine size={30} />, title: "Track Growth", details: `• Visualize performance trends\n• Identify strengths and weaknesses\n• Compare with past attempts` },
+    { icon: <FaAward size={30} />, title: "Final Evaluation", details: `• Final cumulative assessment\n• Identify gaps\n• High performers may get rewards` },
+    { icon: <FaUserCheck size={30} />, title: "Recognition & Reward", details: `• Earn recognition\n• Receive rewards\n• Celebrate your learning journey` },
   ];
 
   const benefits = [
@@ -159,17 +118,23 @@ const LockedInChallenge = () => {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="benefits-section py-5 text-center text-light" style={{ background: "#0c4da2" }}>
+    {/* Benefits */}
+      <section className="benefits-section py-5 text-center text-light">
         <div className="container">
           <h2 className="section-title mb-4">Benefits of Joining</h2>
-          <ul className="list-unstyled">
-            {benefits.map((benefit, index) => (
-              <li key={index} className="mb-2 fs-5 benefit-item"><FaUserCheck className="me-2 text-warning"/> {benefit}</li>
+          <div className="row justify-content-center">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="col-12 col-md-6 col-lg-4 mb-3">
+                <div className="benefit-card p-3 rounded shadow-sm d-flex align-items-center">
+                  <FaUserCheck className="me-2 text-warning fs-4"/>
+                  <span>{benefit}</span>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
+
 
       {/* Courses Accordion */}
       <section className="courses-section py-5">
@@ -208,15 +173,15 @@ const LockedInChallenge = () => {
       </section>
 
       {/* Registration Details Section */}
-<section className="registration-section py-5 bg-light">
+<section className="registration-section py-5" style={{backgroundColor: "rgba(14, 63, 108, 0.205)"}}>
   <div className="container">
     <h2 className="section-title text-center mb-4" style={{ color: "#001f36" }}>
       Registration Details
     </h2>
 
-    <div className="row justify-content-center">
+    <div className="row justify-content-center" >
       <div className="col-md-8">
-        <div className="card shadow border-0 p-4 text-center">
+        <div style={{backgroundColor: "rgba(2, 8, 35, 0.205)"}} className="card shadow border-0 p-4 text-center">
           <h5 className="fw-bold mb-3">Registration Deadline</h5>
           <p className="fs-5 text-danger fw-bold">Ends: 31st January 2026</p>
 

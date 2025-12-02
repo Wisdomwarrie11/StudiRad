@@ -3,7 +3,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
@@ -11,7 +10,6 @@ code {
     monospace;
 }
 
-.navbar-nav:hover{
+.navbar-nav:hover {
   color: rgb(238, 222, 46);
-
 }

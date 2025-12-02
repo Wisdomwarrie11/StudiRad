@@ -13,6 +13,52 @@
     <!-- Add this line to the <head> section of public/index.html -->
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
       <link style="color: aliceblue;" rel="apple-touch-icon" href="Studiradlogo.png" />
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+              },
+              colors: {
+                navy: {
+                  900: '#001f36',
+                  800: '#003359',
+                },
+                brand: {
+                  blue: '#0c4da2',
+                  gold: '#fbbf24',
+                }
+              }
+            }
+          }
+        }
+      </script>
+      <style>
+        /* Custom utilities for 3D Flip Card that are verbose in pure Tailwind utility strings */
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .transform-style-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+      </style>
+    <script type="importmap">
+  {
+    "imports": {
+      "react": "https://aistudiocdn.com/react@^19.2.0",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+      "react/": "https://aistudiocdn.com/react@^19.2.0/",
+      "react-icons/": "https://aistudiocdn.com/react-icons@^5.5.0/"
+    }
+  }
+  </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
