@@ -75,8 +75,8 @@ const LockedInChallenge = () => {
       <section className="hero-section text-center text-light">
         <div className="container py-5">
           <h1 className="display-4 fw-bold">StudiRad Locked-In Challenge™</h1>
-          <p className="lead mt-3">6 Weeks • Elite Focus • Relentless Growth</p>
-          <a href="#register" className="btn hero-btn btn-lg mt-4">Join The Next Cohort</a>
+          <strong><p className="lead mt-3"><strong>6 Weeks • 6 Courses • 6 Assessments</strong></p></strong>
+          <a href="https://forms.gle/8Za2DaYb8tnGFgqo8" className="btn hero-btn btn-lg mt-4">Join The Next Cohort</a>
         </div>
       </section>
 
@@ -94,7 +94,8 @@ const LockedInChallenge = () => {
                       <div className="card-icon mb-3">{item.icon}</div>
                       <h5 className="card-title">{item.title}</h5>
                       <button 
-                        className="btn btn-outline-primary mt-3 w-auto"
+                      style={{background: "#001f36", color: "white"}}
+                        className="btn mt-3 w-auto"
                         onClick={() => document.getElementById(`flip-card-${index}`).classList.toggle("flipped")}
                       >
                         See More
@@ -173,22 +174,22 @@ const LockedInChallenge = () => {
       </section>
 
       {/* Registration Details Section */}
-<section className="registration-section py-5" style={{backgroundColor: "rgba(14, 63, 108, 0.205)"}}>
+<section className="registration-section py-5" style={{background: "#001f34"}}>
   <div className="container">
-    <h2 className="section-title text-center mb-4" style={{ color: "#001f36" }}>
+    <h2 className="section-title text-center mb-4" style={{ color: "white" }}>
       Registration Details
     </h2>
 
     <div className="row justify-content-center" >
       <div className="col-md-8">
-        <div style={{backgroundColor: "rgba(2, 8, 35, 0.205)"}} className="card shadow border-0 p-4 text-center">
-          <h5 className="fw-bold mb-3">Registration Deadline</h5>
+        <div style={{backgroundColor: "#001f36"}} className="card shadow border-5 p-4 text-center">
+          <h5 style = {{color: "white"}} className="fw-bold mb-3">Registration Deadline</h5>
           <p className="fs-5 text-danger fw-bold">Ends: 31st January 2026</p>
 
           <hr />
 
-          <h5 className="fw-bold mb-2">Registration Fee</h5>
-          <p className="mb-1"><strong>₦5,000</strong></p>
+          <h5 style = {{color: "white"}} className="fw-bold mb-2">Registration Fee</h5>
+          <h1 style = {{color: "#e5cc3e"}}  className="mb-1 section-title"><strong>₦5,000</strong></h1>
 
           <div className="alert alert-warning small mt-3">
             <strong>Note:</strong> Before proceeding with payment, please read the <a href=""></a> disclaimer.
@@ -267,7 +268,7 @@ const LockedInChallenge = () => {
       <section id="register" className="cta-section text-center text-light py-5" style={{ background: "#001f36" }}>
         <h3 className="fw-bold">Ready to Stay Locked-In?</h3>
         <p className="mt-2">Limited Slots • Serious Minds Only</p>
-        <a href="YOUR_REGISTRATION_LINK_HERE" className="btn hero-btn btn-lg mt-3">Register Now</a>
+        <a href="https://forms.gle/8Za2DaYb8tnGFgqo8" className="btn hero-btn btn-lg mt-3">Register Now</a>
       </section>
 {/* Disclaimer Modal */}
 <div

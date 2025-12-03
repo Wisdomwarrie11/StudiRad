@@ -80,7 +80,7 @@
   
 /* Benefits */
 .benefits-section {
-    background: #03387d;
+    background: #001f36;
   }
   .benefit-card {
     background: rgba(255, 255, 255, 0.1);
@@ -112,6 +112,6 @@
   transition: 0.3s;
 }
 .cta-section .btn:hover {
-  background-color: #e6ac00;
+  background-color: #e5cc3e;
   color: #001f36;
 }
